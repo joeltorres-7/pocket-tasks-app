@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'components/onboarding_frame.dart';
 
 class GetStartedView extends StatefulWidget {
   const GetStartedView({super.key});
@@ -10,20 +11,39 @@ class GetStartedView extends StatefulWidget {
 }
 
 class _GetStartedViewState extends State<GetStartedView> {
+  bool showInitialMessage = true;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 4), () {
+      setState(() {
+        showInitialMessage = false;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
-        body: SafeArea(
-            child: Center(
-                child: Text(
-                    AppLocalizations.of(context)!.getStartedIntro,
-                    style: AppTextStyles.heading1,
-                )
-            )
-        )
+      body: Center(
+        child: AnimatedSwitcher(
+          duration: Duration(milliseconds: 500),
+          child: showInitialMessage
+              ? OnboardingIntro()
+              : OnboardingFrame()
+        ),
+      ),
+    );
+  }
+}
+
+class OnboardingIntro extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "Let's set your experience :)",
+      style: TextStyle(fontSize: 20),
     );
   }
 }
