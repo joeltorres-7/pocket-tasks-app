@@ -7,5 +7,16 @@
     "onboardSubtitle3": "Agrega tareas sobre la marcha. Sin complicaciones, sin distracciones. Simplemente escribe y listo.",
     "onboardTitle4": "Nuevo Amanecer \uD83C\uDF05",
     "onboardSubtitle4": "No te preocupes por los días menos productivos. Con un solo toque, puedes tener un nuevo comienzo, lleno de posibilidades.",
-    "getStartedIntro": "¡Preparemos tu experiencia!"
+    "getStartedIntro": "¡Preparemos tu experiencia!",
+    "highPriority": "Alta prioridad",
+    "mediumPriority": "Mediana prioridad",
+    "lowPriority": "Baja proridad",
+    "goodMorning": "¡Buenos días",
+    "goodAfternoon": "¡Buenas tardes",
+    "goodEvening": "¡Buenos noches",
+    "readyDay": "¿Lista para conquistar este día?",
+    "myInbox": "Mi Inbox",
+    "todayFocus": "Hoy en Foco",
+    "noTasks": "表示するタスクはありません",
+    "addTasks": "タスクを追加するには、プラスアイコンの付いたボタンを押してください"
 }
