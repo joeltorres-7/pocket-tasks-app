@@ -71,5 +71,13 @@
   "todayFocus": "Today's Focus",
   "@myInbox": {
     "description": "Text user on Today's Focus tab"
+  },
+  "noTasks": "No hay tareas para mostrar",
+  "@noTasks": {
+    "description": "Text shown when there are no tasks to show"
+  },
+  "addTasks": "Presiona el botón con el icono de más para agregar una tarea",
+  "@addTasks": {
+    "description": "How to add a tasks"
   }
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:pocket_tasks/views/add-task-view.dart';
 import 'package:pocket_tasks/views/components/accessible_icon_button.dart';
 import 'package:pocket_tasks/views/components/task_tabs.dart';
 import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:pocket_tasks/views/utils/custom-page-route.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -78,7 +80,9 @@ class _HomeViewState extends State<HomeView> {
             ),
             VerticalSpacing(12.0),
             FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(CustomPageRoute(AddTaskView()));
+              },
               backgroundColor: AppColors.secondaryGray,
               shape: const CircleBorder(),
               elevation: 0,

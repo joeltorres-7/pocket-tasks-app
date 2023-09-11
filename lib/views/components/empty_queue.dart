@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pocket_tasks/views/components/task_chip.dart';
 import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EmptyQueue extends StatefulWidget {
   const EmptyQueue({super.key});
@@ -21,17 +23,18 @@ class _EmptyQueueState extends State<EmptyQueue> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Icon(Icons.task_alt_rounded, size: 40.0, color: AppColors.primaryGray),
+          Icon(Icons.task_alt_rounded,
+              size: 40.0, color: AppColors.primaryGray),
           VerticalSpacing(16.0),
-          Text('No hay tareas para mostrar',
-              style: AppTextStyles.heading1,
-              textAlign: TextAlign.center
-          ),
+          Text(AppLocalizations.of(context)!.noTasks,
+              style: AppTextStyles.heading1, textAlign: TextAlign.center),
           Text(
-            'Presiona el botón con el icono de más para agregar una tarea',
+            AppLocalizations.of(context)!.addTasks,
             style: AppTextStyles.subheading1,
             textAlign: TextAlign.center,
-          )
+          ),
+          VerticalSpacing(16.0),
+          IntrinsicWidth(child: TaskChip(taskName: 'Leer un libro por 30 minutos', onTaskTap: (){}))
         ],
       ),
     );
