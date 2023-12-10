@@ -57,7 +57,7 @@ class OnboardingOutro extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Icon(Icons.star_rounded, size: 40.0),
+        const Icon(Icons.star_rounded, size: 40.0),
         VerticalSpacing(12.0),
         Text(
           AppLocalizations.of(context)!.gettingReady,

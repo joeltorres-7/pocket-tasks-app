@@ -58,7 +58,7 @@ class _GetStartedNameState extends State<GetStartedName> {
                   style: AppTextStyles.heading1,
                   decoration: InputDecoration(
                     hintText: AppLocalizations.of(context)!.yourNameHint,
-                    border: OutlineInputBorder(
+                    border: const OutlineInputBorder(
                       borderSide: BorderSide.none,
                     ),
                     filled: true,

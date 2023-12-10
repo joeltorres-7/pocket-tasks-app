@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/components/get_started_goals.dart';
 import 'package:pocket_tasks/views/components/get_started_methods.dart';
 import 'package:pocket_tasks/views/components/get_started_name.dart';
-import 'package:pocket_tasks/views/components/get_started_outro.dart';
+import 'package:pocket_tasks/views/components/onboarding_outro.dart';
 import 'package:pocket_tasks/views/components/primary_button.dart';
 import 'package:pocket_tasks/views/components/progress_nav.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -19,7 +19,12 @@ class OnboardingFrame extends StatefulWidget {
 class _OnboardingFrameState extends State<OnboardingFrame>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  double progressValue = 0.0; // Initial progress value
+  final List<Widget> getStartedSteps = [
+    const GetStartedName(),
+    const GetStartedGoals(),
+    const GetStartedMethods()
+  ];
+  double progressValue = 0.0;
   late int currentStep = 0;
 
   @override
@@ -27,7 +32,7 @@ class _OnboardingFrameState extends State<OnboardingFrame>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
     );
   }
 
@@ -40,7 +45,7 @@ class _OnboardingFrameState extends State<OnboardingFrame>
   void _increaseProgress() {
     if (progressValue < 1.0) {
       setState(() {
-        progressValue += 0.1; // Increase the progress by 0.1
+        progressValue += (100 / getStartedSteps.length) / 100; // Increase the progress by 0.1
       });
     }
   }
@@ -48,7 +53,7 @@ class _OnboardingFrameState extends State<OnboardingFrame>
   void _decreaseProgress() {
     if (progressValue > 0.0) {
       setState(() {
-        progressValue -= 0.1; // Decrease the progress by 0.1
+        progressValue -= (100 / getStartedSteps.length) / 100; // Decrease the progress by 0.1
       });
     }
   }
@@ -57,23 +62,22 @@ class _OnboardingFrameState extends State<OnboardingFrame>
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    final List<Widget> getStartedSteps = [
-      const GetStartedName(),
-      const GetStartedGoals(),
-      const GetStartedMethods()
-    ];
 
     void _updateNextStep() {
+      _increaseProgress();
+
       setState(() {
         if (currentStep < getStartedSteps.length - 1) {
           currentStep++;
         } else {
-          Navigator.of(context).push(CustomPageRoute(GetStartedOutro()));
+          Navigator.of(context).push(CustomPageRoute(const OnboardingOutro()));
         }
       });
     }
 
     void _updatePreviousStep() {
+      _decreaseProgress();
+
       setState(() {
         if (currentStep > 0) {
           currentStep--;
@@ -84,35 +88,30 @@ class _OnboardingFrameState extends State<OnboardingFrame>
       });
     }
 
-    return Container(
-      height: screenHeight,
-      width: screenWidth,
-      child: Column(
-        children: [
-          Container(
-            height: 60,
-            width: screenWidth,
-            child: ProgressNav(
-                progressValue: progressValue,
-                onBackPressed: _updatePreviousStep),
-          ),
-          Flexible(
-            child: Container(
-              color: Colors.white,
-              child: Center(
-                child: getStartedSteps[currentStep],
-              ),
+    return Column(
+      children: [
+        SizedBox(
+          height: 60,
+          width: screenWidth,
+          child: ProgressNav(
+              progressValue: progressValue,
+              onBackPressed: _updatePreviousStep),
+        ),
+        Flexible(
+          child: Container(
+            color: Colors.white,
+            child: Center(
+              child: getStartedSteps[currentStep],
             ),
           ),
-          PrimaryButton(
-            onButtonPressed: () {
-              _increaseProgress();
-              _updateNextStep();
-            },
-            buttonText: AppLocalizations.of(context)!.continueNext,
-          )
-        ],
-      ),
+        ),
+        PrimaryButton(
+          onButtonPressed: () {
+            _updateNextStep();
+          },
+          buttonText: AppLocalizations.of(context)!.continueNext,
+        )
+      ],
     );
   }
 }

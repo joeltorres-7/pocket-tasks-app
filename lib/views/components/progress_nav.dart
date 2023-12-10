@@ -30,7 +30,7 @@ class ProgressNav extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 24.0, right: 24.0),
-            child: Text('${progressValue.round()}%'),
+            child: Text('${(progressValue * 100).round()}%'),
           )
         ],
       ),

@@ -24,7 +24,7 @@ class _OnboardingViewState extends State<OnboardingView> {
         if (currentView < 3) {
           currentView++;
         } else {
-          Navigator.of(context).push(CustomPageRoute(GetStartedView()));
+          Navigator.of(context).push(CustomPageRoute(const GetStartedView()));
         }
       });
     }
@@ -41,7 +41,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                 padding: const EdgeInsets.all(8.0),
                 child: IconButton(
                     onPressed: (){},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back,
                       color: Colors.black,
                       size: 24.0,
