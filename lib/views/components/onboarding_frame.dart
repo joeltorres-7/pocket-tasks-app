@@ -52,7 +52,7 @@ class _OnboardingFrameState extends State<OnboardingFrame> {
       // Save data and navigate to the next screen
       _saveUserData();
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => HomeView(),
+        builder: (context) => OnboardingOutro(),
       ));
     }
   }
