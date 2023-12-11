@@ -5,14 +5,14 @@ class MethodBox extends StatefulWidget {
   final String itemName;
   final String itemDescription;
   final IconData itemIcon;
-  final bool isSelected;
   final VoidCallback onTap;
+  final bool isSelected;
 
   const MethodBox({
     required this.itemName,
     required this.itemIcon,
-    required this.isSelected,
     required this.onTap,
+    required this.isSelected,
     required this.itemDescription,
   });
 
@@ -35,12 +35,12 @@ class _MethodBoxState extends State<MethodBox> {
           borderRadius: BorderRadius.circular(10.0),
           boxShadow: widget.isSelected
               ? [
-                  const BoxShadow(
-                    color: Color.fromRGBO(149, 157, 165, 0.2),
-                    offset: Offset(0, 8),
-                    blurRadius: 24.0,
-                  ),
-                ]
+            const BoxShadow(
+              color: Color.fromRGBO(149, 157, 165, 0.2),
+              offset: Offset(0, 8),
+              blurRadius: 24.0,
+            ),
+          ]
               : [],
         ),
         child: Padding(
@@ -55,16 +55,14 @@ class _MethodBoxState extends State<MethodBox> {
                   children: [
                     Text(
                       widget.itemName,
-                      style: TextStyle(
-                          fontSize: 14.0, fontWeight: FontWeight.w500),
+                      style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w500),
                       textAlign: TextAlign.left,
                     ),
                     SizedBox(
                       width: 270.0,
                       child: Text(
                         widget.itemDescription,
-                        style: TextStyle(
-                            fontSize: 12.0, fontWeight: FontWeight.w300),
+                        style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w300),
                         textAlign: TextAlign.left,
                       ),
                     )

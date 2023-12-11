@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pocket_tasks/enums/enums.dart';
+import 'package:pocket_tasks/models/UserData.dart';
 import 'package:pocket_tasks/views/components/get_started_goals.dart';
 import 'package:pocket_tasks/views/components/get_started_methods.dart';
 import 'package:pocket_tasks/views/components/get_started_name.dart';
@@ -6,112 +8,101 @@ import 'package:pocket_tasks/views/components/onboarding_outro.dart';
 import 'package:pocket_tasks/views/components/primary_button.dart';
 import 'package:pocket_tasks/views/components/progress_nav.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:pocket_tasks/views/onboarding-view.dart';
-import 'package:pocket_tasks/views/utils/custom-page-route.dart';
+import 'package:pocket_tasks/views/home_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingFrame extends StatefulWidget {
-  const OnboardingFrame({super.key});
-
   @override
   State<OnboardingFrame> createState() => _OnboardingFrameState();
 }
 
-class _OnboardingFrameState extends State<OnboardingFrame>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  final List<Widget> getStartedSteps = [
-    const GetStartedName(),
-    const GetStartedGoals(),
-    const GetStartedMethods()
-  ];
-  double progressValue = 0.0;
-  late int currentStep = 0;
+class _OnboardingFrameState extends State<OnboardingFrame> {
+  late int currentStep;
+  late UserData userData;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 2),
-    );
+    currentStep = 0;
+    userData = UserData(userName: '');
   }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
+  void _updateStep(dynamic value) {
+    setState(() {
+      switch (currentStep) {
+        case 0:
+          userData.userName = value as String;
+          break;
+        case 1:
+          userData.userGoal = value;
+          break;
+        case 2:
+          userData.preferredMethod = value;
+          break;
+      }
+    });
   }
 
-  void _increaseProgress() {
-    if (progressValue < 1.0) {
+  void _nextStep() {
+    if (currentStep < 2) {
       setState(() {
-        progressValue += (100 / getStartedSteps.length) / 100; // Increase the progress by 0.1
+        currentStep++;
       });
+    } else {
+      // Save data and navigate to the next screen
+      _saveUserData();
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (context) => HomeView(),
+      ));
     }
   }
 
-  void _decreaseProgress() {
-    if (progressValue > 0.0) {
-      setState(() {
-        progressValue -= (100 / getStartedSteps.length) / 100; // Decrease the progress by 0.1
-      });
-    }
+  void _saveUserData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('userName', userData.userName);
+    prefs.setInt('userGoal', userData.userGoal.index); // Fix this line
+    prefs.setInt('preferredMethod', userData.preferredMethod.index); // Fix this line
   }
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-
-    void _updateNextStep() {
-      _increaseProgress();
-
-      setState(() {
-        if (currentStep < getStartedSteps.length - 1) {
-          currentStep++;
-        } else {
-          Navigator.of(context).push(CustomPageRoute(const OnboardingOutro()));
-        }
-      });
-    }
-
-    void _updatePreviousStep() {
-      _decreaseProgress();
-
-      setState(() {
-        if (currentStep > 0) {
-          currentStep--;
-          getStartedSteps[currentStep];
-        } else {
-          Navigator.of(context).push(CustomPageRoute(const OnboardingView()));
-        }
-      });
-    }
-
-    return Column(
-      children: [
-        SizedBox(
-          height: 60,
-          width: screenWidth,
-          child: ProgressNav(
-              progressValue: progressValue,
-              onBackPressed: _updatePreviousStep),
-        ),
-        Flexible(
-          child: Container(
-            color: Colors.white,
-            child: Center(
-              child: getStartedSteps[currentStep],
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Onboarding'),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: _buildCurrentStep(),
           ),
-        ),
-        PrimaryButton(
-          onButtonPressed: () {
-            _updateNextStep();
-          },
-          buttonText: AppLocalizations.of(context)!.continueNext,
-        )
-      ],
+          PrimaryButton(
+            onButtonPressed: _nextStep,
+            buttonText: AppLocalizations.of(context)!.continueNext,
+          ),
+        ],
+      ),
     );
+  }
+
+  Widget _buildCurrentStep() {
+    switch (currentStep) {
+      case 0:
+        return GetStartedName(
+          userData: userData,
+          onNameChanged: _updateStep,
+        );
+      case 1:
+        return GetStartedGoals(
+          userData: userData,
+          onGoalChanged: _updateStep,
+        );
+      case 2:
+        return GetStartedMethods(
+          userData: userData,
+          onMethodChanged: _updateStep,
+        );
+      default:
+        return Container(); // Handle unexpected case
+    }
   }
 }

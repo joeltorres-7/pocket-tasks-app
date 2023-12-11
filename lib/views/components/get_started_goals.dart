@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:pocket_tasks/enums/enums.dart';
+import 'package:pocket_tasks/models/UserData.dart';
 import 'package:pocket_tasks/views/components/goal_box.dart';
+import 'package:pocket_tasks/views/components/task_goals.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
 
-class GetStartedGoals extends StatefulWidget {
-  const GetStartedGoals({super.key});
+class GetStartedGoals extends StatelessWidget {
+  final UserData userData;
+  final ValueChanged<Goal> onGoalChanged;
 
-  @override
-  State<GetStartedGoals> createState() => _GetStartedGoalsState();
-}
+  GetStartedGoals({required this.onGoalChanged, required this.userData});
 
-class _GetStartedGoalsState extends State<GetStartedGoals> {
-  int selectedGoalBoxIndex = -1; // Initially, no GoalBox is selected
+  int selectedGoalBoxIndex = -1;
 
-  void handleGoalBoxTap(int index) {
-    setState(() {
-      selectedGoalBoxIndex = index;
-    });
+  bool isGoalSelected(int index) {
+    return selectedGoalBoxIndex == index;
+  }
+
+  void handleGoalBoxTap(BuildContext context, int index) {
+    selectedGoalBoxIndex = index;
+    onGoalChanged(TaskGoals.goalsList[index]);
   }
 
   @override
@@ -25,51 +29,25 @@ class _GetStartedGoalsState extends State<GetStartedGoals> {
     return Padding(
       padding: const EdgeInsets.only(left: 24.0, right: 24.0),
       child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(AppLocalizations.of(context)!.yourGoals,
-                style: AppTextStyles.regular),
-            VerticalSpacing(24.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(AppLocalizations.of(context)!.yourGoals, style: AppTextStyles.regular),
+          VerticalSpacing(24.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              for (int i = 0; i < TaskGoals.goalsText(context).length; i++)
                 GoalBox(
-                    itemIcon: Icons.bolt_rounded,
-                    itemName: AppLocalizations.of(context)!.reachProductivity,
-                    isSelected: selectedGoalBoxIndex == 0,
-                    onTap: () => handleGoalBoxTap(0),
+                  itemIcon: TaskGoals.goalsIcon[i],
+                  itemName: TaskGoals.goalsText(context)[i],
+                  isSelected: isGoalSelected(i),
+                  onTap: () => handleGoalBoxTap(context, i),
                 ),
-                HorizontalSpacing(16.0),
-                GoalBox(
-                    itemIcon: Icons.flag_rounded,
-                    itemName: AppLocalizations.of(context)!.reachGoal,
-                    isSelected: selectedGoalBoxIndex == 1,
-                    onTap: () => handleGoalBoxTap(1),
-                ),
-              ],
-            ),
-            VerticalSpacing(16.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GoalBox(
-                    itemIcon: Icons.fitness_center_rounded,
-                    itemName: AppLocalizations.of(context)!.reachDetermination,
-                    isSelected: selectedGoalBoxIndex == 2,
-                    onTap: () => handleGoalBoxTap(2),
-                ),
-                HorizontalSpacing(16.0),
-                GoalBox(
-                    itemIcon: Icons.alarm_on_rounded,
-                    itemName: AppLocalizations.of(context)!.reachTime,
-                    isSelected: selectedGoalBoxIndex == 3,
-                    onTap: () => handleGoalBoxTap(3),
-                ),
-              ],
-            )
-          ]),
+            ],
+          ),
+        ],
+      ),
     );
-    ;
   }
 }
