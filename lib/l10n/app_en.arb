@@ -118,7 +118,7 @@
   "gettingReady": "Preparing your experience...",
   "@gettingReady": {
     "description": "Shown on get started outro"
-
+  },
   "highPriority": "High priority",
   "@highPriority": {
     "description": "Text for high priority chip"

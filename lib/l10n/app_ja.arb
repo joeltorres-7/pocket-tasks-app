@@ -28,7 +28,7 @@
   "methodProjectsDescription": "タスクをプロジェクトや特定のカテゴリに分類",
   "methodTimer": "タイマー",
   "methodTimerDescription": "時間ブロックで作業するためにタイマーを使用",
-  "gettingReady": "あなたのエクスペリエンスを準備中..."
+  "gettingReady": "あなたのエクスペリエンスを準備中...",
   "highPriority": "高優先度",
   "mediumPriority": "中優先度",
   "lowPriority": "低優先度",
