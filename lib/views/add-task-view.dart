@@ -23,7 +23,9 @@ class _AddTaskViewState extends State<AddTaskView> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: IconButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.of(context).pop();
+                        },
                         icon: Icon(
                           Icons.arrow_back,
                           color: Colors.black,

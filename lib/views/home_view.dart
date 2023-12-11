@@ -73,6 +73,7 @@ class _HomeViewState extends State<HomeView> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             FloatingActionButton(
+              heroTag: 'resetDayButton',
               onPressed: () {
                 showDialog(
                   context: context,
@@ -102,6 +103,7 @@ class _HomeViewState extends State<HomeView> {
             ),
             VerticalSpacing(12.0),
             FloatingActionButton(
+              heroTag: 'addTaskButton',
               onPressed: () {
                 Navigator.of(context).push(CustomPageRoute(AddTaskView()));
               },
