@@ -48,7 +48,7 @@ class OnboardingCard extends StatelessWidget {
                     VerticalSpacing(8.0),
                     Text(
                       '${items[currentIndex]['subtitle']}',
-                      style: AppTextStyles.subheading1,
+                      style: AppTextStyles.regular,
                       textAlign: TextAlign.start,
                     )
                   ],

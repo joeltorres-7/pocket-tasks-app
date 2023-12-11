@@ -34,5 +34,133 @@
   "getStartedIntro": "Let's prepare your experience!",
   "@getStartedIntro": {
     "description": "Intro text for Get Started section"
+  },
+  "yourName": "What is your name?",
+  "@yourName": {
+    "description": "Hint for name input"
+  },
+  "yourNameHint": "Write your name",
+  "@yourNameHint": {
+    "description": "Hint for name input"
+  },
+  "continueNext": "Continue",
+  "@continueNext": {
+    "description": "Text for continue button"
+  },
+  "letGetStarted": "Let's set your experience :)",
+  "@letGetStarted": {
+    "description": "Shown on get started intro"
+  },
+  "yourGoals": "What would you like to achieve with PocketTasks?",
+  "@yourGoals": {
+    "description": "Shown on get started goals"
+  },
+  "reachProductivity": "Being more productive",
+  "@reachProductivity": {
+    "description": "Title reach productivity show on Goals screen"
+  },
+  "reachGoal": "Achieving a goal",
+  "@reachGoal": {
+    "description": "Title reach goal show on Goals screen"
+  },
+  "reachDetermination": "Being more disciplined",
+  "@reachDetermination": {
+    "description": "Title reach determination show on Goals screen"
+  },
+  "reachTime": "More time for myself",
+  "@reachTime": {
+    "description": "Title reach time show on Goals screen"
+  },
+  "yourMethods": "¿Con cual método de tareas te sientes más comod@?",
+  "@yourMethods": {
+    "description": "Shown on get started methods"
+  },
+  "methodTraditional": "Traditional",
+  "@methodTraditional": {
+    "description": "Title for traditional method"
+  },
+  "methodTraditionalDescription": "Simple task list to check off when completed",
+  "@methodTraditionalDescription": {
+    "description": "Description for traditional method"
+  },
+  "methodLabels": "Labels",
+  "@methodLabels": {
+    "description": "Title for labels method"
+  },
+  "methodLabelsDescription": "Organize your tasks with custom labels",
+  "@methodLabelsDescription": {
+    "description": "Description for labels method"
+  },
+  "methodPriorities": "Priorities",
+  "@methodPriorities": {
+    "description": "Title for priorities method"
+  },
+  "methodPrioritiesDescription": "Set your tasks based on their urgency and importance",
+  "@methodPrioritiesDescription": {
+    "description": "Description for priorities method"
+  },
+  "methodProjects": "Projects",
+  "@methodProjects": {
+    "description": "Title for projects method"
+  },
+  "methodProjectsDescription": "Divide your tasks into specific projects or categories",
+  "@methodProjectsDescription": {
+    "description": "Description for projects method"
+  },
+  "methodTimer": "Timer",
+  "@methodTimer": {
+    "description": "Title for timer method"
+  },
+  "methodTimerDescription": "Use a timer to work in time blocks",
+  "@methodTimerDescription": {
+    "description": "Description for timer method"
+  },
+  "gettingReady": "Preparing your experience...",
+  "@gettingReady": {
+    "description": "Shown on get started outro"
+  },
+  "highPriority": "High priority",
+  "@highPriority": {
+    "description": "Text for high priority chip"
+  },
+  "mediumPriority": "Medium priority",
+  "@mediumPriority": {
+    "description": "Text for medium priority chip"
+  },
+  "lowPriority": "Low priority",
+  "@lowPriority": {
+    "description": "Text for low priority chip"
+  },
+  "goodMorning": "Good morning",
+  "@goodMorning": {
+    "description": "Morning greeting user on navigation bar from Home"
+  },
+  "goodAfternoon": "Good afternoon",
+  "@goodAfternoon": {
+    "description": "Afternoon greeting user on navigation bar from Home"
+  },
+  "goodEvening": "Good evening",
+  "@goodEvening": {
+    "description": "Evening greeting user on navigation bar from Home"
+  },
+  "readyDay": "Ready to overcome this day?",
+  "@readyDay": {
+    "description": "Phrase shown on navigation bar from Home"
+  },
+  "myInbox": "My Inbox",
+  "@myInbox": {
+    "description": "Text user on My Inbox tab"
+  },
+  "todayFocus": "Today's Focus",
+  "@myInbox": {
+    "description": "Text user on Today's Focus tab"
+  },
+  "noTasks": "No hay tareas para mostrar",
+  "@noTasks": {
+    "description": "Text shown when there are no tasks to show"
+  },
+  "addTasks": "Presiona el botón con el icono de más para agregar una tarea",
+  "@addTasks": {
+    "description": "How to add a tasks"
   }
 }

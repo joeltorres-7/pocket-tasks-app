@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/components/onboarding_card.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/get-started-view.dart';
+import 'package:pocket_tasks/views/home_view.dart';
 import 'package:pocket_tasks/views/utils/custom-page-route.dart';
 
 class OnboardingView extends StatefulWidget {
@@ -24,7 +25,7 @@ class _OnboardingViewState extends State<OnboardingView> {
         if (currentView < 3) {
           currentView++;
         } else {
-          Navigator.of(context).push(CustomPageRoute(GetStartedView()));
+          Navigator.of(context).push(CustomPageRoute(const GetStartedView()));
         }
       });
     }
@@ -41,7 +42,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                 padding: const EdgeInsets.all(8.0),
                 child: IconButton(
                     onPressed: (){},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back,
                       color: Colors.black,
                       size: 24.0,
