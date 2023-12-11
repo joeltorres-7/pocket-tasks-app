@@ -7,6 +7,7 @@ import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/utils/custom-page-route.dart';
+import 'package:pocket_tasks/views/utils/custom_modal_widget.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -72,7 +73,28 @@ class _HomeViewState extends State<HomeView> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Center(
+                      child: CustomModalWidget(
+                        title: 'Nuevo amanecer',
+                        subtitle: '¿Sientes que este día no fue cómo esperabas? No te preocupes, siempre hay segundas oportunidades.',
+                        buttonText: 'Reiniciar mi día',
+                        onClose: () {
+                          Navigator.of(context).pop(); // Close the modal.
+                        },
+                        onButtonPressed: () {
+                          // Your button callback function goes here.
+                          // You can perform actions when the button is pressed.
+                          print('Dia reiniciado con exito.');
+                        },
+                      ),
+                    );
+                  },
+                );
+              },
               backgroundColor: AppColors.secondaryGray,
               shape: const CircleBorder(),
               elevation: 0,

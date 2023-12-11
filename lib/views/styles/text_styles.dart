@@ -18,4 +18,9 @@ class AppTextStyles {
       fontSize: 14.0,
       fontWeight: FontWeight.w500,
       color: Colors.black);
+  static TextStyle regular14 = const TextStyle(
+      fontFamily: 'CerebriSansPro',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      color: Colors.black);
 }

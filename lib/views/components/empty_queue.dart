@@ -34,7 +34,12 @@ class _EmptyQueueState extends State<EmptyQueue> {
             textAlign: TextAlign.center,
           ),
           VerticalSpacing(16.0),
-          IntrinsicWidth(child: TaskChip(taskName: 'Leer un libro por 30 minutos', onTaskTap: (){}))
+          IntrinsicWidth(
+              child: TaskChip(
+                  taskName: 'Leer un libro por 30 minutos',
+                  onTaskTap: (){}
+              )
+          )
         ],
       ),
     );
