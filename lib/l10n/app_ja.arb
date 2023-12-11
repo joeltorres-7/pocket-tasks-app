@@ -29,4 +29,15 @@
   "methodTimer": "タイマー",
   "methodTimerDescription": "時間ブロックで作業するためにタイマーを使用",
   "gettingReady": "あなたのエクスペリエンスを準備中..."
+  "highPriority": "高優先度",
+  "mediumPriority": "中優先度",
+  "lowPriority": "低優先度",
+  "goodMorning": "おはようございます",
+  "goodAfternoon": "こんにちは",
+  "goodEvening": "こんばんは",
+  "readyDay": "この日を制覇する準備はできていますか？",
+  "myInbox": "私の受信トレイ",
+  "todayFocus": "今日の焦点",
+  "noTasks": "表示するタスクはありません",
+  "addTasks": "タスクを追加するには、プラスアイコンの付いたボタンを押してください"
 }

@@ -29,4 +29,15 @@
     "methodTimer": "Temporizador",
     "methodTimerDescription": "Usa un reloj para trabajar en bloques de tiempo",
     "gettingReady": "Preparando tu experiencia..."
+    "highPriority": "Alta prioridad",
+    "mediumPriority": "Mediana prioridad",
+    "lowPriority": "Baja proridad",
+    "goodMorning": "¡Buenos días",
+    "goodAfternoon": "¡Buenas tardes",
+    "goodEvening": "¡Buenos noches",
+    "readyDay": "¿Lista para conquistar este día?",
+    "myInbox": "Mi Inbox",
+    "todayFocus": "Hoy en Foco",
+    "noTasks": "No hay tareas para mostrar",
+    "addTasks": "Presiona el botón con el icono de más para agregar una tarea"
 }

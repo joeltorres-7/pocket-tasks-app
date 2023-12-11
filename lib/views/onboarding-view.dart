@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/components/onboarding_card.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/get-started-view.dart';
+import 'package:pocket_tasks/views/home_view.dart';
 import 'package:pocket_tasks/views/utils/custom-page-route.dart';
 
 class OnboardingView extends StatefulWidget {

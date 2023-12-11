@@ -118,5 +118,49 @@
   "gettingReady": "Preparing your experience...",
   "@gettingReady": {
     "description": "Shown on get started outro"
+
+  "highPriority": "High priority",
+  "@highPriority": {
+    "description": "Text for high priority chip"
+  },
+  "mediumPriority": "Medium priority",
+  "@mediumPriority": {
+    "description": "Text for medium priority chip"
+  },
+  "lowPriority": "Low priority",
+  "@lowPriority": {
+    "description": "Text for low priority chip"
+  },
+  "goodMorning": "Good morning",
+  "@goodMorning": {
+    "description": "Morning greeting user on navigation bar from Home"
+  },
+  "goodAfternoon": "Good afternoon",
+  "@goodAfternoon": {
+    "description": "Afternoon greeting user on navigation bar from Home"
+  },
+  "goodEvening": "Good evening",
+  "@goodEvening": {
+    "description": "Evening greeting user on navigation bar from Home"
+  },
+  "readyDay": "Ready to overcome this day?",
+  "@readyDay": {
+    "description": "Phrase shown on navigation bar from Home"
+  },
+  "myInbox": "My Inbox",
+  "@myInbox": {
+    "description": "Text user on My Inbox tab"
+  },
+  "todayFocus": "Today's Focus",
+  "@myInbox": {
+    "description": "Text user on Today's Focus tab"
+  },
+  "noTasks": "No hay tareas para mostrar",
+  "@noTasks": {
+    "description": "Text shown when there are no tasks to show"
+  },
+  "addTasks": "Presiona el botón con el icono de más para agregar una tarea",
+  "@addTasks": {
+    "description": "How to add a tasks"
   }
 }
