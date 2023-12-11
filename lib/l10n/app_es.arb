@@ -39,5 +39,6 @@
     "myInbox": "Mi Inbox",
     "todayFocus": "Hoy en Foco",
     "noTasks": "No hay tareas para mostrar",
-    "addTasks": "Presiona el botón con el icono de más para agregar una tarea"
+    "addTasks": "Presiona el botón con el icono de más para agregar una tarea",
+    "guestTitle": "Invitado"
 }

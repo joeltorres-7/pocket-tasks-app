@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pocket_tasks/enums/enums.dart';
 import 'package:pocket_tasks/views/add-task-view.dart';
 import 'package:pocket_tasks/views/components/accessible_icon_button.dart';
 import 'package:pocket_tasks/views/components/task_tabs.dart';
@@ -8,6 +9,7 @@ import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/utils/custom-page-route.dart';
 import 'package:pocket_tasks/views/utils/custom_modal_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -17,7 +19,24 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  String userName = 'Haru';
+  late String? userName;
+  late Goal userGoal;
+  late PreferredMethod preferredMethod;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  void _loadUserData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      userName = prefs.getString('userName') ?? '';
+      userGoal = Goal.values[prefs.getInt('userGoal') ?? Goal.productivity.index]; // Use default value if not found
+      preferredMethod = PreferredMethod.values[prefs.getInt('preferredMethod') ?? PreferredMethod.traditional.index]; // Use default value if not found
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +63,7 @@ class _HomeViewState extends State<HomeView> {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 4.0),
                       child: Text(
-                          '${AppLocalizations.of(context)!.myInbox}, $userName!',
+                          '${AppLocalizations.of(context)!.myInbox}, ${userName ?? AppLocalizations.of(context)!.guestTitle}!',
                           style: AppTextStyles.heading1,
                           textAlign: TextAlign.start),
                     ),

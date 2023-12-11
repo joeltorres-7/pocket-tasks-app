@@ -162,5 +162,9 @@
   "addTasks": "Presiona el botón con el icono de más para agregar una tarea",
   "@addTasks": {
     "description": "How to add a tasks"
+  },
+  "guestTitle": "Guest",
+  "@guessTitle": {
+    "description": "Title shown to the user if username not defined."
   }
 }
