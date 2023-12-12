@@ -3,6 +3,7 @@ enum Goal {
   achievement,
   determination,
   freeTime,
+  unknown
 }
 
 enum PreferredMethod {
@@ -11,4 +12,5 @@ enum PreferredMethod {
   priorities,
   projects,
   timer,
+  unknown
 }

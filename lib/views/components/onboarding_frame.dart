@@ -9,6 +9,8 @@ import 'package:pocket_tasks/views/components/primary_button.dart';
 import 'package:pocket_tasks/views/components/progress_nav.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/home_view.dart';
+import 'package:pocket_tasks/views/onboarding-view.dart';
+import 'package:pocket_tasks/views/utils/custom-page-route.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingFrame extends StatefulWidget {
@@ -16,15 +18,45 @@ class OnboardingFrame extends StatefulWidget {
   State<OnboardingFrame> createState() => _OnboardingFrameState();
 }
 
-class _OnboardingFrameState extends State<OnboardingFrame> {
+class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProviderStateMixin {
   late int currentStep;
   late UserData userData;
+
+  late AnimationController _controller;
+  double progressValue = 0.0; // Initial progress value
 
   @override
   void initState() {
     super.initState();
     currentStep = 0;
     userData = UserData(userName: '');
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _increaseProgress() {
+    if (progressValue < 1.0) {
+      setState(() {
+        progressValue += (100 / 3) / 100; // Increase the progress by 0.1
+      });
+    }
+  }
+
+  void _decreaseProgress() {
+    if (progressValue > 0.0) {
+      setState(() {
+        progressValue -= (100 / 3) / 100; // Decrease the progress by 0.1
+      });
+    }
   }
 
   void _updateStep(dynamic value) {
@@ -43,17 +75,46 @@ class _OnboardingFrameState extends State<OnboardingFrame> {
     });
   }
 
+  void _updatePreviousStep() {
+    setState(() {
+      if (currentStep > 0) {
+        setState(() {
+          _decreaseProgress();
+          currentStep--;
+        });
+      } else {
+        Navigator.of(context).push(CustomPageRoute(const OnboardingView()));
+      }
+    });
+  }
+
   void _nextStep() {
-    if (currentStep < 2) {
-      setState(() {
-        currentStep++;
-      });
-    } else {
-      // Save data and navigate to the next screen
-      _saveUserData();
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => OnboardingOutro(),
-      ));
+    if (_isValidInput()) {
+      if (currentStep < 2) {
+        setState(() {
+          _increaseProgress();
+          currentStep++;
+        });
+      } else {
+        // Save data and navigate to the next screen
+        _saveUserData();
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => OnboardingOutro(),
+        ));
+      }
+    }
+  }
+
+  bool _isValidInput() {
+    switch (currentStep) {
+      case 0:
+        return userData.userName.isNotEmpty;
+      case 1:
+        return userData.userGoal != Goal.unknown;
+      case 2:
+        return userData.preferredMethod != PreferredMethod.unknown;
+      default:
+        return false;
     }
   }
 
@@ -64,22 +125,48 @@ class _OnboardingFrameState extends State<OnboardingFrame> {
     prefs.setInt('preferredMethod', userData.preferredMethod.index); // Fix this line
   }
 
+  bool _isContinueButtonEnabled() {
+    switch(currentStep) {
+      case 0:
+        return userData.userName.isNotEmpty;
+      case 1:
+        return userData.userGoal != Goal.unknown;
+      case 2:
+        return userData.preferredMethod != PreferredMethod.unknown;
+      default:
+        return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Onboarding'),
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: _buildCurrentStep(),
-          ),
-          PrimaryButton(
-            onButtonPressed: _nextStep,
-            buttonText: AppLocalizations.of(context)!.continueNext,
-          ),
-        ],
+      backgroundColor: Colors.white,
+      body: Container(
+        height: screenHeight,
+        width: screenWidth,
+        child: Column(
+          children: [
+            Container(
+              height: 60,
+              width: screenWidth,
+              child: ProgressNav(
+                  progressValue: progressValue,
+                  onBackPressed: _updatePreviousStep),
+            ),
+            Expanded(
+              child: _buildCurrentStep(),
+            ),
+            PrimaryButton(
+              onButtonPressed: _nextStep,
+              buttonText: AppLocalizations.of(context)!.continueNext,
+              isButtonEnabled: _isContinueButtonEnabled(), // Pass the enable/disable state
+            ),
+          ],
+        ),
       ),
     );
   }

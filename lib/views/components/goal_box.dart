@@ -23,7 +23,8 @@ class _GoalBoxState extends State<GoalBox> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: widget.onTap,
-      child: DecoratedBox(
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 200), // Adjust the duration as needed
         decoration: BoxDecoration(
           border: Border.all(
             color: widget.isSelected ? Colors.black : Colors.black12,
@@ -43,21 +44,17 @@ class _GoalBoxState extends State<GoalBox> {
         ),
         child: Padding(
           padding: const EdgeInsets.all(24.0),
-          child: Flexible(
-            child: Column(
-              children: [
-                Icon(widget.itemIcon, size: 40.0),
-                VerticalSpacing(8.0),
-                SizedBox(
-                  width: 100.0,
-                  child: Text(
-                    widget.itemName,
-                    style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.normal),
-                    textAlign: TextAlign.center,
-                  ),
-                )
-              ],
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(widget.itemIcon, size: 40.0),
+              VerticalSpacing(8.0),
+              Text(
+                widget.itemName,
+                style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.normal),
+                textAlign: TextAlign.center,
+              ),
+            ],
           ),
         ),
       ),

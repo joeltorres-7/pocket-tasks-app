@@ -7,12 +7,17 @@ import 'package:pocket_tasks/views/components/task_methods.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
 
-class GetStartedMethods extends StatelessWidget {
+class GetStartedMethods extends StatefulWidget {
   final UserData userData;
   final ValueChanged<PreferredMethod> onMethodChanged;
 
   GetStartedMethods({required this.onMethodChanged, required this.userData});
 
+  @override
+  _GetStartedMethodsState createState() => _GetStartedMethodsState();
+}
+
+class _GetStartedMethodsState extends State<GetStartedMethods> {
   int selectedMethodBoxIndex = -1;
 
   bool isMethodSelected(int index) {
@@ -20,8 +25,10 @@ class GetStartedMethods extends StatelessWidget {
   }
 
   void handleMethodBoxTap(BuildContext context, int index) {
-    selectedMethodBoxIndex = index;
-    onMethodChanged(TaskMethods.methodsList[index]);
+    setState(() {
+      selectedMethodBoxIndex = index;
+    });
+    widget.onMethodChanged(TaskMethods.methodsList[index]);
   }
 
   @override

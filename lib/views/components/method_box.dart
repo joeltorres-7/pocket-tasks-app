@@ -25,7 +25,8 @@ class _MethodBoxState extends State<MethodBox> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: widget.onTap,
-      child: DecoratedBox(
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 200), // Adjust the duration as needed
         decoration: BoxDecoration(
           border: Border.all(
             color: widget.isSelected ? Colors.black : Colors.black12,
@@ -45,31 +46,29 @@ class _MethodBoxState extends State<MethodBox> {
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Flexible(
-            child: Row(
-              children: [
-                Icon(widget.itemIcon, size: 24.0),
-                HorizontalSpacing(16.0),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.itemName,
-                      style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w500),
+          child: Row(
+            children: [
+              Icon(widget.itemIcon, size: 24.0),
+              HorizontalSpacing(16.0),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    widget.itemName,
+                    style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w500),
+                    textAlign: TextAlign.left,
+                  ),
+                  SizedBox(
+                    width: 270.0,
+                    child: Text(
+                      widget.itemDescription,
+                      style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w300),
                       textAlign: TextAlign.left,
                     ),
-                    SizedBox(
-                      width: 270.0,
-                      child: Text(
-                        widget.itemDescription,
-                        style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w300),
-                        textAlign: TextAlign.left,
-                      ),
-                    )
-                  ],
-                )
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

@@ -31,6 +31,7 @@ class _OnboardingViewState extends State<OnboardingView> {
     }
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
           height: screenHeight,
