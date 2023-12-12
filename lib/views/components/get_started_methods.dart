@@ -54,7 +54,7 @@ class _GetStartedMethodsState extends State<GetStartedMethods> {
                     MethodBox(
                       itemIcon: TaskMethods.methodsIcon[i],
                       itemName: TaskMethods.methodsText(context)[i],
-                      itemDescription: AppLocalizations.of(context)!.methodTraditionalDescription,
+                      itemDescription: TaskMethods.methodsDescription(context)[i],
                       onTap: () => handleMethodBoxTap(context, i),
                       isSelected: isMethodSelected(i),
                     ),

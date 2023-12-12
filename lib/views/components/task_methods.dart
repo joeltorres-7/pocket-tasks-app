@@ -19,6 +19,14 @@ class TaskMethods {
     AppLocalizations.of(context)!.methodTimer,
   ];
 
+  static List<String> methodsDescription(BuildContext context) => [
+    AppLocalizations.of(context)!.methodTraditionalDescription,
+    AppLocalizations.of(context)!.methodLabelsDescription,
+    AppLocalizations.of(context)!.methodPrioritiesDescription,
+    AppLocalizations.of(context)!.methodProjectsDescription,
+    AppLocalizations.of(context)!.methodTimerDescription,
+  ];
+
   static List<IconData> methodsIcon = [
     Icons.bolt_rounded,
     Icons.label_rounded,

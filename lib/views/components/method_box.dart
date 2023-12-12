@@ -23,6 +23,8 @@ class MethodBox extends StatefulWidget {
 class _MethodBoxState extends State<MethodBox> {
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return GestureDetector(
       onTap: widget.onTap,
       child: AnimatedContainer(
@@ -59,11 +61,13 @@ class _MethodBoxState extends State<MethodBox> {
                     textAlign: TextAlign.left,
                   ),
                   SizedBox(
-                    width: 270.0,
+                    width: screenWidth * 0.64,
                     child: Text(
                       widget.itemDescription,
                       style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w300),
                       textAlign: TextAlign.left,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ],
