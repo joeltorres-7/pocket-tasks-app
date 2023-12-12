@@ -39,7 +39,11 @@ class _GetStartedMethodsState extends State<GetStartedMethods> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(AppLocalizations.of(context)!.yourMethods, style: AppTextStyles.regular),
+          Text(
+              AppLocalizations.of(context)!.yourMethods,
+              style: AppTextStyles.subheading1,
+              textAlign: TextAlign.center,
+          ),
           VerticalSpacing(24.0),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,

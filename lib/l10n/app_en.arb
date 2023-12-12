@@ -1,33 +1,33 @@
 {
-  "onboardTitle1": "Bienvenida a PocketTasks! \uD83D\uDE80",
+  "onboardTitle1": "Welcome to PocketTasks! \uD83D\uDE80",
   "@onboardTitle1": {
     "description": "The first onboarding view title"
   },
-  "onboardSubtitle1": "Transforma tu día a día con una gestión de tareas sencilla y motivadora. Comienza cada día con claridad y propósito.",
+  "onboardSubtitle1": "Transform your everyday with simple and motivating task management. Start each day with clarity and purpose.",
   "@onboardSubtitle1": {
     "description": "The first onboarding view subtitle"
   },
-  "onboardTitle2": "Hoy en Foco \uD83D\uDD0D",
+  "onboardTitle2": "Today in Focus \uD83D\uDD0D",
   "@onboardTitle2": {
     "description": "The second onboarding view title"
   },
-  "onboardSubtitle2": "Prioriza lo que realmente importa. Con \"Hoy en Foco\", tendrás siempre a la vista las tareas más urgentes y significativas.",
+  "onboardSubtitle2": "Prioritize what truly matters. With \"Today in Focus,\", you'll always have the most urgent and significant tasks in sight.",
   "@onboardSubtitle2": {
     "description": "The second onboarding view subtitle"
   },
-  "onboardTitle3": "Entrada Rápida de Tareas ⚡",
+  "onboardTitle3": "Quick Task Entry ⚡",
   "@onboardTitle3": {
     "description": "The third onboarding view title"
   },
-  "onboardSubtitle3": "Agrega tareas sobre la marcha. Sin complicaciones, sin distracciones. Simplemente escribe y listo.",
+  "onboardSubtitle3": "Add tasks on the go. No complications, no distractions. Just write and you're ready to go.",
   "@onboardSubtitle3": {
     "description": "The third onboarding view subtitle"
   },
-  "onboardTitle4": "Nuevo Amanecer \uD83C\uDF05",
+  "onboardTitle4": "New Dawn \uD83C\uDF05",
   "@onboardTitle4": {
     "description": "The fourth onboarding view title"
   },
-  "onboardSubtitle4": "No te preocupes por los días menos productivos. Con un solo toque, puedes tener un nuevo comienzo, lleno de posibilidades.",
+  "onboardSubtitle4": "Don't worry about less productive days. With a single touch, you can have a new start, full of possibilities.",
   "@onboardSubtitle4": {
     "description": "The fourth onboarding view subtitle"
   },
@@ -155,11 +155,11 @@
   "@myInbox": {
     "description": "Text user on Today's Focus tab"
   },
-  "noTasks": "No hay tareas para mostrar",
+  "noTasks": "Nothing to see here",
   "@noTasks": {
     "description": "Text shown when there are no tasks to show"
   },
-  "addTasks": "Presiona el botón con el icono de más para agregar una tarea",
+  "addTasks": "Tap the button with the plus icon to add a new task",
   "@addTasks": {
     "description": "How to add a tasks"
   },

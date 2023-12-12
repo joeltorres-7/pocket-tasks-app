@@ -17,7 +17,11 @@ class GetStartedName extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
       children:[
-        Text(AppLocalizations.of(context)!.yourName, style: AppTextStyles.regular),
+        Text(
+            AppLocalizations.of(context)!.yourName,
+            style: AppTextStyles.subheading1,
+            textAlign: TextAlign.center,
+        ),
         TextFormField(
           textAlign:  TextAlign.center,
           onChanged: onNameChanged,

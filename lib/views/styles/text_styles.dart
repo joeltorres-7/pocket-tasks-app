@@ -10,7 +10,8 @@ class AppTextStyles {
       color: Colors.black);
   static TextStyle subheading1 = const TextStyle(
       fontFamily: 'CerebriSansPro',
-      fontSize: 14,
+      fontSize: 16,
+      height: 1.6,
       fontWeight: FontWeight.normal,
       color: Colors.black);
   static TextStyle regular = const TextStyle(
