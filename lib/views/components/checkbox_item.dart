@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CheckboxItem extends StatefulWidget {
   final String label;
   final String description;
   final VoidCallback onSelection;
+  final String preferenceKey;
 
-  const CheckboxItem({Key? key, required this.label, required this.description, required this.onSelection})
-      : super(key: key);
+  const CheckboxItem({
+    Key? key,
+    required this.label,
+    required this.description,
+    required this.onSelection, required this.preferenceKey,
+  }) : super(key: key);
 
   @override
   State<CheckboxItem> createState() => _CheckboxItemState();
@@ -15,6 +21,27 @@ class CheckboxItem extends StatefulWidget {
 
 class _CheckboxItemState extends State<CheckboxItem> {
   bool isChecked = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // Load the initial state from SharedPreferences
+    _loadState();
+  }
+
+  // Load the initial state from SharedPreferences
+  Future<void> _loadState() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      isChecked = prefs.getBool(widget.preferenceKey) ?? false;
+    });
+  }
+
+  // Save the state to SharedPreferences
+  Future<void> _saveState(bool value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool(widget.preferenceKey, value);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +55,7 @@ class _CheckboxItemState extends State<CheckboxItem> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
-              width: screenWidth * 0.72,
+              width: screenWidth * 0.64,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -47,14 +74,21 @@ class _CheckboxItemState extends State<CheckboxItem> {
                 ],
               ),
             ),
-            Checkbox(
-              value: isChecked,
-              onChanged: (value) {
-                setState(() {
-                  isChecked = value ?? false;
-                });
-                widget.onSelection();
-              },
+            Transform.scale(
+              scale: 0.8,
+              child: Switch(
+                activeColor: Colors.white,
+                activeTrackColor: Colors.black,
+                inactiveTrackColor: Color(0xFFEBECEE),
+                value: isChecked,
+                onChanged: (value) {
+                  setState(() {
+                    isChecked = value;
+                  });
+                  _saveState(value);
+                  widget.onSelection();
+                },
+              ),
             ),
           ],
         ),

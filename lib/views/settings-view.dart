@@ -37,12 +37,22 @@ class _SettingsViewState extends State<SettingsView> {
                 padding: const EdgeInsets.only(top: 16.0, right: 24.0, bottom: 4.0, left: 24.0),
                 child: Text("Notificaciones", textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
               ),
-              CheckboxItem(label: 'Recordatorio de tareas', description: 'Avisarme cuando tenga tareas pendientes.', onSelection: (){}),
+              CheckboxItem(
+                label: 'Recordatorio de tareas',
+                description: 'Avisarme cuando tenga tareas pendientes.',
+                onSelection: () {},
+                preferenceKey: 'enableTaskReminders', // Unique key for SharedPreferences
+              ),
               Padding(
                 padding: const EdgeInsets.only(top: 12.0, right: 24.0, bottom: 4.0, left: 24.0),
                 child: Text("Experiencia", textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
               ),
-              CheckboxItem(label: 'Efectos de sonido', description: 'Habilita efectos de sonido en ocasiones especiales.', onSelection: (){}),
+              CheckboxItem(
+                label: 'Efectos de sonido',
+                description: 'Habilita efectos de sonido en ocasiones especiales.',
+                onSelection: (){},
+                preferenceKey: 'enableSounds',
+              ),
               Padding(
                 padding: const EdgeInsets.only(top: 12.0, right: 24.0, bottom: 4.0, left: 24.0),
                 child: Text("Temas", textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
