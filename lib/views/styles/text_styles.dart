@@ -8,6 +8,11 @@ class AppTextStyles {
       fontSize: 20,
       fontWeight: FontWeight.w600,
       color: Colors.black);
+  static TextStyle headingNav = const TextStyle(
+      fontFamily: 'CerebriSansPro',
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: Colors.black54);
   static TextStyle subheading1 = const TextStyle(
       fontFamily: 'CerebriSansPro',
       fontSize: 16,
@@ -29,4 +34,16 @@ class AppTextStyles {
       fontSize: 14.0,
       fontWeight: FontWeight.w400,
       color: Colors.black);
+  static TextStyle regularGray14 = const TextStyle(
+      fontFamily: 'CerebriSansPro',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w400,
+      color: Color(0xFF666666)
+  );
+  static TextStyle smallLabel = const TextStyle(
+      fontFamily: 'CerebriSansPro',
+      fontSize: 14.0,
+      fontWeight: FontWeight.w500,
+      color: Color(0xFF666666),
+  );
 }

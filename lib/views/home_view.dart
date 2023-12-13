@@ -3,6 +3,7 @@ import 'package:pocket_tasks/enums/enums.dart';
 import 'package:pocket_tasks/views/add-task-view.dart';
 import 'package:pocket_tasks/views/components/accessible_icon_button.dart';
 import 'package:pocket_tasks/views/components/task_tabs.dart';
+import 'package:pocket_tasks/views/settings-view.dart';
 import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
@@ -25,6 +26,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void initState() {
+    userName = '';
     super.initState();
     _loadUserData();
   }
@@ -68,15 +70,23 @@ class _HomeViewState extends State<HomeView> {
                           textAlign: TextAlign.start),
                     ),
                     Text('${AppLocalizations.of(context)!.readyDay}',
-                        style: AppTextStyles.subheading1,
+                        style: AppTextStyles.regular,
                         textAlign: TextAlign.start),
                   ],
                 ),
-                AccessibleIconButton(
-                    icon: Icons.settings,
-                    onTap: () {
-                      print('Settings clicked!');
-                    }),
+                IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(CustomPageRoute(const SettingsView()));
+                  },
+                  icon: Padding(
+                    padding: EdgeInsets.all(4.0),
+                    child: const Icon(
+                      Icons.settings,
+                      color: Colors.black,
+                      size: 24.0,
+                    ),
+                  ),
+                ),
               ],
             ),
             VerticalSpacing(24.0),
