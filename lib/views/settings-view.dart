@@ -3,6 +3,7 @@ import 'package:pocket_tasks/views/components/checkbox_item.dart';
 import 'package:pocket_tasks/views/components/option_item.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({Key? key}) : super(key: key);
@@ -19,14 +20,14 @@ class _SettingsViewState extends State<SettingsView> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            pinned: true, // This will make the app bar fixed at the top
+            pinned: true,
             centerTitle: true,
-            elevation: 4, // Set the elevation to control the shadow
+            elevation: 4,
             shadowColor: Colors.grey[100]!,
             backgroundColor: Colors.white,
             scrolledUnderElevation: 0.4,
             title: Text(
-              "Settings",
+              AppLocalizations.of(context)!.settingsTitle,
               style: AppTextStyles.headingNav,
             ),
           ),
@@ -35,41 +36,41 @@ class _SettingsViewState extends State<SettingsView> {
               // Items
               Padding(
                 padding: const EdgeInsets.only(top: 16.0, right: 24.0, bottom: 4.0, left: 24.0),
-                child: Text("Notificaciones", textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
+                child: Text(AppLocalizations.of(context)!.notificationsSection, textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
               ),
               CheckboxItem(
-                label: 'Recordatorio de tareas',
-                description: 'Avisarme cuando tenga tareas pendientes.',
+                label: AppLocalizations.of(context)!.taskReminderLabel,
+                description: AppLocalizations.of(context)!.taskReminderDescription,
                 onSelection: () {},
-                preferenceKey: 'enableTaskReminders', // Unique key for SharedPreferences
+                preferenceKey: 'enableTaskReminders',
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 12.0, right: 24.0, bottom: 4.0, left: 24.0),
-                child: Text("Experiencia", textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
+                child: Text(AppLocalizations.of(context)!.experienceSection, textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
               ),
               CheckboxItem(
-                label: 'Efectos de sonido',
-                description: 'Habilita efectos de sonido en ocasiones especiales.',
+                label: AppLocalizations.of(context)!.soundEffectsLabel,
+                description: AppLocalizations.of(context)!.soundEffectsDescription,
                 onSelection: (){},
                 preferenceKey: 'enableSounds',
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 12.0, right: 24.0, bottom: 4.0, left: 24.0),
-                child: Text("Temas", textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
+                child: Text(AppLocalizations.of(context)!.themesSection, textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
               ),
-              OptionItem(label: 'Color de tema', description: 'Selecciona un color de preferencia para tu interfaz.', isClickable: true, onTap: (){}),
+              OptionItem(label: AppLocalizations.of(context)!.themeColorLabel, description: AppLocalizations.of(context)!.themeColorDescription, isClickable: true, onTap: (){}),
               Padding(
                 padding: const EdgeInsets.only(top: 12.0, right: 24.0, bottom: 4.0, left: 24.0),
-                child: Text("Acerca de PocketTasks", textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
+                child: Text(AppLocalizations.of(context)!.aboutSection, textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
               ),
-              OptionItem(label: 'Versión', description: '1.0.0 - Amanecer', isClickable: false, onTap: (){}),
-              OptionItem(label: 'Términos y Condiciones', description: 'Las reglas del juego. ¡Dales un vistazo!', isClickable: true, onTap: (){}),
-              OptionItem(label: 'Política de Privacidad', description: 'Cómo cuidamos tus datos.', isClickable: true, onTap: (){}),
+              OptionItem(label: AppLocalizations.of(context)!.versionLabel, description: AppLocalizations.of(context)!.versionDescription, isClickable: false, onTap: (){}),
+              OptionItem(label: AppLocalizations.of(context)!.termsLabel, description: AppLocalizations.of(context)!.termsDescription, isClickable: true, onTap: (){}),
+              OptionItem(label: AppLocalizations.of(context)!.privacyPolicyLabel, description: AppLocalizations.of(context)!.privacyPolicyDescription, isClickable: true, onTap: (){}),
               Padding(
                 padding: const EdgeInsets.only(top: 12.0, right: 24.0, bottom: 4.0, left: 24.0),
-                child: Text("Otros", textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
+                child: Text(AppLocalizations.of(context)!.otherSection, textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
               ),
-              OptionItem(label: 'Eliminar mi cuenta', description: 'Fue un lindo viaje :)', isClickable: true, onTap: (){}),
+              OptionItem(label: AppLocalizations.of(context)!.deleteAccountLabel, description: AppLocalizations.of(context)!.deleteAccountDescription, isClickable: true, onTap: (){}),
               VerticalSpacing(16.0)
             ]),
           ),

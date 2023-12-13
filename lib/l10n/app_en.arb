@@ -166,5 +166,85 @@
   "guestTitle": "Guest",
   "@guessTitle": {
     "description": "Title shown to the user if username not defined."
+  },
+  "settingsTitle": "Settings",
+  "@settingsTitle": {
+    "description": "Title for the SettingsView"
+  },
+  "notificationsSection": "Notifications",
+  "@notificationsSection": {
+    "description": "Section title for notifications in SettingsView"
+  },
+  "taskReminderLabel": "Task Reminder",
+  "@taskReminderLabel": {
+    "description": "Label for task reminder checkbox in SettingsView"
+  },
+  "taskReminderDescription": "Alert me when I have pending tasks.",
+  "@taskReminderDescription": {
+    "description": "Description for task reminder checkbox in SettingsView"
+  },
+  "experienceSection": "Experience",
+  "@experienceSection": {
+    "description": "Section title for experience in SettingsView"
+  },
+  "soundEffectsLabel": "Sound Effects",
+  "@soundEffectsLabel": {
+    "description": "Label for sound effects checkbox in SettingsView"
+  },
+  "soundEffectsDescription": "Enable sound effects on special occasions.",
+  "@soundEffectsDescription": {
+    "description": "Description for sound effects checkbox in SettingsView"
+  },
+  "themesSection": "Themes",
+  "@themesSection": {
+    "description": "Section title for themes in SettingsView"
+  },
+  "themeColorLabel": "Theme Color",
+  "@themeColorLabel": {
+    "description": "Label for theme color option in SettingsView"
+  },
+  "themeColorDescription": "Select a preferred color for your interface.",
+  "@themeColorDescription": {
+    "description": "Description for theme color option in SettingsView"
+  },
+  "aboutSection": "About PocketTasks",
+  "@aboutSection": {
+    "description": "Section title for about in SettingsView"
+  },
+  "versionLabel": "Version",
+  "@versionLabel": {
+    "description": "Label for version option in SettingsView"
+  },
+  "versionDescription": "1.0.0 - Dawn",
+  "@versionDescription": {
+    "description": "Description for version option in SettingsView"
+  },
+  "termsLabel": "Terms and Conditions",
+  "@termsLabel": {
+    "description": "Label for terms and conditions option in SettingsView"
+  },
+  "termsDescription": "The rules of the game. Take a look!",
+  "@termsDescription": {
+    "description": "Description for terms and conditions option in SettingsView"
+  },
+  "privacyPolicyLabel": "Privacy Policy",
+  "@privacyPolicyLabel": {
+    "description": "Label for privacy policy option in SettingsView"
+  },
+  "privacyPolicyDescription": "How we care for your data.",
+  "@privacyPolicyDescription": {
+    "description": "Description for privacy policy option in SettingsView"
+  },
+  "otherSection": "Other",
+  "@otherSection": {
+    "description": "Section title for other in SettingsView"
+  },
+  "deleteAccountLabel": "Delete My Account",
+  "@deleteAccountLabel": {
+    "description": "Label for delete account option in SettingsView"
+  },
+  "deleteAccountDescription": "It was a nice journey :)",
+  "@deleteAccountDescription": {
+    "description": "Description for delete account option in SettingsView"
   }
 }
