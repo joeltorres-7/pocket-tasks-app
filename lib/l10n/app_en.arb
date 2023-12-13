@@ -152,7 +152,7 @@
     "description": "Text user on My Inbox tab"
   },
   "todayFocus": "Today's Focus",
-  "@myInbox": {
+  "@todayFocus": {
     "description": "Text user on Today's Focus tab"
   },
   "noTasks": "Nothing to see here",
@@ -227,10 +227,6 @@
   "@termsDescription": {
     "description": "Description for terms and conditions option in SettingsView"
   },
-  "privacyPolicyLabel": "Privacy Policy",
-  "@privacyPolicyLabel": {
-    "description": "Label for privacy policy option in SettingsView"
-  },
   "privacyPolicyDescription": "How we care for your data.",
   "@privacyPolicyDescription": {
     "description": "Description for privacy policy option in SettingsView"
@@ -246,5 +242,177 @@
   "deleteAccountDescription": "It was a nice journey :)",
   "@deleteAccountDescription": {
     "description": "Description for delete account option in SettingsView"
+  },
+  "termsAndConditionsTitle": "Terms and Conditions for PocketTasks",
+  "@termsAndConditionsTitle": {
+    "description": "Title section for the Terms and Conditions in the TermsView"
+  },
+  "lastUpdatedLabel": "Last Updated: Wednesday, 13th of December, 2023",
+  "@lastUpdatedLabel": {
+    "description": "Label indicating the last update date in the TermsView"
+  },
+  "termsText": "These Terms and Conditions (\"Terms\") govern your use of the PocketTasks mobile application (\"the App\") provided by PocketTasks (\"we,\" \"us,\" or \"our\"). By accessing or using the App, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you should not use the App.",
+  "@termsText": {
+    "description": "Detailed text explaining the terms and conditions in the TermsView"
+  },
+  "useOfAppLabel": "Use of the App:",
+  "@useOfAppLabel": {
+    "description": "Label indicating the section related to the use of the app in the TermsView"
+  },
+  "useText1": "You must be at least 13 years old to use the App.",
+  "@useText1": {
+    "description": "First point under 'Use of the App' section in the TermsView"
+  },
+  "useText2": "You agree to provide accurate and complete information when using the App.",
+  "@useText2": {
+    "description": "Second point under 'Use of the App' section in the TermsView"
+  },
+  "userContentLabel": "User Content:",
+  "@userContentLabel": {
+    "description": "Label indicating the section related to user content in the TermsView"
+  },
+  "userContentText": "By using the App, you may submit content, such as your first name. You retain ownership of your content, and by submitting it, you grant us a non-exclusive, worldwide, royalty-free license to use, reproduce, modify, and distribute your content.",
+  "@userContentText": {
+    "description": "Detailed text explaining user content section in the TermsView"
+  },
+  "privacyLabel": "Privacy:",
+  "@privacyLabel": {
+    "description": "Label indicating the privacy section in the TermsView"
+  },
+  "privacyText": "Our use of your personal information is governed by our Privacy Policy, which can be found [provide a link to your Privacy Policy].",
+  "@privacyText": {
+    "description": "Detailed text explaining privacy section in the TermsView"
+  },
+  "intellectualPropertyLabel": "Intellectual Property:",
+  "@intellectualPropertyLabel": {
+    "description": "Label indicating the intellectual property section in the TermsView"
+  },
+  "intellectualPropertyText": "The App and its original content, features, and functionality are owned by PocketTasks and are protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.",
+  "@intellectualPropertyText": {
+    "description": "Detailed text explaining intellectual property section in the TermsView"
+  },
+  "prohibitedActivitiesLabel": "Prohibited Activities:",
+  "@prohibitedActivitiesLabel": {
+    "description": "Label indicating the prohibited activities section in the TermsView"
+  },
+  "prohibitedText1": "You agree not to engage in any illegal or unauthorized activity when using the App.",
+  "@prohibitedText1": {
+    "description": "First point under 'Prohibited Activities' section in the TermsView"
+  },
+  "prohibitedText2": "You must not attempt to gain unauthorized access to any part of the App or any related systems or networks.",
+  "@prohibitedText2": {
+    "description": "Second point under 'Prohibited Activities' section in the TermsView"
+  },
+  "limitationOfLiabilityLabel": "Limitation of Liability:",
+  "@limitationOfLiabilityLabel": {
+    "description": "Label indicating the limitation of liability section in the TermsView"
+  },
+  "liabilityText": "We are not liable for any indirect, incidental, special, consequential, or punitive damages arising out of or in connection with your use of the App.",
+  "@liabilityText": {
+    "description": "Detailed text explaining limitation of liability section in the TermsView"
+  },
+  "changesToTermsLabel": "Changes to Terms:",
+  "@changesToTermsLabel": {
+    "description": "Label indicating the changes to terms section in the TermsView"
+  },
+  "changesToTermsText": "We reserve the right to modify or replace these Terms at any time. Your continued use of the App after any such changes constitutes your acceptance of the new Terms.",
+  "@changesToTermsText": {
+    "description": "Detailed text explaining changes to terms section in the TermsView"
+  },
+  "terminationLabel": "Termination:",
+  "@terminationLabel": {
+    "description": "Label indicating the termination section in the TermsView"
+  },
+  "terminationText": "We reserve the right to terminate or suspend your access to the App at any time, without notice, for any reason.",
+  "@terminationText": {
+    "description": "Detailed text explaining termination section in the TermsView"
+  },
+  "governingLawLabel": "Governing Law:",
+  "@governingLawLabel": {
+    "description": "Label indicating the governing law section in the TermsView"
+  },
+  "governingLawText": "These Terms are governed by and construed in accordance with the laws of Colombia, without regard to its conflict of law principles.",
+  "@governingLawText": {
+    "description": "Detailed text explaining governing law section in the TermsView"
+  },
+  "privacyPolicyLabel": "Privacy Policy",
+  "@privacyPolicyLabel": {
+    "description": "Label indicating the privacy policy section in the TermsView"
+  },
+  "contactUsLabel": "Contact Us:",
+  "@contactUsLabel": {
+    "description": "Label indicating the contact us section in the TermsView"
+  },
+  "contactEmail": "thisisjoeltorres@gmail.com",
+  "@contactEmail": {
+    "description": "Contact email information in the TermsView"
+  },
+  "privacyPolicyTitle": "Privacy Policy for PocketTasks",
+  "@privacyPolicyTitle": {
+    "description": "Title for the privacy policy section"
+  },
+  "privacyPolicyText": "PocketTasks (\"we,\" \"us,\" or \"our\") respects the privacy of its users. This Privacy Policy explains how we collect, use, and disclose personal information when you use our mobile application, PocketTasks (the \"App\").",
+  "@privacyPolicyText": {
+    "description": "Text explaining the purpose and scope of the privacy policy"
+  },
+  "informationWeCollectLabel": "Information We Collect:",
+  "@informationWeCollectLabel": {
+    "description": "Label indicating the section about information collection"
+  },
+  "informationWeCollectText": "First Name: We collect and store the first name provided by users solely for the purpose of personalizing the user experience within the App.",
+  "@informationWeCollectText": {
+    "description": "Text explaining the type of information collected and its purpose"
+  },
+  "howWeUseYourInformationLabel": "How We Use Your Information:",
+  "@howWeUseYourInformationLabel": {
+    "description": "Label indicating the section about the usage of collected information"
+  },
+  "howWeUseYourInformationText": "We use the collected first names solely for the purpose of enhancing the user experience within the App. We do not share, sell, or disclose this information to third parties.",
+  "@howWeUseYourInformationText": {
+    "description": "Text explaining how the collected information is used and the commitment to privacy"
+  },
+  "dataStorageLabel": "Data Storage:",
+  "@dataStorageLabel": {
+    "description": "Label indicating the section about data storage"
+  },
+  "dataStorageText": "We do not store any user data in the cloud. The first names collected are stored locally on the user's device.",
+  "@dataStorageText": {
+    "description": "Text explaining the data storage practices"
+  },
+  "yourChoicesLabel": "Your Choices:",
+  "@yourChoicesLabel": {
+    "description": "Label indicating the section about user choices"
+  },
+  "yourChoicesText": "Users have the option to provide or not provide their first name. If a user chooses not to provide a name, the App will still function, but certain personalized features may be limited.",
+  "@yourChoicesText": {
+    "description": "Text explaining user choices regarding information provision"
+  },
+  "securityLabel": "Security:",
+  "@securityLabel": {
+    "description": "Label indicating the section about security measures"
+  },
+  "securityText": "We take reasonable measures to protect the information collected within the App. However, no method of transmission or electronic storage is completely secure, and we cannot guarantee absolute security.",
+  "@securityText": {
+    "description": "Text explaining security measures and limitations"
+  },
+  "childrensPrivacyLabel": "Children's Privacy:",
+  "@childrensPrivacyLabel": {
+    "description": "Label indicating the section about children's privacy"
+  },
+  "childrensPrivacyText": "PocketTasks is not directed towards individuals under the age of 13. We do not knowingly collect personal information from children under 13. If you become aware that your child has provided us with personal information without your consent, please contact us, and we will take steps to remove such information.",
+  "@childrensPrivacyText": {
+    "description": "Text explaining the commitment to children's privacy and the process for handling information provided by children"
+  },
+  "changesToPrivacyPolicyLabel": "Changes to This Privacy Policy:",
+  "@changesToPrivacyPolicyLabel": {
+    "description": "Label indicating the section about changes to the privacy policy"
+  },
+  "changesToPrivacyPolicyText": "We may update our Privacy Policy from time to time. Users will be notified of any significant changes via an in-app notification.",
+  "@changesToPrivacyPolicyText": {
+    "description": "Text explaining the possibility of updates to the privacy policy and the notification process"
+  },
+  "contactUsText": "If you have any questions or concerns about this Privacy Policy, please contact us at thisisjoeltorres@gmail.com.",
+  "@contactUsText": {
+    "description": "Text providing contact information for user inquiries"
   }
 }

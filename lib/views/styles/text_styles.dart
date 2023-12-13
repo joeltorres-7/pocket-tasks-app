@@ -46,4 +46,17 @@ class AppTextStyles {
       fontWeight: FontWeight.w500,
       color: Color(0xFF666666),
   );
+
+  static const TextStyle boldHeading = TextStyle(
+    fontSize: 18.0,
+    fontWeight: FontWeight.bold,
+    color: Colors.black, // Set the desired color
+  );
+
+  static const TextStyle boldSubheading = TextStyle(
+    fontSize: 16.0,
+    fontWeight: FontWeight.bold,
+    color: Colors.black, // Set the desired color
+  );
+
 }

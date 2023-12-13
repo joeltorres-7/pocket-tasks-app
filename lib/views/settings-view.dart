@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/components/checkbox_item.dart';
 import 'package:pocket_tasks/views/components/option_item.dart';
+import 'package:pocket_tasks/views/privacy_view.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:pocket_tasks/views/terms_view.dart';
+import 'package:pocket_tasks/views/utils/custom-page-route.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({Key? key}) : super(key: key);
@@ -64,8 +67,12 @@ class _SettingsViewState extends State<SettingsView> {
                 child: Text(AppLocalizations.of(context)!.aboutSection, textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
               ),
               OptionItem(label: AppLocalizations.of(context)!.versionLabel, description: AppLocalizations.of(context)!.versionDescription, isClickable: false, onTap: (){}),
-              OptionItem(label: AppLocalizations.of(context)!.termsLabel, description: AppLocalizations.of(context)!.termsDescription, isClickable: true, onTap: (){}),
-              OptionItem(label: AppLocalizations.of(context)!.privacyPolicyLabel, description: AppLocalizations.of(context)!.privacyPolicyDescription, isClickable: true, onTap: (){}),
+              OptionItem(label: AppLocalizations.of(context)!.termsLabel, description: AppLocalizations.of(context)!.termsDescription, isClickable: true, onTap: (){
+                Navigator.of(context).push(CustomPageRoute(const TermsView()));
+              }),
+              OptionItem(label: AppLocalizations.of(context)!.privacyPolicyLabel, description: AppLocalizations.of(context)!.privacyPolicyDescription, isClickable: true, onTap: (){
+                Navigator.of(context).push(CustomPageRoute(const PrivacyView()));
+              }),
               Padding(
                 padding: const EdgeInsets.only(top: 12.0, right: 24.0, bottom: 4.0, left: 24.0),
                 child: Text(AppLocalizations.of(context)!.otherSection, textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
