@@ -102,5 +102,10 @@
     "childrensPrivacyText": "PocketTasks no está dirigido a personas menores de 13 años. No recopilamos conscientemente información personal de niños menores de 13 años. Si se da cuenta de que su hijo nos ha proporcionado información personal sin su consentimiento, contáctenos y tomaremos medidas para eliminar dicha información.",
     "changesToPrivacyPolicyLabel": "Cambios en esta Política de privacidad:",
     "changesToPrivacyPolicyText": "Podemos actualizar nuestra Política de privacidad de vez en cuando. Se notificará a los usuarios de cualquier cambio significativo a través de una notificación en la App.",
-    "contactUsText": "Si tiene alguna pregunta o inquietud sobre esta Política de privacidad, contáctenos en thisisjoeltorres@gmail.com."
+    "contactUsText": "Si tiene alguna pregunta o inquietud sobre esta Política de privacidad, contáctenos en thisisjoeltorres@gmail.com.",
+    "addNewTask": "Agregar tarea",
+    "addTask": "Agregar tarea",
+    "taskDescription": "Descripcion de la tarea",
+    "taskTitle": "Título de la tarea",
+    "whatDoingToday": "¿Que te gustaría hacer hoy?"
 }

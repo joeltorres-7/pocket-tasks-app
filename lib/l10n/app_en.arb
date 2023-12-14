@@ -414,5 +414,25 @@
   "contactUsText": "If you have any questions or concerns about this Privacy Policy, please contact us at thisisjoeltorres@gmail.com.",
   "@contactUsText": {
     "description": "Text providing contact information for user inquiries"
+  },
+  "addNewTask": "Add task",
+  "@addNewTask": {
+    "description": "Text used in button for adding new tasks."
+  },
+  "addTask": "Add task",
+  "@addTask": {
+    "description": "Text used in button for adding new tasks."
+  },
+  "taskDescription": "Task description",
+  "@taskDescription": {
+    "description": "Used in field for adding a description to a new task."
+  },
+  "taskTitle": "Título de la tarea",
+  "@taskTitle": {
+    "description": "Used in field for adding a title to a new task."
+  },
+  "whatDoingToday": "What would you like to do today?",
+  "@whatDoingToday": {
+    "description": "Motivation phrase for adding a new task."
   }
 }

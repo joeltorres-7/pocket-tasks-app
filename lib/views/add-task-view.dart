@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:pocket_tasks/views/components/primary_button.dart';
+import 'package:pocket_tasks/views/styles/spaces.dart';
+import 'package:pocket_tasks/views/styles/text_styles.dart';
 
 class AddTaskView extends StatefulWidget {
   const AddTaskView({super.key});
@@ -8,33 +12,190 @@ class AddTaskView extends StatefulWidget {
 }
 
 class _AddTaskViewState extends State<AddTaskView> {
+  TextEditingController titleController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  String selectedPriority = 'high';
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: SafeArea(
-          child: SizedBox(
-              width: screenWidth,
-              height: screenHeight,
-              child: Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: IconButton(
-                        onPressed: (){
-                          Navigator.of(context).pop();
-                        },
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: Colors.black,
-                          size: 24.0,
-                        )),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        title: Text(
+          AppLocalizations.of(context)!.addTask,
+          style: AppTextStyles.headingNav,
+        ),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SizedBox(),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0, right: 24.0, bottom: 4.0, left: 24.0),
+                child: Text(AppLocalizations.of(context)!.whatDoingToday, textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: TextFormField(
+                  controller: titleController,
+                  textAlign:  TextAlign.center,
+                  style: AppTextStyles.heading1,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(vertical: 12.0),
+                    hintText: AppLocalizations.of(context)!.taskTitle,
+                    border: const OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
                   ),
-                ],
-              )
-          )
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: TextFormField(
+                  controller: descriptionController,
+                  textAlign:  TextAlign.center,
+                  style: AppTextStyles.subheading1,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(vertical: 4.0),
+                    hintText: AppLocalizations.of(context)!.taskDescription,
+                    border: const OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              VerticalSpacing(16.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100.0),
+                    border: Border.all(color: Color(0xFFD9D9D9)),
+                  ),
+                  child: DropdownButton<String>(
+                    value: selectedPriority,
+                    isExpanded: false,
+                    isDense: true,
+                    underline: SizedBox(),
+                    icon: Icon(Icons.keyboard_arrow_down_rounded),
+                    iconSize: 24.0,
+                    elevation: 4,
+                    dropdownColor: Colors.white,
+                    borderRadius: BorderRadius.circular(16.0),
+                    items: [
+                      DropdownMenuItem(
+                          value: 'high',
+                          child: Row(
+                            children: [
+                              DecoratedBox(
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFEE4266),
+                                    borderRadius: BorderRadius.circular(16.0)
+                                ),
+                                child: SizedBox(
+                                  width: 12.0,
+                                  height: 12.0,
+                                ),
+                              ),
+                              HorizontalSpacing(8.0),
+                              Text(
+                                AppLocalizations.of(context)!.highPriority,
+                                style: AppTextStyles.regularMedium14,
+                              ),
+                            ],
+                          )
+                      ),
+                      DropdownMenuItem(
+                        value: 'medium',
+                        child: Row(
+                          children: [
+                            DecoratedBox(
+                              decoration: BoxDecoration(
+                                color: Color(0xFF437BFF),
+                                borderRadius: BorderRadius.circular(16.0)
+                              ),
+                              child: SizedBox(
+                                width: 12.0,
+                                height: 12.0,
+                              ),
+                            ),
+                            HorizontalSpacing(8.0),
+                            Text(
+                              AppLocalizations.of(context)!.mediumPriority,
+                              style: AppTextStyles.regularMedium14,
+                            ),
+                          ],
+                        )
+                      ),
+                      DropdownMenuItem(
+                          value: 'low',
+                          child: Row(
+                            children: [
+                              DecoratedBox(
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFA4A4A4),
+                                    borderRadius: BorderRadius.circular(16.0)
+                                ),
+                                child: SizedBox(
+                                  width: 12.0,
+                                  height: 12.0,
+                                ),
+                              ),
+                              HorizontalSpacing(8.0),
+                              Text(
+                                AppLocalizations.of(context)!.lowPriority,
+                                style: AppTextStyles.regularMedium14,
+                              ),
+                            ],
+                          )
+                      ),
+                    ],
+                    onChanged: (String? value) {
+                      setState(() {
+                        selectedPriority = value!;
+                      });
+                    },
+                  ),
+                ),
+              ),
+              VerticalSpacing(16.0),
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: PrimaryButton(
+              buttonText: AppLocalizations.of(context)!.addNewTask,
+              onButtonPressed: () {
+                // Handle button press
+              },
+              isButtonEnabled: titleController.text.isNotEmpty,
+            ),
+          ),
+        ],
       ),
     );
   }
