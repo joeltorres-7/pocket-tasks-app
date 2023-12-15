@@ -6,7 +6,8 @@ import 'package:pocket_tasks/views/components/tasks_queue.dart';
 import 'package:pocket_tasks/views/utils/database_manager.dart';
 
 class TaskTabs extends StatefulWidget {
-  TaskTabs({super.key});
+  final VoidCallback onTaskAdded;
+  TaskTabs({super.key, required this.onTaskAdded});
 
   @override
   _MyTabsState createState() => _MyTabsState();
@@ -40,6 +41,7 @@ class _MyTabsState extends State<TaskTabs> {
       taskLoaded = true;
       print('Did it update? TaskLoaded: ${taskLoaded}');
     });
+    widget.onTaskAdded();
   }
 
   void _filterTasks() {
@@ -77,6 +79,15 @@ class _MyTabsState extends State<TaskTabs> {
       return TasksQueue(queue: tasks, focus: true);
     } else {
       return EmptyQueue();
+    }
+  }
+
+  @override
+  void didUpdateWidget(covariant TaskTabs oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.onTaskAdded != widget.onTaskAdded) {
+      _loadTasks();
+      widget.onTaskAdded();
     }
   }
 }

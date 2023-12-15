@@ -8,7 +8,8 @@ import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:pocket_tasks/views/utils/database_manager.dart';
 
 class AddTaskView extends StatefulWidget {
-  const AddTaskView({super.key});
+  final Function() onTaskAdded;
+  const AddTaskView({super.key, required this.onTaskAdded});
 
   @override
   State<AddTaskView> createState() => _AddTaskViewState();
@@ -29,6 +30,8 @@ class _AddTaskViewState extends State<AddTaskView> {
         'title': titleController.text,
         'description': descriptionController.text,
       });
+
+      widget.onTaskAdded();
 
       deactivate();
       Navigator.of(context).pop();

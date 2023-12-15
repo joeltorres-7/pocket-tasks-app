@@ -108,5 +108,7 @@
   "taskDescription": "タスクの説明",
   "taskTitle": "タスクのタイトル",
   "whatDoingToday": "今日は何をしたいですか？",
-  "noDescription": "説明がありません"
+  "noDescription": "説明がありません",
+  "resettingDay": "あなたの日をリセット中",
+  "newDay": "新しい夜明け、新しい始まり"
 }

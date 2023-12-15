@@ -4,9 +4,10 @@ import 'package:pocket_tasks/views/styles/text_styles.dart';
 
 class PhaseLoading extends StatelessWidget {
   final String loadingText;
+  final String descriptionText;
   final IconData loadingIcon;
 
-  const PhaseLoading({Key? key, required this.loadingText, required this.loadingIcon})
+  const PhaseLoading({Key? key, required this.loadingText, required this.loadingIcon, this.descriptionText = ""})
       : super(key: key);
 
   @override
@@ -28,10 +29,19 @@ class PhaseLoading extends StatelessWidget {
                 VerticalSpacing(12.0),
                 SizedBox(
                   width: screenWidth - (screenWidth * 0.4),
-                  child: Text(
-                    loadingText,
-                    style: AppTextStyles.heading1,
-                    textAlign: TextAlign.center,
+                  child: Column(
+                    children: [
+                      Text(
+                        loadingText,
+                        style: AppTextStyles.heading1,
+                        textAlign: TextAlign.center,
+                      ),
+                      (descriptionText.length > 0) ? Text(
+                        descriptionText,
+                        style: AppTextStyles.subheading1,
+                        textAlign: TextAlign.center,
+                      ) : SizedBox(),
+                    ],
                   ),
                 ),
               ],

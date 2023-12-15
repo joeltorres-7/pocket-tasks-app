@@ -108,5 +108,7 @@
     "taskDescription": "Descripcion de la tarea",
     "taskTitle": "Título de la tarea",
     "whatDoingToday": "¿Que te gustaría hacer hoy?",
-    "noDescription": "No hay descripcion"
+    "noDescription": "No hay descripcion",
+    "resettingDay": "Reiniciando tu día",
+    "newDay": "Nuevo amanecer, nuevo comienzo"
 }

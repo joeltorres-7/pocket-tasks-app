@@ -438,5 +438,13 @@
   "noDescription": "No description",
   "@noDescription": {
     "description": "Text shown when no task description is given."
+  },
+  "resettingDay": "Reiniciando tu día",
+  "@resettingDay": {
+    "description": "Shown when reseting user day."
+  },
+  "newDay": "Nuevo amanecer, nuevo comienzo",
+  "@newDay": {
+    "description": "Subtitle for resetingDay."
   }
 }
