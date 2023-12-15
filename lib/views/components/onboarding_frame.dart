@@ -8,7 +8,6 @@ import 'package:pocket_tasks/views/components/onboarding_outro.dart';
 import 'package:pocket_tasks/views/components/primary_button.dart';
 import 'package:pocket_tasks/views/components/progress_nav.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:pocket_tasks/views/home_view.dart';
 import 'package:pocket_tasks/views/onboarding-view.dart';
 import 'package:pocket_tasks/views/utils/custom-page-route.dart';
 import 'package:shared_preferences/shared_preferences.dart';
