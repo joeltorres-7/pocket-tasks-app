@@ -9,13 +9,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-
   String? userName = prefs.getString('userName');
   int? userGoalIndex = prefs.getInt('userGoal');
   int? preferredMethodIndex = prefs.getInt('preferredMethod');
   bool validUser = (userName != null && userGoalIndex != null && preferredMethodIndex != null);
-
-  print("The current value of validUser is: ${validUser}");
 
   runApp(MyApp(userExists: validUser));
 }

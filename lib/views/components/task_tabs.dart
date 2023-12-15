@@ -31,21 +31,15 @@ class _MyTabsState extends State<TaskTabs> {
 
   void _initialize() async {
     await _loadTasks();
-    _filterTasks();
   }
 
   Future<void> _loadTasks() async {
     DatabaseHelper dbHelper = DatabaseHelper();
-    this.tasks = await dbHelper.getTasks();
+    tasks = await dbHelper.getTasks();
     setState(() {
       taskLoaded = true;
-      print('Did it update? TaskLoaded: ${taskLoaded}');
     });
     widget.onTaskAdded();
-  }
-
-  void _filterTasks() {
-    print("These are the fucking tasks: ${tasks}");
   }
 
   @override
