@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/components/primary_button.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
+import 'package:pocket_tasks/views/utils/database_manager.dart';
 
 class AddTaskView extends StatefulWidget {
   const AddTaskView({super.key});
@@ -15,12 +18,27 @@ class _AddTaskViewState extends State<AddTaskView> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   String selectedPriority = 'high';
+  bool validTask = false;
+
+  void _saveNewTask() async {
+    DatabaseHelper dbHelper = DatabaseHelper();
+
+    try {
+      await dbHelper.insertTask({
+        'priority': selectedPriority,
+        'title': titleController.text,
+        'description': descriptionController.text,
+      });
+
+      deactivate();
+      Navigator.of(context).pop();
+    } catch (err) {
+      log("Error while saving new task: ${err}");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -47,8 +65,13 @@ class _AddTaskViewState extends State<AddTaskView> {
                   controller: titleController,
                   textAlign:  TextAlign.center,
                   style: AppTextStyles.heading1,
+                  onChanged: (inputValue) {
+                    setState(() {
+                      validTask = titleController.text.isNotEmpty;
+                    });
+                  },
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(vertical: 12.0),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 12.0),
                     hintText: AppLocalizations.of(context)!.taskTitle,
                     border: const OutlineInputBorder(
                       borderSide: BorderSide.none,
@@ -56,12 +79,6 @@ class _AddTaskViewState extends State<AddTaskView> {
                     filled: true,
                     fillColor: Colors.white,
                   ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
                 ),
               ),
               Padding(
@@ -79,12 +96,6 @@ class _AddTaskViewState extends State<AddTaskView> {
                     filled: true,
                     fillColor: Colors.white,
                   ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
                 ),
               ),
               VerticalSpacing(16.0),
@@ -190,7 +201,7 @@ class _AddTaskViewState extends State<AddTaskView> {
             child: PrimaryButton(
               buttonText: AppLocalizations.of(context)!.addNewTask,
               onButtonPressed: () {
-                // Handle button press
+                _saveNewTask();
               },
               isButtonEnabled: titleController.text.isNotEmpty,
             ),
