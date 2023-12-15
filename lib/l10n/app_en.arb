@@ -446,5 +446,17 @@
   "newDay": "Nuevo amanecer, nuevo comienzo",
   "@newDay": {
     "description": "Subtitle for resetingDay."
+  },
+  "newDawn": "New Dawn",
+  "@newDawn": {
+    "description": "Title for a new beginning or fresh start"
+  },
+  "notFeelingAsExpected": "Feeling like this day didn't go as expected? Don't worry, there are always second chances.",
+  "@notFeelingAsExpected": {
+    "description": "Encouragement for a challenging day, suggesting that there are opportunities for improvement"
+  },
+  "resetDay": "Reset My Day",
+  "@resetDay": {
+    "description": "Button or action to reset or start the day over"
   }
 }

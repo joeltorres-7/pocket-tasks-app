@@ -110,5 +110,8 @@
   "whatDoingToday": "今日は何をしたいですか？",
   "noDescription": "説明がありません",
   "resettingDay": "あなたの日をリセット中",
-  "newDay": "新しい夜明け、新しい始まり"
+  "newDay": "新しい夜明け、新しい始まり",
+  "newDawn": "新しい夜明け",
+  "notFeelingAsExpected": "今日が期待通りではないと感じていますか？心配しないでください、常に第二のチャンスがあります。",
+  "resetDay": "私の日をリセット"
 }

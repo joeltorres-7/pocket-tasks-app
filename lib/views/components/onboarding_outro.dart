@@ -29,7 +29,7 @@ class _OnboardingOutroState extends State<OnboardingOutro> {
       duration: const Duration(milliseconds: 300),
       child: userDataProcessed
           ? const HomeView()
-          : PhaseLoading(loadingText: AppLocalizations.of(context)!.gettingReady, loadingIcon: Icons.star_rounded),
+          : PhaseLoading(loadingText: AppLocalizations.of(context)!.gettingReady, loadingIcon: Icon(Icons.star_rounded, size: 40.0)),
     );
   }
 }

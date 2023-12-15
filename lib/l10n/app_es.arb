@@ -110,5 +110,8 @@
     "whatDoingToday": "¿Que te gustaría hacer hoy?",
     "noDescription": "No hay descripcion",
     "resettingDay": "Reiniciando tu día",
-    "newDay": "Nuevo amanecer, nuevo comienzo"
+    "newDay": "Nuevo amanecer, nuevo comienzo",
+    "newDawn": "Nuevo amanecer",
+    "notFeelingAsExpected": "¿Sientes que este día no fue cómo esperabas? No te preocupes, siempre hay segundas oportunidades.",
+    "resetDay": "Reiniciar mi día"
 }

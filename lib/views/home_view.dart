@@ -113,9 +113,9 @@ class _HomeViewState extends State<HomeView> {
                   builder: (BuildContext context) {
                     return Center(
                       child: CustomModalWidget(
-                        title: 'Nuevo amanecer',
-                        subtitle: '¿Sientes que este día no fue cómo esperabas? No te preocupes, siempre hay segundas oportunidades.',
-                        buttonText: 'Reiniciar mi día',
+                        title: AppLocalizations.of(context)!.newDawn,
+                        subtitle: AppLocalizations.of(context)!.notFeelingAsExpected,
+                        buttonText: AppLocalizations.of(context)!.resetDay,
                         onClose: () {
                           Navigator.of(context).pop(); // Close the modal.
                         },
