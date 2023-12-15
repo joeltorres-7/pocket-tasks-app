@@ -107,5 +107,6 @@
   "addTask": "新しいタスク",
   "taskDescription": "タスクの説明",
   "taskTitle": "タスクのタイトル",
-  "whatDoingToday": "今日は何をしたいですか？"
+  "whatDoingToday": "今日は何をしたいですか？",
+  "noDescription": "説明がありません"
 }

@@ -434,5 +434,9 @@
   "whatDoingToday": "What would you like to do today?",
   "@whatDoingToday": {
     "description": "Motivation phrase for adding a new task."
+  },
+  "noDescription": "No description",
+  "@noDescription": {
+    "description": "Text shown when no task description is given."
   }
 }

@@ -107,5 +107,6 @@
     "addTask": "Agregar tarea",
     "taskDescription": "Descripcion de la tarea",
     "taskTitle": "Título de la tarea",
-    "whatDoingToday": "¿Que te gustaría hacer hoy?"
+    "whatDoingToday": "¿Que te gustaría hacer hoy?",
+    "noDescription": "No hay descripcion"
 }

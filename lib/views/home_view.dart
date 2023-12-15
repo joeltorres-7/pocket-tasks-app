@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/enums/enums.dart';
 import 'package:pocket_tasks/views/add-task-view.dart';
-import 'package:pocket_tasks/views/components/accessible_icon_button.dart';
 import 'package:pocket_tasks/views/components/task_tabs.dart';
 import 'package:pocket_tasks/views/settings-view.dart';
 import 'package:pocket_tasks/views/styles/colors.dart';
