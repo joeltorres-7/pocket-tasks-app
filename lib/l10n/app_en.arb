@@ -423,6 +423,10 @@
   "@addTask": {
     "description": "Text used in button for adding new tasks."
   },
+  "editTask": "Add task",
+  "@editTask": {
+    "description": "Text used in button for editing tasks."
+  },
   "taskDescription": "Task description",
   "@taskDescription": {
     "description": "Used in field for adding a description to a new task."
@@ -458,5 +462,9 @@
   "resetDay": "Reset My Day",
   "@resetDay": {
     "description": "Button or action to reset or start the day over"
+  },
+  "task": "Tarea",
+  "@task": {
+    "description": "Label shown on task editing."
   }
 }

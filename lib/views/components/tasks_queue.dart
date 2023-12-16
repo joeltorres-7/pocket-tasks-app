@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/components/task_card.dart';
+import 'package:pocket_tasks/views/edit-task-view.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
+import 'package:pocket_tasks/views/utils/custom-page-route.dart';
 
 class TasksQueue extends StatefulWidget {
   final List<Map<String, dynamic>> queue;
+  final VoidCallback onTaskDeleted;
   final bool focus;
 
-  const TasksQueue({super.key, required this.queue, this.focus = false});
+  const TasksQueue({super.key, required this.queue, this.focus = false, required this.onTaskDeleted});
 
   @override
   State<TasksQueue> createState() => _TasksOnQueueState();
@@ -47,6 +50,14 @@ class _TasksOnQueueState extends State<TasksQueue> {
                   hasDescription: focusTaskList.elementAt(index)["description"].isNotEmpty,
                   description: focusTaskList.elementAt(index)["description"],
                   priority: focusTaskList.elementAt(index)["priority"],
+                  onCardTap: () {
+                    Navigator.of(context).push(CustomPageRoute(EditTaskView(
+                        onTaskUpdated: () {
+                          widget.onTaskDeleted;
+                        },
+                        taskIndex: taskList.elementAt(index)["id"],
+                        taskMap: taskList.elementAt(index))));
+                  },
                 ),
               );
           }) : ListView.builder(
@@ -59,6 +70,15 @@ class _TasksOnQueueState extends State<TasksQueue> {
                     hasDescription: taskList.elementAt(index)["description"].isNotEmpty,
                     description: taskList.elementAt(index)["description"],
                     priority: taskList.elementAt(index)["priority"],
+                    onCardTap: () {
+                      Navigator.of(context).push(CustomPageRoute(EditTaskView(
+                          onTaskUpdated: () {
+                            widget.onTaskDeleted;
+                          },
+                          taskIndex: taskList.elementAt(index)["id"],
+                          taskMap: taskList.elementAt(index)
+                      )));
+                    },
                   ),
                 );
               }),

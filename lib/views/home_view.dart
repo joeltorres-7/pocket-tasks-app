@@ -91,7 +91,7 @@ class _HomeViewState extends State<HomeView> {
             ),
             VerticalSpacing(24.0),
             Expanded(child: TaskTabs(
-              onTaskAdded: () {
+              onTaskUpdated: () {
                 _loadUserData();
               },
             )),

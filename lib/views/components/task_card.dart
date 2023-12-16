@@ -9,8 +9,9 @@ class TaskCard extends StatefulWidget {
   final String title;
   final String description;
   final String priority;
+  final VoidCallback onCardTap;
   final bool hasDescription;
-  const TaskCard({super.key, required this.title, required this.hasDescription, required this.description, required this.priority});
+  const TaskCard({super.key, required this.title, required this.hasDescription, required this.description, required this.priority, required this.onCardTap});
 
   @override
   State<TaskCard> createState() => _TaskCardState();
@@ -22,6 +23,7 @@ class _TaskCardState extends State<TaskCard> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: widget.onCardTap,
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: Colors.white,

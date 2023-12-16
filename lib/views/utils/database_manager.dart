@@ -26,6 +26,17 @@ class DatabaseHelper {
     ''');
   }
 
+  // Update an existing task by ID
+  Future<int> updateTask(int id, Map<String, dynamic> updatedTask) async {
+    try {
+      Database db = await database;
+      return await db.update('tasks', updatedTask, where: 'id = ?', whereArgs: [id]);
+    } catch (e) {
+      print("Error updating task: $e");
+      return -1;
+    }
+  }
+
   // Saves a new task on db
   Future<int> insertTask(Map<String, dynamic> task) async {
     Database db = await database;
@@ -45,8 +56,25 @@ class DatabaseHelper {
   }
 
   // Delete all tasks
-  Future<int> deleteAllTasks() async {
-    Database db = await database;
-    return await db.delete('tasks');
+  Future<void> deleteAllTasks() async {
+    try {
+      Database db = await database;
+      await db.transaction((txn) async {
+        // Drop the 'tasks' table
+        await txn.execute('DROP TABLE IF EXISTS tasks');
+
+        // Recreate the 'tasks' table
+        await txn.execute('''
+        CREATE TABLE tasks(
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          priority TEXT,
+          title TEXT,
+          description TEXT
+        )
+      ''');
+      });
+    } catch (e) {
+      print("Error deleting all tasks: $e");
+    }
   }
 }

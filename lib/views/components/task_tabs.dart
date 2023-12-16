@@ -6,8 +6,8 @@ import 'package:pocket_tasks/views/components/tasks_queue.dart';
 import 'package:pocket_tasks/views/utils/database_manager.dart';
 
 class TaskTabs extends StatefulWidget {
-  final VoidCallback onTaskAdded;
-  TaskTabs({super.key, required this.onTaskAdded});
+  final VoidCallback onTaskUpdated;
+  TaskTabs({super.key, required this.onTaskUpdated});
 
   @override
   _MyTabsState createState() => _MyTabsState();
@@ -39,7 +39,7 @@ class _MyTabsState extends State<TaskTabs> {
     setState(() {
       taskLoaded = true;
     });
-    widget.onTaskAdded();
+    widget.onTaskUpdated();
   }
 
   @override
@@ -61,27 +61,27 @@ class _MyTabsState extends State<TaskTabs> {
   }
 
   Widget _buildMyInboxContent() {
-    if (taskLoaded && tasks.length > 0) {
-      return TasksQueue(queue: tasks, focus: false);
+    if (taskLoaded && tasks.isNotEmpty) {
+      return TasksQueue(queue: tasks, focus: false, onTaskDeleted: widget.onTaskUpdated);
     } else {
-      return EmptyQueue();
+      return const EmptyQueue();
     }
   }
 
   Widget _buildTodaysFocusContent() {
-    if (taskLoaded && tasks.length > 0) {
-      return TasksQueue(queue: tasks, focus: true);
+    if (taskLoaded && tasks.isNotEmpty) {
+      return TasksQueue(queue: tasks, focus: true, onTaskDeleted: widget.onTaskUpdated);
     } else {
-      return EmptyQueue();
+      return const EmptyQueue();
     }
   }
 
   @override
   void didUpdateWidget(covariant TaskTabs oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.onTaskAdded != widget.onTaskAdded) {
+    if (oldWidget.onTaskUpdated != widget.onTaskUpdated) {
       _loadTasks();
-      widget.onTaskAdded();
+      widget.onTaskUpdated();
     }
   }
 }
