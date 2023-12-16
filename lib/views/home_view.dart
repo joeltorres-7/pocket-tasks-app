@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/enums/enums.dart';
 import 'package:pocket_tasks/views/add-task-view.dart';
-import 'package:pocket_tasks/views/components/accessible_icon_button.dart';
 import 'package:pocket_tasks/views/components/task_tabs.dart';
+import 'package:pocket_tasks/views/new-day-view.dart';
 import 'package:pocket_tasks/views/settings-view.dart';
 import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
@@ -90,7 +90,11 @@ class _HomeViewState extends State<HomeView> {
               ],
             ),
             VerticalSpacing(24.0),
-            Expanded(child: TaskTabs()),
+            Expanded(child: TaskTabs(
+              onTaskUpdated: () {
+                _loadUserData();
+              },
+            )),
           ],
         ),
       ),
@@ -109,16 +113,14 @@ class _HomeViewState extends State<HomeView> {
                   builder: (BuildContext context) {
                     return Center(
                       child: CustomModalWidget(
-                        title: 'Nuevo amanecer',
-                        subtitle: '¿Sientes que este día no fue cómo esperabas? No te preocupes, siempre hay segundas oportunidades.',
-                        buttonText: 'Reiniciar mi día',
+                        title: AppLocalizations.of(context)!.newDawn,
+                        subtitle: AppLocalizations.of(context)!.notFeelingAsExpected,
+                        buttonText: AppLocalizations.of(context)!.resetDay,
                         onClose: () {
                           Navigator.of(context).pop(); // Close the modal.
                         },
                         onButtonPressed: () {
-                          // Your button callback function goes here.
-                          // You can perform actions when the button is pressed.
-                          print('Dia reiniciado con exito.');
+                          Navigator.of(context).push(CustomPageRoute(NewDayView()));
                         },
                       ),
                     );
@@ -134,7 +136,7 @@ class _HomeViewState extends State<HomeView> {
             FloatingActionButton(
               heroTag: 'addTaskButton',
               onPressed: () {
-                Navigator.of(context).push(CustomPageRoute(AddTaskView()));
+                Navigator.of(context).push(CustomPageRoute(AddTaskView(onTaskAdded: _loadUserData)));
               },
               backgroundColor: AppColors.secondaryGray,
               shape: const CircleBorder(),

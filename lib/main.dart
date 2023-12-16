@@ -9,13 +9,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-
   String? userName = prefs.getString('userName');
   int? userGoalIndex = prefs.getInt('userGoal');
   int? preferredMethodIndex = prefs.getInt('preferredMethod');
   bool validUser = (userName != null && userGoalIndex != null && preferredMethodIndex != null);
-
-  print("The current value of validUser is: ${validUser}");
 
   runApp(MyApp(userExists: validUser));
 }
@@ -28,20 +25,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'PocketTasks Demo',
+      title: 'PocketTasks',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       supportedLocales: L10n.all,
-      localizationsDelegates: [
+      localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: userExists ? HomeView() : OnboardingView(),
+      home: userExists ? const HomeView() : const OnboardingView(),
     );
   }
 }

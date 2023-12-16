@@ -5,13 +5,15 @@ import 'package:flutter/material.dart';
 class PrimaryButton extends StatelessWidget {
   final String buttonText;
   final VoidCallback onButtonPressed;
+  final bool hasPadding;
   final bool isButtonEnabled; // Add this
 
   const PrimaryButton({
     Key? key,
     required this.buttonText,
     required this.onButtonPressed,
-    required this.isButtonEnabled, // Add this
+    required this.isButtonEnabled,
+    this.hasPadding = true, // Add this
   }) : super(key: key);
 
   @override
@@ -19,7 +21,7 @@ class PrimaryButton extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: hasPadding ? const EdgeInsets.all(8.0) : EdgeInsets.zero,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: isButtonEnabled ? Colors.black : Colors.grey, // Adjust color based on enable/disable state

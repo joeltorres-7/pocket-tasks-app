@@ -3,41 +3,77 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/components/primary_button.dart';
+import 'package:pocket_tasks/views/components/priority_chip.dart';
+import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:pocket_tasks/views/utils/database_manager.dart';
 
-class AddTaskView extends StatefulWidget {
-  final Function() onTaskAdded;
-  const AddTaskView({super.key, required this.onTaskAdded});
+class EditTaskView extends StatefulWidget {
+  final int taskIndex;
+  Map<String, dynamic> taskMap;
+  final Function() onTaskUpdated;
+  EditTaskView({super.key, required this.onTaskUpdated, required this.taskIndex, required this.taskMap});
 
   @override
-  State<AddTaskView> createState() => _AddTaskViewState();
+  State<EditTaskView> createState() => _EditTaskViewState();
 }
 
-class _AddTaskViewState extends State<AddTaskView> {
+class _EditTaskViewState extends State<EditTaskView> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   String selectedPriority = 'high';
+  bool editingTask = false;
   bool validTask = false;
 
-  void _saveNewTask() async {
+  void _updateTask() async {
+    DatabaseHelper dbHelper = DatabaseHelper();
+    widget.taskMap = {
+      'priority': selectedPriority,
+      'title': titleController.text,
+      'description': descriptionController.text,
+    };
+
+    try {
+      await dbHelper.updateTask(
+          widget.taskIndex,
+          widget.taskMap);
+      widget.onTaskUpdated();
+    } catch (err) {
+      log("Error while saving new task: ${err}");
+    }
+  }
+
+  void _editTask() {
+    if (editingTask) {
+      _updateTask();
+    }
+
+    setState(() {
+      editingTask = !editingTask;
+    });
+  }
+
+  void _deleteTask() async {
     DatabaseHelper dbHelper = DatabaseHelper();
 
     try {
-      await dbHelper.insertTask({
-        'priority': selectedPriority,
-        'title': titleController.text,
-        'description': descriptionController.text,
-      });
+      await dbHelper.deleteTask(widget.taskIndex);
 
-      widget.onTaskAdded();
+      widget.onTaskUpdated();
 
       deactivate();
       Navigator.of(context).pop();
     } catch (err) {
-      log("Error while saving new task: ${err}");
+      log("Error while deleting task: ${err}");
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    titleController = TextEditingController(text: widget.taskMap["title"]);
+    descriptionController = TextEditingController(text: widget.taskMap["description"]);
   }
 
   @override
@@ -48,25 +84,46 @@ class _AddTaskViewState extends State<AddTaskView> {
         centerTitle: true,
         backgroundColor: Colors.white,
         title: Text(
-          AppLocalizations.of(context)!.addTask,
+          AppLocalizations.of(context)!.editTask,
           style: AppTextStyles.headingNav,
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: Color(0xFFFEF3F5),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: IconButton(
+                icon: Icon(Icons.delete_forever_rounded, color: AppColors.primaryRed),
+                padding: EdgeInsets.all(12.0),
+                splashColor: Color(0xFFFEF3F5),
+                constraints: BoxConstraints(),
+                onPressed: () {
+                  _deleteTask();
+                },
+              ),
+            ),
+          ),
+        ],
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(),
-          Column(
+          editingTask ? Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 16.0, right: 24.0, bottom: 4.0, left: 24.0),
-                child: Text(AppLocalizations.of(context)!.whatDoingToday, textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
+                child: Text(AppLocalizations.of(context)!.task, textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: TextFormField(
                   controller: titleController,
-                  textAlign:  TextAlign.center,
+                  textAlign: TextAlign.start,
                   style: AppTextStyles.heading1,
                   onChanged: (inputValue) {
                     setState(() {
@@ -88,7 +145,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: TextFormField(
                   controller: descriptionController,
-                  textAlign:  TextAlign.center,
+                  textAlign:  TextAlign.start,
                   style: AppTextStyles.subheading1,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.symmetric(vertical: 4.0),
@@ -144,26 +201,26 @@ class _AddTaskViewState extends State<AddTaskView> {
                           )
                       ),
                       DropdownMenuItem(
-                        value: 'medium',
-                        child: Row(
-                          children: [
-                            DecoratedBox(
-                              decoration: BoxDecoration(
-                                color: Color(0xFF437BFF),
-                                borderRadius: BorderRadius.circular(16.0)
+                          value: 'medium',
+                          child: Row(
+                            children: [
+                              DecoratedBox(
+                                decoration: BoxDecoration(
+                                    color: Color(0xFF437BFF),
+                                    borderRadius: BorderRadius.circular(16.0)
+                                ),
+                                child: SizedBox(
+                                  width: 12.0,
+                                  height: 12.0,
+                                ),
                               ),
-                              child: SizedBox(
-                                width: 12.0,
-                                height: 12.0,
+                              HorizontalSpacing(8.0),
+                              Text(
+                                AppLocalizations.of(context)!.mediumPriority,
+                                style: AppTextStyles.regularMedium14,
                               ),
-                            ),
-                            HorizontalSpacing(8.0),
-                            Text(
-                              AppLocalizations.of(context)!.mediumPriority,
-                              style: AppTextStyles.regularMedium14,
-                            ),
-                          ],
-                        )
+                            ],
+                          )
                       ),
                       DropdownMenuItem(
                           value: 'low',
@@ -198,15 +255,46 @@ class _AddTaskViewState extends State<AddTaskView> {
               ),
               VerticalSpacing(16.0),
             ],
+          ) : Column( // If not editing
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0, right: 24.0, bottom: 4.0, left: 24.0),
+                child: Text(AppLocalizations.of(context)!.task, textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12.0),
+                  child: Text(widget.taskMap["title"], textAlign: TextAlign.start, style: AppTextStyles.heading1),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12.0),
+                  child: Text(
+                      (widget.taskMap["description"].isNotEmpty ? widget.taskMap["description"] : AppLocalizations.of(context)!.noDescription),
+                      textAlign: TextAlign.start,
+                      style: AppTextStyles.subheading1),
+                ),
+              ),
+              VerticalSpacing(16.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: PriorityChip(priorityLevel: widget.taskMap["priority"]),
+              ),
+              VerticalSpacing(16.0),
+            ],
           ),
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: PrimaryButton(
-              buttonText: AppLocalizations.of(context)!.addNewTask,
+              buttonText: AppLocalizations.of(context)!.editTask,
               onButtonPressed: () {
-                _saveNewTask();
+                _editTask();
               },
-              isButtonEnabled: titleController.text.isNotEmpty,
+              isButtonEnabled: true,
             ),
           ),
         ],

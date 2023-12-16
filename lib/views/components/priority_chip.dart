@@ -3,25 +3,23 @@ import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PriorityChip extends StatelessWidget {
-  final bool highPriority;
-  final bool mediumPriority;
-  final bool lowPriority;
+  final String priorityLevel;
 
-  const PriorityChip({super.key, this.highPriority = false, this.mediumPriority = false, this.lowPriority = false});
+  const PriorityChip({super.key, required this.priorityLevel});
 
   @override
   Widget build(BuildContext context) {
     Widget priorityText;
     Color priorityColor;
 
-    if (highPriority) {
-      priorityText = Text(AppLocalizations.of(context)!.highPriority);
+    if (priorityLevel == "high") {
+      priorityText = Text(AppLocalizations.of(context)!.highPriority, style: TextStyle(color: Colors.white, fontSize: 12.0));
       priorityColor = AppColors.primaryRed;
-    } else if (mediumPriority) {
-      priorityText = Text(AppLocalizations.of(context)!.mediumPriority);
+    } else if (priorityLevel == "medium") {
+      priorityText = Text(AppLocalizations.of(context)!.mediumPriority, style: TextStyle(color: Colors.white, fontSize: 12.0));
       priorityColor = AppColors.primaryBlue;
     } else {
-      priorityText = Text(AppLocalizations.of(context)!.lowPriority);
+      priorityText = Text(AppLocalizations.of(context)!.lowPriority, style: TextStyle(color: Colors.white, fontSize: 12.0));
       priorityColor = AppColors.primaryGray;
     }
 
@@ -30,7 +28,10 @@ class PriorityChip extends StatelessWidget {
         borderRadius: BorderRadius.circular(16.0),
         color: priorityColor,
       ),
-      child: priorityText,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
+        child: priorityText,
+      ),
     );
   }
 }

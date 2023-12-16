@@ -102,5 +102,19 @@
   "childrensPrivacyText": "PocketTasksは13歳未満の個人を対象としていません。13歳未満の子供から個人情報を意図的に収集しません。お子様があなたの許可なしに個人情報を提供したことに気付いた場合は、お知らせいただければ対応いたします。",
   "changesToPrivacyPolicyLabel": "このプライバシーポリシーの変更：",
   "changesToPrivacyPolicyText": "プライバシーポリシーを定期的に更新することがあります。重要な変更がある場合、ユーザーにはアプリ内通知で通知されます。",
-  "contactUsText": "このプライバシーポリシーに関するご質問や懸念がある場合は、thisisjoeltorres@gmail.comまでお問い合わせください。"
+  "contactUsText": "このプライバシーポリシーに関するご質問や懸念がある場合は、thisisjoeltorres@gmail.comまでお問い合わせください。",
+  "addNewTask": "新しいタスクを追加",
+  "addTask": "新しいタスク",
+  "taskDescription": "タスクの説明",
+  "taskTitle": "タスクのタイトル",
+  "whatDoingToday": "今日は何をしたいですか？",
+  "noDescription": "説明がありません",
+  "resettingDay": "あなたの日をリセット中",
+  "newDay": "新しい夜明け、新しい始まり",
+  "newDawn": "新しい夜明け",
+  "notFeelingAsExpected": "今日が期待通りではないと感じていますか？心配しないでください、常に第二のチャンスがあります。",
+  "resetDay": "私の日をリセット",
+  "task": "タスク",
+  "editTask": "タスクの編集",
+  "updateTask": "タスクを更新"
 }
