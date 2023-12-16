@@ -9,9 +9,11 @@ class TaskCard extends StatefulWidget {
   final String title;
   final String description;
   final String priority;
-  final VoidCallback onCardTap;
+  final int isCompleted;
   final bool hasDescription;
-  const TaskCard({super.key, required this.title, required this.hasDescription, required this.description, required this.priority, required this.onCardTap});
+  final VoidCallback onCardTap;
+  final VoidCallback onChecked;
+  const TaskCard({super.key, required this.title, required this.hasDescription, required this.description, required this.priority, required this.onCardTap, required this.onChecked, required this.isCompleted});
 
   @override
   State<TaskCard> createState() => _TaskCardState();
@@ -21,62 +23,73 @@ class _TaskCardState extends State<TaskCard> {
   bool isChecked = false;
 
   @override
+  void initState() {
+    super.initState();
+    isChecked = (widget.isCompleted == 1);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: widget.onCardTap,
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: Color(0xFFE5E8E9)),
-          borderRadius: BorderRadius.circular(16.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
-              spreadRadius: 1,
-              blurRadius: 6,
-              offset: Offset(0, 1), // changes position of shadow
-            ),
-          ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(widget.title, style: AppTextStyles.regularMedium14),
-                      VerticalSpacing(4.0),
-                      widget.hasDescription ? Text(widget.description, style: AppTextStyles.regular14) : Text(AppLocalizations.of(context)!.noDescription, style: AppTextStyles.regularGray14),
-                    ],
-                  ),
-                  Checkbox(
-                    checkColor: Colors.white,
-                    fillColor: MaterialStateProperty.all(AppColors.primaryBlue),
-                    value: isChecked,
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isChecked = value!;
-                      });
-                    },
-                  ),
-                ],
-              ),
-              VerticalSpacing(12.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  PriorityChip(priorityLevel: widget.priority),
-                  const IconButton(onPressed: null, icon: Icon(Icons.arrow_forward, size: 18.0, color: Colors.black38))
-                ],
+      child: AnimatedOpacity(
+        duration: const Duration(milliseconds: 100),
+        opacity: isChecked ? 0.5 : 1.0,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: Color(0xFFE5E8E9)),
+            borderRadius: BorderRadius.circular(16.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 1,
+                blurRadius: 6,
+                offset: Offset(0, 1), // changes position of shadow
               ),
             ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(widget.title, style: AppTextStyles.regularMedium14),
+                        VerticalSpacing(4.0),
+                        widget.hasDescription ? Text(widget.description, style: AppTextStyles.regular14) : Text(AppLocalizations.of(context)!.noDescription, style: AppTextStyles.regularGray14),
+                      ],
+                    ),
+                    Checkbox(
+                      checkColor: Colors.white,
+                      fillColor: MaterialStateProperty.all(AppColors.primaryBlue),
+                      value: isChecked,
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+                      onChanged: (bool? value) {
+                        widget.onChecked();
+                        setState(() {
+                          isChecked = value!;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                VerticalSpacing(12.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    PriorityChip(priorityLevel: widget.priority),
+                    const IconButton(onPressed: null, icon: Icon(Icons.arrow_forward, size: 18.0, color: Colors.black38))
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

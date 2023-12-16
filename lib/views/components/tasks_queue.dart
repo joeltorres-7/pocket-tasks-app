@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/components/task_card.dart';
 import 'package:pocket_tasks/views/edit-task-view.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/utils/custom-page-route.dart';
+import 'package:pocket_tasks/views/utils/database_manager.dart';
 
 class TasksQueue extends StatefulWidget {
   final List<Map<String, dynamic>> queue;
@@ -20,6 +23,18 @@ class _TasksOnQueueState extends State<TasksQueue> {
   @override
   void initState() {
     super.initState();
+  }
+
+  void _updateTaskStatus(int index, int status) async {
+    DatabaseHelper dbHelper = DatabaseHelper();
+    bool taskStatus = (status == 0);
+
+    try {
+      await dbHelper.toggleTaskCompletion(index, taskStatus);
+      widget.onTaskUpdated();
+    } catch (err) {
+      log("Error while deleting task: ${err}");
+    }
   }
 
   @override
@@ -40,6 +55,13 @@ class _TasksOnQueueState extends State<TasksQueue> {
                     hasDescription: taskList.elementAt(index)["description"].isNotEmpty,
                     description: taskList.elementAt(index)["description"],
                     priority: taskList.elementAt(index)["priority"],
+                    isCompleted: taskList.elementAt(index)["isCompleted"],
+                    onChecked: () {
+                      _updateTaskStatus(
+                        taskList.elementAt(index)["id"],
+                        taskList.elementAt(index)["isCompleted"]
+                      );
+                    },
                     onCardTap: () {
                       Navigator.of(context).push(CustomPageRoute(EditTaskView(
                           onTaskUpdated: () {
