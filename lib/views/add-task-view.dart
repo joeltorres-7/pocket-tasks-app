@@ -59,14 +59,17 @@ class _AddTaskViewState extends State<AddTaskView> {
           Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 16.0, right: 24.0, bottom: 4.0, left: 24.0),
-                child: Text(AppLocalizations.of(context)!.whatDoingToday, textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
+                padding: const EdgeInsets.only(
+                    top: 16.0, right: 24.0, bottom: 4.0, left: 24.0),
+                child: Text(AppLocalizations.of(context)!.whatDoingToday,
+                    textAlign: TextAlign.start,
+                    style: AppTextStyles.smallLabel),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: TextFormField(
                   controller: titleController,
-                  textAlign:  TextAlign.center,
+                  textAlign: TextAlign.center,
                   style: AppTextStyles.heading1,
                   onChanged: (inputValue) {
                     setState(() {
@@ -88,7 +91,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: TextFormField(
                   controller: descriptionController,
-                  textAlign:  TextAlign.center,
+                  textAlign: TextAlign.center,
                   style: AppTextStyles.subheading1,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.symmetric(vertical: 4.0),
@@ -105,7 +108,8 @@ class _AddTaskViewState extends State<AddTaskView> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100.0),
                     border: Border.all(color: Color(0xFFD9D9D9)),
@@ -128,8 +132,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                               DecoratedBox(
                                 decoration: BoxDecoration(
                                     color: Color(0xFFEE4266),
-                                    borderRadius: BorderRadius.circular(16.0)
-                                ),
+                                    borderRadius: BorderRadius.circular(16.0)),
                                 child: SizedBox(
                                   width: 12.0,
                                   height: 12.0,
@@ -141,30 +144,27 @@ class _AddTaskViewState extends State<AddTaskView> {
                                 style: AppTextStyles.regularMedium14,
                               ),
                             ],
-                          )
-                      ),
+                          )),
                       DropdownMenuItem(
-                        value: 'medium',
-                        child: Row(
-                          children: [
-                            DecoratedBox(
-                              decoration: BoxDecoration(
-                                color: Color(0xFF437BFF),
-                                borderRadius: BorderRadius.circular(16.0)
+                          value: 'medium',
+                          child: Row(
+                            children: [
+                              DecoratedBox(
+                                decoration: BoxDecoration(
+                                    color: Color(0xFF437BFF),
+                                    borderRadius: BorderRadius.circular(16.0)),
+                                child: SizedBox(
+                                  width: 12.0,
+                                  height: 12.0,
+                                ),
                               ),
-                              child: SizedBox(
-                                width: 12.0,
-                                height: 12.0,
+                              HorizontalSpacing(8.0),
+                              Text(
+                                AppLocalizations.of(context)!.mediumPriority,
+                                style: AppTextStyles.regularMedium14,
                               ),
-                            ),
-                            HorizontalSpacing(8.0),
-                            Text(
-                              AppLocalizations.of(context)!.mediumPriority,
-                              style: AppTextStyles.regularMedium14,
-                            ),
-                          ],
-                        )
-                      ),
+                            ],
+                          )),
                       DropdownMenuItem(
                           value: 'low',
                           child: Row(
@@ -172,8 +172,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                               DecoratedBox(
                                 decoration: BoxDecoration(
                                     color: Color(0xFFA4A4A4),
-                                    borderRadius: BorderRadius.circular(16.0)
-                                ),
+                                    borderRadius: BorderRadius.circular(16.0)),
                                 child: SizedBox(
                                   width: 12.0,
                                   height: 12.0,
@@ -185,8 +184,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                                 style: AppTextStyles.regularMedium14,
                               ),
                             ],
-                          )
-                      ),
+                          )),
                     ],
                     onChanged: (String? value) {
                       setState(() {

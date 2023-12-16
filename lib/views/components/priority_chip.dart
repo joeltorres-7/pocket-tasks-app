@@ -13,13 +13,16 @@ class PriorityChip extends StatelessWidget {
     Color priorityColor;
 
     if (priorityLevel == "high") {
-      priorityText = Text(AppLocalizations.of(context)!.highPriority, style: TextStyle(color: Colors.white, fontSize: 12.0));
+      priorityText = Text(AppLocalizations.of(context)!.highPriority,
+          style: TextStyle(color: Colors.white, fontSize: 12.0));
       priorityColor = AppColors.primaryRed;
     } else if (priorityLevel == "medium") {
-      priorityText = Text(AppLocalizations.of(context)!.mediumPriority, style: TextStyle(color: Colors.white, fontSize: 12.0));
+      priorityText = Text(AppLocalizations.of(context)!.mediumPriority,
+          style: TextStyle(color: Colors.white, fontSize: 12.0));
       priorityColor = AppColors.primaryBlue;
     } else {
-      priorityText = Text(AppLocalizations.of(context)!.lowPriority, style: TextStyle(color: Colors.white, fontSize: 12.0));
+      priorityText = Text(AppLocalizations.of(context)!.lowPriority,
+          style: TextStyle(color: Colors.white, fontSize: 12.0));
       priorityColor = AppColors.primaryGray;
     }
 

@@ -31,7 +31,8 @@ class DatabaseHelper {
   Future<int> updateTask(int id, Map<String, dynamic> updatedTask) async {
     try {
       Database db = await database;
-      return await db.update('tasks', updatedTask, where: 'id = ?', whereArgs: [id]);
+      return await db
+          .update('tasks', updatedTask, where: 'id = ?', whereArgs: [id]);
     } catch (e) {
       print("Error updating task: $e");
       return -1;

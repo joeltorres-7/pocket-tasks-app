@@ -13,7 +13,15 @@ class TaskCard extends StatefulWidget {
   final bool hasDescription;
   final VoidCallback onCardTap;
   final VoidCallback onChecked;
-  const TaskCard({super.key, required this.title, required this.hasDescription, required this.description, required this.priority, required this.onCardTap, required this.onChecked, required this.isCompleted});
+  const TaskCard(
+      {super.key,
+      required this.title,
+      required this.hasDescription,
+      required this.description,
+      required this.priority,
+      required this.onCardTap,
+      required this.onChecked,
+      required this.isCompleted});
 
   @override
   State<TaskCard> createState() => _TaskCardState();
@@ -60,17 +68,24 @@ class _TaskCardState extends State<TaskCard> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(widget.title, style: AppTextStyles.regularMedium14),
+                        Text(widget.title,
+                            style: AppTextStyles.regularMedium14),
                         VerticalSpacing(4.0),
-                        widget.hasDescription ? Text(widget.description, style: AppTextStyles.regular14) : Text(AppLocalizations.of(context)!.noDescription, style: AppTextStyles.regularGray14),
+                        widget.hasDescription
+                            ? Text(widget.description,
+                                style: AppTextStyles.regular14)
+                            : Text(AppLocalizations.of(context)!.noDescription,
+                                style: AppTextStyles.regularGray14),
                       ],
                     ),
                     Checkbox(
                       checkColor: Colors.white,
-                      fillColor: MaterialStateProperty.all(AppColors.primaryBlue),
+                      fillColor:
+                          MaterialStateProperty.all(AppColors.primaryBlue),
                       value: isChecked,
                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4.0)),
                       onChanged: (bool? value) {
                         widget.onChecked();
                         setState(() {
@@ -85,7 +100,10 @@ class _TaskCardState extends State<TaskCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     PriorityChip(priorityLevel: widget.priority),
-                    const IconButton(onPressed: null, icon: Icon(Icons.arrow_forward, size: 18.0, color: Colors.black38))
+                    const IconButton(
+                        onPressed: null,
+                        icon: Icon(Icons.arrow_forward,
+                            size: 18.0, color: Colors.black38))
                   ],
                 ),
               ],

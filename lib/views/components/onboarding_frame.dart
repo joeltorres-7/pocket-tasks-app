@@ -17,7 +17,8 @@ class OnboardingFrame extends StatefulWidget {
   State<OnboardingFrame> createState() => _OnboardingFrameState();
 }
 
-class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProviderStateMixin {
+class _OnboardingFrameState extends State<OnboardingFrame>
+    with SingleTickerProviderStateMixin {
   late int currentStep;
   late UserData userData;
 
@@ -121,11 +122,12 @@ class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProv
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('userName', userData.userName);
     prefs.setInt('userGoal', userData.userGoal.index); // Fix this line
-    prefs.setInt('preferredMethod', userData.preferredMethod.index); // Fix this line
+    prefs.setInt(
+        'preferredMethod', userData.preferredMethod.index); // Fix this line
   }
 
   bool _isContinueButtonEnabled() {
-    switch(currentStep) {
+    switch (currentStep) {
       case 0:
         return userData.userName.isNotEmpty;
       case 1:
@@ -162,7 +164,8 @@ class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProv
             PrimaryButton(
               onButtonPressed: _nextStep,
               buttonText: AppLocalizations.of(context)!.continueNext,
-              isButtonEnabled: _isContinueButtonEnabled(), // Pass the enable/disable state
+              isButtonEnabled:
+                  _isContinueButtonEnabled(), // Pass the enable/disable state
             ),
           ],
         ),

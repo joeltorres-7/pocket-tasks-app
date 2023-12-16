@@ -7,7 +7,11 @@ class PhaseLoading extends StatelessWidget {
   final String descriptionText;
   final Icon loadingIcon;
 
-  const PhaseLoading({Key? key, required this.loadingText, required this.loadingIcon, this.descriptionText = ""})
+  const PhaseLoading(
+      {Key? key,
+      required this.loadingText,
+      required this.loadingIcon,
+      this.descriptionText = ""})
       : super(key: key);
 
   @override
@@ -36,14 +40,16 @@ class PhaseLoading extends StatelessWidget {
                         style: AppTextStyles.heading1,
                         textAlign: TextAlign.center,
                       ),
-                      (descriptionText.length > 0) ? Container(
-                        padding: EdgeInsets.only(top: 8.0),
-                        child: Text(
-                          descriptionText,
-                          style: AppTextStyles.regularGray14,
-                          textAlign: TextAlign.center,
-                        ),
-                      ) : SizedBox(),
+                      (descriptionText.length > 0)
+                          ? Container(
+                              padding: EdgeInsets.only(top: 8.0),
+                              child: Text(
+                                descriptionText,
+                                style: AppTextStyles.regularGray14,
+                                textAlign: TextAlign.center,
+                              ),
+                            )
+                          : SizedBox(),
                     ],
                   ),
                 ),

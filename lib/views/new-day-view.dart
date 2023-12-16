@@ -41,7 +41,14 @@ class _NewDayViewState extends State<NewDayView> {
       duration: const Duration(milliseconds: 300),
       child: userDataProcessed
           ? const HomeView()
-          : PhaseLoading(loadingText: AppLocalizations.of(context)!.resettingDay, descriptionText: AppLocalizations.of(context)!.newDay, loadingIcon: Icon(Icons.sunny, size: 40.0, color: Color(0xFFFFAE03),)),
+          : PhaseLoading(
+              loadingText: AppLocalizations.of(context)!.resettingDay,
+              descriptionText: AppLocalizations.of(context)!.newDay,
+              loadingIcon: Icon(
+                Icons.sunny,
+                size: 40.0,
+                color: Color(0xFFFFAE03),
+              )),
     );
   }
 }

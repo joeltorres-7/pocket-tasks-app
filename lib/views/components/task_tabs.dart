@@ -59,7 +59,10 @@ class _MyTabsState extends State<TaskTabs> {
     return Column(
       children: [
         CustomTabBar(
-          tabs: [AppLocalizations.of(context)!.myInbox, AppLocalizations.of(context)!.todayFocus],
+          tabs: [
+            AppLocalizations.of(context)!.myInbox,
+            AppLocalizations.of(context)!.todayFocus
+          ],
           selectedIndex: _selectedTabIndex,
           onTabTapped: _onTabTapped,
         ),
@@ -74,7 +77,8 @@ class _MyTabsState extends State<TaskTabs> {
 
   Widget _buildTodaysFocusContent() {
     if (taskLoaded && focusedTasks.isNotEmpty) {
-      return TasksQueue(queue: focusedTasks, onTaskUpdated: widget.onTaskUpdated);
+      return TasksQueue(
+          queue: focusedTasks, onTaskUpdated: widget.onTaskUpdated);
     } else {
       return const EmptyQueue();
     }

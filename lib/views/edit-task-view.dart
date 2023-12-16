@@ -13,7 +13,11 @@ class EditTaskView extends StatefulWidget {
   final int taskIndex;
   Map<String, dynamic> taskMap;
   final Function() onTaskUpdated;
-  EditTaskView({super.key, required this.onTaskUpdated, required this.taskIndex, required this.taskMap});
+  EditTaskView(
+      {super.key,
+      required this.onTaskUpdated,
+      required this.taskIndex,
+      required this.taskMap});
 
   @override
   State<EditTaskView> createState() => _EditTaskViewState();
@@ -35,9 +39,7 @@ class _EditTaskViewState extends State<EditTaskView> {
     };
 
     try {
-      await dbHelper.updateTask(
-          widget.taskIndex,
-          widget.taskMap);
+      await dbHelper.updateTask(widget.taskIndex, widget.taskMap);
       widget.onTaskUpdated();
     } catch (err) {
       log("Error while saving new task: ${err}");
@@ -73,7 +75,8 @@ class _EditTaskViewState extends State<EditTaskView> {
   void initState() {
     super.initState();
     titleController = TextEditingController(text: widget.taskMap["title"]);
-    descriptionController = TextEditingController(text: widget.taskMap["description"]);
+    descriptionController =
+        TextEditingController(text: widget.taskMap["description"]);
   }
 
   @override
@@ -96,7 +99,8 @@ class _EditTaskViewState extends State<EditTaskView> {
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: IconButton(
-                icon: Icon(Icons.delete_forever_rounded, color: AppColors.primaryRed),
+                icon: Icon(Icons.delete_forever_rounded,
+                    color: AppColors.primaryRed),
                 padding: EdgeInsets.all(12.0),
                 splashColor: Color(0xFFFEF3F5),
                 constraints: BoxConstraints(),
@@ -112,181 +116,197 @@ class _EditTaskViewState extends State<EditTaskView> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          editingTask ? Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0, right: 24.0, bottom: 4.0, left: 24.0),
-                child: Text(AppLocalizations.of(context)!.task, textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                child: TextFormField(
-                  controller: titleController,
-                  textAlign: TextAlign.start,
-                  style: AppTextStyles.heading1,
-                  onChanged: (inputValue) {
-                    setState(() {
-                      validTask = titleController.text.isNotEmpty;
-                    });
-                  },
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(vertical: 12.0),
-                    hintText: AppLocalizations.of(context)!.taskTitle,
-                    border: const OutlineInputBorder(
-                      borderSide: BorderSide.none,
+          editingTask
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 16.0, right: 24.0, bottom: 4.0, left: 24.0),
+                      child: Text(AppLocalizations.of(context)!.task,
+                          textAlign: TextAlign.start,
+                          style: AppTextStyles.smallLabel),
                     ),
-                    filled: true,
-                    fillColor: Colors.white,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                child: TextFormField(
-                  controller: descriptionController,
-                  textAlign:  TextAlign.start,
-                  style: AppTextStyles.subheading1,
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(vertical: 4.0),
-                    hintText: AppLocalizations.of(context)!.taskDescription,
-                    border: const OutlineInputBorder(
-                      borderSide: BorderSide.none,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: TextFormField(
+                        controller: titleController,
+                        textAlign: TextAlign.start,
+                        style: AppTextStyles.heading1,
+                        onChanged: (inputValue) {
+                          setState(() {
+                            validTask = titleController.text.isNotEmpty;
+                          });
+                        },
+                        decoration: InputDecoration(
+                          contentPadding:
+                              const EdgeInsets.symmetric(vertical: 12.0),
+                          hintText: AppLocalizations.of(context)!.taskTitle,
+                          border: const OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                        ),
+                      ),
                     ),
-                    filled: true,
-                    fillColor: Colors.white,
-                  ),
-                ),
-              ),
-              VerticalSpacing(16.0),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100.0),
-                    border: Border.all(color: Color(0xFFD9D9D9)),
-                  ),
-                  child: DropdownButton<String>(
-                    value: selectedPriority,
-                    isExpanded: false,
-                    isDense: true,
-                    underline: SizedBox(),
-                    icon: Icon(Icons.keyboard_arrow_down_rounded),
-                    iconSize: 24.0,
-                    elevation: 4,
-                    dropdownColor: Colors.white,
-                    borderRadius: BorderRadius.circular(16.0),
-                    items: [
-                      DropdownMenuItem(
-                          value: 'high',
-                          child: Row(
-                            children: [
-                              DecoratedBox(
-                                decoration: BoxDecoration(
-                                    color: Color(0xFFEE4266),
-                                    borderRadius: BorderRadius.circular(16.0)
-                                ),
-                                child: SizedBox(
-                                  width: 12.0,
-                                  height: 12.0,
-                                ),
-                              ),
-                              HorizontalSpacing(8.0),
-                              Text(
-                                AppLocalizations.of(context)!.highPriority,
-                                style: AppTextStyles.regularMedium14,
-                              ),
-                            ],
-                          )
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: TextFormField(
+                        controller: descriptionController,
+                        textAlign: TextAlign.start,
+                        style: AppTextStyles.subheading1,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(vertical: 4.0),
+                          hintText:
+                              AppLocalizations.of(context)!.taskDescription,
+                          border: const OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                        ),
                       ),
-                      DropdownMenuItem(
-                          value: 'medium',
-                          child: Row(
-                            children: [
-                              DecoratedBox(
-                                decoration: BoxDecoration(
-                                    color: Color(0xFF437BFF),
-                                    borderRadius: BorderRadius.circular(16.0)
-                                ),
-                                child: SizedBox(
-                                  width: 12.0,
-                                  height: 12.0,
-                                ),
-                              ),
-                              HorizontalSpacing(8.0),
-                              Text(
-                                AppLocalizations.of(context)!.mediumPriority,
-                                style: AppTextStyles.regularMedium14,
-                              ),
-                            ],
-                          )
+                    ),
+                    VerticalSpacing(16.0),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 16.0, vertical: 12.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100.0),
+                          border: Border.all(color: Color(0xFFD9D9D9)),
+                        ),
+                        child: DropdownButton<String>(
+                          value: selectedPriority,
+                          isExpanded: false,
+                          isDense: true,
+                          underline: SizedBox(),
+                          icon: Icon(Icons.keyboard_arrow_down_rounded),
+                          iconSize: 24.0,
+                          elevation: 4,
+                          dropdownColor: Colors.white,
+                          borderRadius: BorderRadius.circular(16.0),
+                          items: [
+                            DropdownMenuItem(
+                                value: 'high',
+                                child: Row(
+                                  children: [
+                                    DecoratedBox(
+                                      decoration: BoxDecoration(
+                                          color: Color(0xFFEE4266),
+                                          borderRadius:
+                                              BorderRadius.circular(16.0)),
+                                      child: SizedBox(
+                                        width: 12.0,
+                                        height: 12.0,
+                                      ),
+                                    ),
+                                    HorizontalSpacing(8.0),
+                                    Text(
+                                      AppLocalizations.of(context)!
+                                          .highPriority,
+                                      style: AppTextStyles.regularMedium14,
+                                    ),
+                                  ],
+                                )),
+                            DropdownMenuItem(
+                                value: 'medium',
+                                child: Row(
+                                  children: [
+                                    DecoratedBox(
+                                      decoration: BoxDecoration(
+                                          color: Color(0xFF437BFF),
+                                          borderRadius:
+                                              BorderRadius.circular(16.0)),
+                                      child: SizedBox(
+                                        width: 12.0,
+                                        height: 12.0,
+                                      ),
+                                    ),
+                                    HorizontalSpacing(8.0),
+                                    Text(
+                                      AppLocalizations.of(context)!
+                                          .mediumPriority,
+                                      style: AppTextStyles.regularMedium14,
+                                    ),
+                                  ],
+                                )),
+                            DropdownMenuItem(
+                                value: 'low',
+                                child: Row(
+                                  children: [
+                                    DecoratedBox(
+                                      decoration: BoxDecoration(
+                                          color: Color(0xFFA4A4A4),
+                                          borderRadius:
+                                              BorderRadius.circular(16.0)),
+                                      child: SizedBox(
+                                        width: 12.0,
+                                        height: 12.0,
+                                      ),
+                                    ),
+                                    HorizontalSpacing(8.0),
+                                    Text(
+                                      AppLocalizations.of(context)!.lowPriority,
+                                      style: AppTextStyles.regularMedium14,
+                                    ),
+                                  ],
+                                )),
+                          ],
+                          onChanged: (String? value) {
+                            setState(() {
+                              selectedPriority = value!;
+                            });
+                          },
+                        ),
                       ),
-                      DropdownMenuItem(
-                          value: 'low',
-                          child: Row(
-                            children: [
-                              DecoratedBox(
-                                decoration: BoxDecoration(
-                                    color: Color(0xFFA4A4A4),
-                                    borderRadius: BorderRadius.circular(16.0)
-                                ),
-                                child: SizedBox(
-                                  width: 12.0,
-                                  height: 12.0,
-                                ),
-                              ),
-                              HorizontalSpacing(8.0),
-                              Text(
-                                AppLocalizations.of(context)!.lowPriority,
-                                style: AppTextStyles.regularMedium14,
-                              ),
-                            ],
-                          )
+                    ),
+                    VerticalSpacing(16.0),
+                  ],
+                )
+              : Column(
+                  // If not editing
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 16.0, right: 24.0, bottom: 4.0, left: 24.0),
+                      child: Text(AppLocalizations.of(context)!.task,
+                          textAlign: TextAlign.start,
+                          style: AppTextStyles.smallLabel),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 12.0),
+                        child: Text(widget.taskMap["title"],
+                            textAlign: TextAlign.start,
+                            style: AppTextStyles.heading1),
                       ),
-                    ],
-                    onChanged: (String? value) {
-                      setState(() {
-                        selectedPriority = value!;
-                      });
-                    },
-                  ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 12.0),
+                        child: Text(
+                            (widget.taskMap["description"].isNotEmpty
+                                ? widget.taskMap["description"]
+                                : AppLocalizations.of(context)!.noDescription),
+                            textAlign: TextAlign.start,
+                            style: AppTextStyles.subheading1),
+                      ),
+                    ),
+                    VerticalSpacing(16.0),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: PriorityChip(
+                          priorityLevel: widget.taskMap["priority"]),
+                    ),
+                    VerticalSpacing(16.0),
+                  ],
                 ),
-              ),
-              VerticalSpacing(16.0),
-            ],
-          ) : Column( // If not editing
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 16.0, right: 24.0, bottom: 4.0, left: 24.0),
-                child: Text(AppLocalizations.of(context)!.task, textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12.0),
-                  child: Text(widget.taskMap["title"], textAlign: TextAlign.start, style: AppTextStyles.heading1),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12.0),
-                  child: Text(
-                      (widget.taskMap["description"].isNotEmpty ? widget.taskMap["description"] : AppLocalizations.of(context)!.noDescription),
-                      textAlign: TextAlign.start,
-                      style: AppTextStyles.subheading1),
-                ),
-              ),
-              VerticalSpacing(16.0),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                child: PriorityChip(priorityLevel: widget.taskMap["priority"]),
-              ),
-              VerticalSpacing(16.0),
-            ],
-          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: PrimaryButton(

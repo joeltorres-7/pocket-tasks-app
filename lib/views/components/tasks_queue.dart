@@ -11,7 +11,8 @@ class TasksQueue extends StatefulWidget {
   final List<Map<String, dynamic>> queue;
   final VoidCallback onTaskUpdated;
 
-  const TasksQueue({super.key, required this.queue, required this.onTaskUpdated});
+  const TasksQueue(
+      {super.key, required this.queue, required this.onTaskUpdated});
 
   @override
   State<TasksQueue> createState() => _TasksOnQueueState();
@@ -52,15 +53,14 @@ class _TasksOnQueueState extends State<TasksQueue> {
                   padding: const EdgeInsets.only(bottom: 12.0),
                   child: TaskCard(
                     title: taskList.elementAt(index)["title"],
-                    hasDescription: taskList.elementAt(index)["description"].isNotEmpty,
+                    hasDescription:
+                        taskList.elementAt(index)["description"].isNotEmpty,
                     description: taskList.elementAt(index)["description"],
                     priority: taskList.elementAt(index)["priority"],
                     isCompleted: taskList.elementAt(index)["isCompleted"],
                     onChecked: () {
-                      _updateTaskStatus(
-                        taskList.elementAt(index)["id"],
-                        taskList.elementAt(index)["isCompleted"]
-                      );
+                      _updateTaskStatus(taskList.elementAt(index)["id"],
+                          taskList.elementAt(index)["isCompleted"]);
                     },
                     onCardTap: () {
                       Navigator.of(context).push(CustomPageRoute(EditTaskView(
@@ -68,8 +68,7 @@ class _TasksOnQueueState extends State<TasksQueue> {
                             widget.onTaskUpdated();
                           },
                           taskIndex: taskList.elementAt(index)["id"],
-                          taskMap: taskList.elementAt(index)
-                      )));
+                          taskMap: taskList.elementAt(index))));
                     },
                   ),
                 );

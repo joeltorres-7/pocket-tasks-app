@@ -12,7 +12,9 @@ void main() async {
   String? userName = prefs.getString('userName');
   int? userGoalIndex = prefs.getInt('userGoal');
   int? preferredMethodIndex = prefs.getInt('preferredMethod');
-  bool validUser = (userName != null && userGoalIndex != null && preferredMethodIndex != null);
+  bool validUser = (userName != null &&
+      userGoalIndex != null &&
+      preferredMethodIndex != null);
 
   runApp(MyApp(userExists: validUser));
 }
