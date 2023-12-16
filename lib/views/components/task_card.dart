@@ -73,7 +73,7 @@ class _TaskCardState extends State<TaskCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   PriorityChip(priorityLevel: widget.priority),
-                  IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward, size: 18.0, color: Colors.black38))
+                  const IconButton(onPressed: null, icon: Icon(Icons.arrow_forward, size: 18.0, color: Colors.black38))
                 ],
               ),
             ],

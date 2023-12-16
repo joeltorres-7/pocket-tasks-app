@@ -6,10 +6,9 @@ import 'package:pocket_tasks/views/utils/custom-page-route.dart';
 
 class TasksQueue extends StatefulWidget {
   final List<Map<String, dynamic>> queue;
-  final VoidCallback onTaskDeleted;
-  final bool focus;
+  final VoidCallback onTaskUpdated;
 
-  const TasksQueue({super.key, required this.queue, this.focus = false, required this.onTaskDeleted});
+  const TasksQueue({super.key, required this.queue, required this.onTaskUpdated});
 
   @override
   State<TasksQueue> createState() => _TasksOnQueueState();
@@ -21,15 +20,6 @@ class _TasksOnQueueState extends State<TasksQueue> {
   @override
   void initState() {
     super.initState();
-    _getHighPriority();
-  }
-
-  void _getHighPriority() {
-    for (int i = 0; i < widget.queue.length; i++) {
-      if (widget.queue.elementAt(i)["priority"] == "high") {
-        focusTaskList.add(widget.queue.elementAt(i));
-      }
-    }
   }
 
   @override
@@ -40,27 +30,7 @@ class _TasksOnQueueState extends State<TasksQueue> {
       children: [
         VerticalSpacing(16.0),
         Expanded(
-          child: widget.focus ? ListView.builder(
-            itemCount: focusTaskList.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 12.0),
-                child: TaskCard(
-                  title: focusTaskList.elementAt(index)["title"],
-                  hasDescription: focusTaskList.elementAt(index)["description"].isNotEmpty,
-                  description: focusTaskList.elementAt(index)["description"],
-                  priority: focusTaskList.elementAt(index)["priority"],
-                  onCardTap: () {
-                    Navigator.of(context).push(CustomPageRoute(EditTaskView(
-                        onTaskUpdated: () {
-                          widget.onTaskDeleted;
-                        },
-                        taskIndex: taskList.elementAt(index)["id"],
-                        taskMap: taskList.elementAt(index))));
-                  },
-                ),
-              );
-          }) : ListView.builder(
+          child: ListView.builder(
               itemCount: taskList.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
@@ -73,7 +43,7 @@ class _TasksOnQueueState extends State<TasksQueue> {
                     onCardTap: () {
                       Navigator.of(context).push(CustomPageRoute(EditTaskView(
                           onTaskUpdated: () {
-                            widget.onTaskDeleted;
+                            widget.onTaskUpdated();
                           },
                           taskIndex: taskList.elementAt(index)["id"],
                           taskMap: taskList.elementAt(index)

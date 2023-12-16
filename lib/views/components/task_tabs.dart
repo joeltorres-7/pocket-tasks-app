@@ -15,6 +15,7 @@ class TaskTabs extends StatefulWidget {
 
 class _MyTabsState extends State<TaskTabs> {
   List<Map<String, dynamic>> tasks = [];
+  List<Map<String, dynamic>> focusedTasks = [];
   bool taskLoaded = false;
   int _selectedTabIndex = 0;
 
@@ -29,6 +30,16 @@ class _MyTabsState extends State<TaskTabs> {
     _initialize();
   }
 
+  void _getHighPriority() {
+    focusedTasks.clear();
+
+    for (int i = 0; i < tasks.length; i++) {
+      if (tasks.elementAt(i)["priority"] == "high") {
+        focusedTasks.add(tasks.elementAt(i));
+      }
+    }
+  }
+
   void _initialize() async {
     await _loadTasks();
   }
@@ -38,6 +49,7 @@ class _MyTabsState extends State<TaskTabs> {
     tasks = await dbHelper.getTasks();
     setState(() {
       taskLoaded = true;
+      _getHighPriority();
     });
     widget.onTaskUpdated();
   }
@@ -60,17 +72,17 @@ class _MyTabsState extends State<TaskTabs> {
     );
   }
 
-  Widget _buildMyInboxContent() {
-    if (taskLoaded && tasks.isNotEmpty) {
-      return TasksQueue(queue: tasks, focus: false, onTaskDeleted: widget.onTaskUpdated);
+  Widget _buildTodaysFocusContent() {
+    if (taskLoaded && focusedTasks.isNotEmpty) {
+      return TasksQueue(queue: focusedTasks, onTaskUpdated: widget.onTaskUpdated);
     } else {
       return const EmptyQueue();
     }
   }
 
-  Widget _buildTodaysFocusContent() {
+  Widget _buildMyInboxContent() {
     if (taskLoaded && tasks.isNotEmpty) {
-      return TasksQueue(queue: tasks, focus: true, onTaskDeleted: widget.onTaskUpdated);
+      return TasksQueue(queue: tasks, onTaskUpdated: widget.onTaskUpdated);
     } else {
       return const EmptyQueue();
     }
