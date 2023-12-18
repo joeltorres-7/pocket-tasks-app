@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/components/onboarding_card.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/get-started-view.dart';
-import 'package:pocket_tasks/views/home_view.dart';
 import 'package:pocket_tasks/views/utils/custom-page-route.dart';
 
 class OnboardingView extends StatefulWidget {
@@ -19,6 +18,12 @@ class _OnboardingViewState extends State<OnboardingView> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    List<String> images = [
+      'assets/images/illustrations/get-started-welcome.png',
+      'assets/images/illustrations/get-started-focus.png',
+      'assets/images/illustrations/get-started-task.png',
+      'assets/images/illustrations/get-started-day.png'
+    ];
 
     void _updateNextView() {
       setState(() {
@@ -30,24 +35,49 @@ class _OnboardingViewState extends State<OnboardingView> {
       });
     }
 
+    void _updatePreviousView() {
+      setState(() {
+        if (currentView > 0) {
+          currentView--;
+        }
+      });
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
           height: screenHeight,
           width: screenWidth,
-          color: Colors.black54,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(images.elementAt(currentView)), // Replace with your image path
+              fit: BoxFit.fitWidth,
+            ),
+          ),
           child: Stack(
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: IconButton(
-                    onPressed: (){},
-                    icon: const Icon(
-                      Icons.arrow_back,
-                      color: Colors.black,
-                      size: 24.0,
-                    )),
+                child: AnimatedOpacity(
+                  opacity: (currentView > 0) ? 1.0 : 0.4,
+                  duration: Duration(milliseconds: 100),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white54,
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                    child: IconButton(
+                        onPressed: (currentView > 0) ? () {
+                          _updatePreviousView();
+                        } : null,
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: Colors.black,
+                          size: 24.0,
+                        )),
+                  ),
+                ),
               ),
               Positioned(
                 bottom: 0.0,

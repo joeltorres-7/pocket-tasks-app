@@ -21,6 +21,14 @@ class OnboardingCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(topLeft: Radius.circular(32.0), topRight: Radius.circular(32.0)),
         color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            spreadRadius: 1,
+            blurRadius: 12,
+            offset: Offset(0, -6), // changes position of shadow
+          ),
+        ],
       ),
       child: Padding(
         padding: EdgeInsets.only(
