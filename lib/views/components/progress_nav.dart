@@ -8,7 +8,10 @@ class ProgressNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    return SizedBox(
+      width: screenWidth,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
