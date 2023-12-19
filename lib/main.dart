@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:pocket_tasks/l10n/l10n.dart';
 import 'package:pocket_tasks/views/home_view.dart';
@@ -13,13 +14,18 @@ void main() async {
   int? userGoalIndex = prefs.getInt('userGoal');
   int? preferredMethodIndex = prefs.getInt('preferredMethod');
   bool validUser = (userName != null && userGoalIndex != null && preferredMethodIndex != null);
+  SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown
+    ]
+  );
 
   runApp(MyApp(userExists: validUser));
 }
 
 class MyApp extends StatelessWidget {
   final bool userExists;
-
   const MyApp({Key? key, required this.userExists});
 
   @override
