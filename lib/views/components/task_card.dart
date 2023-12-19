@@ -30,6 +30,8 @@ class _TaskCardState extends State<TaskCard> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return GestureDetector(
       onTap: widget.onCardTap,
       child: AnimatedOpacity(
@@ -57,13 +59,33 @@ class _TaskCardState extends State<TaskCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(widget.title, style: AppTextStyles.regularMedium14),
-                        VerticalSpacing(4.0),
-                        widget.hasDescription ? Text(widget.description, style: AppTextStyles.regular14) : Text(AppLocalizations.of(context)!.noDescription, style: AppTextStyles.regularGray14),
-                      ],
+                    SizedBox(
+                      width: screenWidth * 0.6,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                              widget.title,
+                              style: AppTextStyles.regularMedium14,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                          ),
+                          VerticalSpacing(4.0),
+                          widget.hasDescription
+                              ? Text(
+                              widget.description,
+                              style: AppTextStyles.regular14,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                          )
+                              : Text(
+                              AppLocalizations.of(context)!.noDescription,
+                              style: AppTextStyles.regularGray14,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
                     ),
                     Checkbox(
                       checkColor: Colors.white,
