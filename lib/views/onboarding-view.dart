@@ -46,55 +46,61 @@ class _OnboardingViewState extends State<OnboardingView> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Container(
-          height: screenHeight,
-          width: screenWidth,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(images.elementAt(currentView)), // Replace with your image path
-              fit: BoxFit.fitWidth,
+        child: AnimatedSwitcher(
+          duration: Duration(milliseconds: 180),
+          child: Container(
+            key: UniqueKey(),
+            height: screenHeight,
+            width: screenWidth,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                    images.elementAt(currentView),
+                ), // Replace with your image path
+                fit: BoxFit.fitWidth,
+              ),
             ),
-          ),
-          child: Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: AnimatedOpacity(
-                  opacity: (currentView > 0) ? 1.0 : 0.4,
-                  duration: Duration(milliseconds: 100),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white54,
-                      borderRadius: BorderRadius.circular(16.0),
+            child: Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: AnimatedOpacity(
+                    opacity: (currentView > 0) ? 1.0 : 0.4,
+                    duration: Duration(milliseconds: 100),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white54,
+                        borderRadius: BorderRadius.circular(16.0),
+                      ),
+                      child: IconButton(
+                          onPressed: (currentView > 0) ? () {
+                            _updatePreviousView();
+                          } : null,
+                          icon: const Icon(
+                            Icons.arrow_back,
+                            color: Colors.black,
+                            size: 24.0,
+                          )),
                     ),
-                    child: IconButton(
-                        onPressed: (currentView > 0) ? () {
-                          _updatePreviousView();
-                        } : null,
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          color: Colors.black,
-                          size: 24.0,
-                        )),
                   ),
                 ),
-              ),
-              Positioned(
-                bottom: 0.0,
-                left: 0.0,
-                right: 0.0,
-                child: OnboardingCard(
-                  currentIndex: currentView,
-                  items: [
-                    {'title': AppLocalizations.of(context)!.onboardTitle1, 'subtitle': AppLocalizations.of(context)!.onboardSubtitle1},
-                    {'title': AppLocalizations.of(context)!.onboardTitle2, 'subtitle': AppLocalizations.of(context)!.onboardSubtitle2},
-                    {'title': AppLocalizations.of(context)!.onboardTitle3, 'subtitle': AppLocalizations.of(context)!.onboardSubtitle3},
-                    {'title': AppLocalizations.of(context)!.onboardTitle4, 'subtitle': AppLocalizations.of(context)!.onboardSubtitle4}
-                  ],
-                  onNextPressed: _updateNextView,
+                Positioned(
+                  bottom: 0.0,
+                  left: 0.0,
+                  right: 0.0,
+                  child: OnboardingCard(
+                    currentIndex: currentView,
+                    items: [
+                      {'title': AppLocalizations.of(context)!.onboardTitle1, 'subtitle': AppLocalizations.of(context)!.onboardSubtitle1},
+                      {'title': AppLocalizations.of(context)!.onboardTitle2, 'subtitle': AppLocalizations.of(context)!.onboardSubtitle2},
+                      {'title': AppLocalizations.of(context)!.onboardTitle3, 'subtitle': AppLocalizations.of(context)!.onboardSubtitle3},
+                      {'title': AppLocalizations.of(context)!.onboardTitle4, 'subtitle': AppLocalizations.of(context)!.onboardSubtitle4}
+                    ],
+                    onNextPressed: _updateNextView,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
