@@ -184,7 +184,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                             children: [
                               DecoratedBox(
                                 decoration: BoxDecoration(
-                                    color: Color(0xFFEE4266),
+                                    color: AppColors.primaryRed,
                                     borderRadius: BorderRadius.circular(16.0)
                                 ),
                                 child: SizedBox(
@@ -206,7 +206,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                             children: [
                               DecoratedBox(
                                 decoration: BoxDecoration(
-                                    color: Color(0xFF437BFF),
+                                    color: AppColors.primaryBlue,
                                     borderRadius: BorderRadius.circular(16.0)
                                 ),
                                 child: SizedBox(
@@ -228,7 +228,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                             children: [
                               DecoratedBox(
                                 decoration: BoxDecoration(
-                                    color: Color(0xFFA4A4A4),
+                                    color: AppColors.primaryGray,
                                     borderRadius: BorderRadius.circular(16.0)
                                 ),
                                 child: SizedBox(

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/components/primary_button.dart';
+import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:pocket_tasks/views/utils/database_manager.dart';
@@ -127,7 +128,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                             children: [
                               DecoratedBox(
                                 decoration: BoxDecoration(
-                                    color: Color(0xFFEE4266),
+                                    color: AppColors.primaryRed,
                                     borderRadius: BorderRadius.circular(16.0)
                                 ),
                                 child: SizedBox(
@@ -149,7 +150,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                           children: [
                             DecoratedBox(
                               decoration: BoxDecoration(
-                                color: Color(0xFF437BFF),
+                                color: AppColors.primaryBlue,
                                 borderRadius: BorderRadius.circular(16.0)
                               ),
                               child: SizedBox(
@@ -171,7 +172,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                             children: [
                               DecoratedBox(
                                 decoration: BoxDecoration(
-                                    color: Color(0xFFA4A4A4),
+                                    color: AppColors.primaryGray,
                                     borderRadius: BorderRadius.circular(16.0)
                                 ),
                                 child: SizedBox(
