@@ -18,7 +18,7 @@ class _GetStartedViewState extends State<GetStartedView> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 4), () {
+    Future.delayed(const Duration(seconds: 4), () {
       setState(() {
         showInitialMessage = false;
       });
@@ -43,6 +43,8 @@ class _GetStartedViewState extends State<GetStartedView> {
 }
 
 class OnboardingIntro extends StatelessWidget {
+  const OnboardingIntro({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -53,6 +55,8 @@ class OnboardingIntro extends StatelessWidget {
 }
 
 class OnboardingOutro extends StatelessWidget {
+  const OnboardingOutro({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(

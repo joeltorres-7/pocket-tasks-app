@@ -36,14 +36,14 @@ class PhaseLoading extends StatelessWidget {
                         style: AppTextStyles.heading1,
                         textAlign: TextAlign.center,
                       ),
-                      (descriptionText.length > 0) ? Container(
-                        padding: EdgeInsets.only(top: 8.0),
+                      (descriptionText.isNotEmpty) ? Container(
+                        padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
                           descriptionText,
                           style: AppTextStyles.regularGray14,
                           textAlign: TextAlign.center,
                         ),
-                      ) : SizedBox(),
+                      ) : const SizedBox(),
                     ],
                   ),
                 ),

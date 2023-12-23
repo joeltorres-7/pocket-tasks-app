@@ -50,7 +50,7 @@ class _CheckboxItemState extends State<CheckboxItem> {
     return SizedBox(
       width: screenWidth,
       child: Padding(
-        padding: EdgeInsets.only(top: 12.0, right: 24.0, bottom: 12.0, left: 24.0),
+        padding: const EdgeInsets.only(top: 12.0, right: 24.0, bottom: 12.0, left: 24.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -79,7 +79,7 @@ class _CheckboxItemState extends State<CheckboxItem> {
               child: Switch(
                 activeColor: Colors.white,
                 activeTrackColor: Colors.black,
-                inactiveTrackColor: Color(0xFFEBECEE),
+                inactiveTrackColor: const Color(0xFFEBECEE),
                 value: isChecked,
                 onChanged: (value) {
                   setState(() {

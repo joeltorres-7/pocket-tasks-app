@@ -8,6 +8,7 @@ class GoalBox extends StatefulWidget {
   final bool isSelected;
 
   const GoalBox({
+    super.key,
     required this.itemName,
     required this.itemIcon,
     required this.onTap,
@@ -24,7 +25,7 @@ class _GoalBoxState extends State<GoalBox> {
     return GestureDetector(
       onTap: widget.onTap,
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 200), // Adjust the duration as needed
+        duration: const Duration(milliseconds: 200), // Adjust the duration as needed
         decoration: BoxDecoration(
           border: Border.all(
             color: widget.isSelected ? Colors.black : Colors.black12,
@@ -51,7 +52,7 @@ class _GoalBoxState extends State<GoalBox> {
               VerticalSpacing(8.0),
               Text(
                 widget.itemName,
-                style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.normal),
+                style: const TextStyle(fontSize: 14.0, fontWeight: FontWeight.normal),
                 textAlign: TextAlign.center,
               ),
             ],

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
-
 class PrimaryButton extends StatelessWidget {
   final String buttonText;
   final VoidCallback onButtonPressed;
@@ -29,12 +27,12 @@ class PrimaryButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.0),
           ),
           minimumSize: Size(screenWidth, 0),
-          padding: EdgeInsets.symmetric(vertical: 12),
+          padding: const EdgeInsets.symmetric(vertical: 12),
         ),
         onPressed: isButtonEnabled ? onButtonPressed : null, // Disable the button if not enabled
         child: Text(
           buttonText,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
           ),
         ),

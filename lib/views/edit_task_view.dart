@@ -40,7 +40,7 @@ class _EditTaskViewState extends State<EditTaskView> {
           widget.taskMap);
       widget.onTaskUpdated();
     } catch (err) {
-      log("Error while saving new task: ${err}");
+      log("Error while saving new task: $err");
     }
   }
 
@@ -65,7 +65,7 @@ class _EditTaskViewState extends State<EditTaskView> {
       deactivate();
       Navigator.of(context).pop();
     } catch (err) {
-      log("Error while deleting task: ${err}");
+      log("Error while deleting task: $err");
     }
   }
 
@@ -92,14 +92,14 @@ class _EditTaskViewState extends State<EditTaskView> {
             padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
             child: DecoratedBox(
               decoration: BoxDecoration(
-                color: Color(0xFFFEF3F5),
+                color: const Color(0xFFFEF3F5),
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: IconButton(
                 icon: Icon(Icons.delete_forever_rounded, color: AppColors.primaryRed),
-                padding: EdgeInsets.all(12.0),
-                splashColor: Color(0xFFFEF3F5),
-                constraints: BoxConstraints(),
+                padding: const EdgeInsets.all(12.0),
+                splashColor: const Color(0xFFFEF3F5),
+                constraints: const BoxConstraints(),
                 onPressed: () {
                   _deleteTask();
                 },
@@ -148,7 +148,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                   textAlign:  TextAlign.start,
                   style: AppTextStyles.subheading1,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(vertical: 4.0),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
                     hintText: AppLocalizations.of(context)!.taskDescription,
                     border: const OutlineInputBorder(
                       borderSide: BorderSide.none,
@@ -162,17 +162,17 @@ class _EditTaskViewState extends State<EditTaskView> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100.0),
-                    border: Border.all(color: Color(0xFFD9D9D9)),
+                    border: Border.all(color: const Color(0xFFD9D9D9)),
                   ),
                   child: DropdownButton<String>(
                     value: selectedPriority,
                     isExpanded: false,
                     isDense: true,
-                    underline: SizedBox(),
-                    icon: Icon(Icons.keyboard_arrow_down_rounded),
+                    underline: const SizedBox(),
+                    icon: const Icon(Icons.keyboard_arrow_down_rounded),
                     iconSize: 24.0,
                     elevation: 4,
                     dropdownColor: Colors.white,
@@ -184,10 +184,10 @@ class _EditTaskViewState extends State<EditTaskView> {
                             children: [
                               DecoratedBox(
                                 decoration: BoxDecoration(
-                                    color: Color(0xFFEE4266),
+                                    color: AppColors.primaryRed,
                                     borderRadius: BorderRadius.circular(16.0)
                                 ),
-                                child: SizedBox(
+                                child: const SizedBox(
                                   width: 12.0,
                                   height: 12.0,
                                 ),
@@ -206,10 +206,10 @@ class _EditTaskViewState extends State<EditTaskView> {
                             children: [
                               DecoratedBox(
                                 decoration: BoxDecoration(
-                                    color: Color(0xFF437BFF),
+                                    color: AppColors.primaryBlue,
                                     borderRadius: BorderRadius.circular(16.0)
                                 ),
-                                child: SizedBox(
+                                child: const SizedBox(
                                   width: 12.0,
                                   height: 12.0,
                                 ),
@@ -228,10 +228,10 @@ class _EditTaskViewState extends State<EditTaskView> {
                             children: [
                               DecoratedBox(
                                 decoration: BoxDecoration(
-                                    color: Color(0xFFA4A4A4),
+                                    color: AppColors.primaryGray,
                                     borderRadius: BorderRadius.circular(16.0)
                                 ),
-                                child: SizedBox(
+                                child: const SizedBox(
                                   width: 12.0,
                                   height: 12.0,
                                 ),

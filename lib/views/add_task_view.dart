@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/components/primary_button.dart';
+import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:pocket_tasks/views/utils/database_manager.dart';
@@ -20,9 +21,13 @@ class _AddTaskViewState extends State<AddTaskView> {
   TextEditingController descriptionController = TextEditingController();
   String selectedPriority = 'high';
   bool validTask = false;
+  bool savingTask = false;
 
   void _saveNewTask() async {
     DatabaseHelper dbHelper = DatabaseHelper();
+    setState(() {
+      savingTask = true;
+    });
 
     try {
       await dbHelper.insertTask({
@@ -55,7 +60,7 @@ class _AddTaskViewState extends State<AddTaskView> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(),
+          const SizedBox(),
           Column(
             children: [
               Padding(
@@ -91,7 +96,7 @@ class _AddTaskViewState extends State<AddTaskView> {
                   textAlign:  TextAlign.center,
                   style: AppTextStyles.subheading1,
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.symmetric(vertical: 4.0),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
                     hintText: AppLocalizations.of(context)!.taskDescription,
                     border: const OutlineInputBorder(
                       borderSide: BorderSide.none,
@@ -105,17 +110,17 @@ class _AddTaskViewState extends State<AddTaskView> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100.0),
-                    border: Border.all(color: Color(0xFFD9D9D9)),
+                    border: Border.all(color: const Color(0xFFD9D9D9)),
                   ),
                   child: DropdownButton<String>(
                     value: selectedPriority,
                     isExpanded: false,
                     isDense: true,
-                    underline: SizedBox(),
-                    icon: Icon(Icons.keyboard_arrow_down_rounded),
+                    underline: const SizedBox(),
+                    icon: const Icon(Icons.keyboard_arrow_down_rounded),
                     iconSize: 24.0,
                     elevation: 4,
                     dropdownColor: Colors.white,
@@ -127,10 +132,10 @@ class _AddTaskViewState extends State<AddTaskView> {
                             children: [
                               DecoratedBox(
                                 decoration: BoxDecoration(
-                                    color: Color(0xFFEE4266),
+                                    color: AppColors.primaryRed,
                                     borderRadius: BorderRadius.circular(16.0)
                                 ),
-                                child: SizedBox(
+                                child: const SizedBox(
                                   width: 12.0,
                                   height: 12.0,
                                 ),
@@ -149,10 +154,10 @@ class _AddTaskViewState extends State<AddTaskView> {
                           children: [
                             DecoratedBox(
                               decoration: BoxDecoration(
-                                color: Color(0xFF437BFF),
+                                color: AppColors.primaryBlue,
                                 borderRadius: BorderRadius.circular(16.0)
                               ),
-                              child: SizedBox(
+                              child: const SizedBox(
                                 width: 12.0,
                                 height: 12.0,
                               ),
@@ -171,10 +176,10 @@ class _AddTaskViewState extends State<AddTaskView> {
                             children: [
                               DecoratedBox(
                                 decoration: BoxDecoration(
-                                    color: Color(0xFFA4A4A4),
+                                    color: AppColors.primaryGray,
                                     borderRadius: BorderRadius.circular(16.0)
                                 ),
-                                child: SizedBox(
+                                child: const SizedBox(
                                   width: 12.0,
                                   height: 12.0,
                                 ),
@@ -200,13 +205,13 @@ class _AddTaskViewState extends State<AddTaskView> {
             ],
           ),
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: PrimaryButton(
               buttonText: AppLocalizations.of(context)!.addNewTask,
               onButtonPressed: () {
                 _saveNewTask();
               },
-              isButtonEnabled: titleController.text.isNotEmpty,
+              isButtonEnabled: titleController.text.isNotEmpty && !savingTask,
             ),
           ),
         ],

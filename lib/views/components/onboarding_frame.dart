@@ -8,7 +8,7 @@ import 'package:pocket_tasks/views/components/onboarding_outro.dart';
 import 'package:pocket_tasks/views/components/primary_button.dart';
 import 'package:pocket_tasks/views/components/progress_nav.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:pocket_tasks/views/onboarding-view.dart';
+import 'package:pocket_tasks/views/onboarding_view.dart';
 import 'package:pocket_tasks/views/utils/custom-page-route.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -98,7 +98,7 @@ class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProv
         // Save data and navigate to the next screen
         _saveUserData();
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => OnboardingOutro(),
+          builder: (context) => const OnboardingOutro(),
         ));
       }
     }
@@ -144,12 +144,12 @@ class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProv
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Container(
+      body: SizedBox(
         height: screenHeight,
         width: screenWidth,
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: 60,
               width: screenWidth,
               child: ProgressNav(

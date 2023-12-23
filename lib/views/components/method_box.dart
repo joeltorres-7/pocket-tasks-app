@@ -9,6 +9,7 @@ class MethodBox extends StatefulWidget {
   final bool isSelected;
 
   const MethodBox({
+    super.key,
     required this.itemName,
     required this.itemIcon,
     required this.onTap,
@@ -28,7 +29,7 @@ class _MethodBoxState extends State<MethodBox> {
     return GestureDetector(
       onTap: widget.onTap,
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 200), // Adjust the duration as needed
+        duration: const Duration(milliseconds: 200), // Adjust the duration as needed
         decoration: BoxDecoration(
           border: Border.all(
             color: widget.isSelected ? Colors.black : Colors.black12,
@@ -57,14 +58,14 @@ class _MethodBoxState extends State<MethodBox> {
                 children: [
                   Text(
                     widget.itemName,
-                    style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w500),
+                    style: const TextStyle(fontSize: 14.0, fontWeight: FontWeight.w500),
                     textAlign: TextAlign.left,
                   ),
                   SizedBox(
                     width: screenWidth * 0.64,
                     child: Text(
                       widget.itemDescription,
-                      style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w300),
+                      style: const TextStyle(fontSize: 12.0, fontWeight: FontWeight.w300),
                       textAlign: TextAlign.left,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,

@@ -19,7 +19,7 @@ class SliderDots extends StatelessWidget {
           width: index == currentDot ? 24.0 : 8.0,
           // Adjust the dot size as needed
           height: 8.0,
-          margin: EdgeInsets.symmetric(horizontal: 4.0),
+          margin: const EdgeInsets.symmetric(horizontal: 4.0),
           // Adjust the spacing between dots
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24.0),

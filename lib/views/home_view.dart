@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/enums/enums.dart';
-import 'package:pocket_tasks/views/add-task-view.dart';
+import 'package:pocket_tasks/views/add_task_view.dart';
 import 'package:pocket_tasks/views/components/task_tabs.dart';
-import 'package:pocket_tasks/views/new-day-view.dart';
-import 'package:pocket_tasks/views/settings-view.dart';
+import 'package:pocket_tasks/views/new_day_view.dart';
+import 'package:pocket_tasks/views/settings_view.dart';
 import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
@@ -78,9 +78,9 @@ class _HomeViewState extends State<HomeView> {
                   onPressed: () {
                     Navigator.of(context).push(CustomPageRoute(const SettingsView()));
                   },
-                  icon: Padding(
+                  icon: const Padding(
                     padding: EdgeInsets.all(4.0),
-                    child: const Icon(
+                    child: Icon(
                       Icons.settings,
                       color: Colors.black,
                       size: 24.0,
@@ -120,7 +120,7 @@ class _HomeViewState extends State<HomeView> {
                           Navigator.of(context).pop(); // Close the modal.
                         },
                         onButtonPressed: () {
-                          Navigator.of(context).push(CustomPageRoute(NewDayView()));
+                          Navigator.of(context).push(CustomPageRoute(const NewDayView()));
                         },
                       ),
                     );

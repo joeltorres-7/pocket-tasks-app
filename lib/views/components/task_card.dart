@@ -30,6 +30,8 @@ class _TaskCardState extends State<TaskCard> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return GestureDetector(
       onTap: widget.onCardTap,
       child: AnimatedOpacity(
@@ -38,14 +40,14 @@ class _TaskCardState extends State<TaskCard> {
         child: DecoratedBox(
           decoration: BoxDecoration(
             color: Colors.white,
-            border: Border.all(color: Color(0xFFE5E8E9)),
+            border: Border.all(color: const Color(0xFFE5E8E9)),
             borderRadius: BorderRadius.circular(16.0),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.2),
                 spreadRadius: 1,
                 blurRadius: 6,
-                offset: Offset(0, 1), // changes position of shadow
+                offset: const Offset(0, 1), // changes position of shadow
               ),
             ],
           ),
@@ -57,13 +59,33 @@ class _TaskCardState extends State<TaskCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(widget.title, style: AppTextStyles.regularMedium14),
-                        VerticalSpacing(4.0),
-                        widget.hasDescription ? Text(widget.description, style: AppTextStyles.regular14) : Text(AppLocalizations.of(context)!.noDescription, style: AppTextStyles.regularGray14),
-                      ],
+                    SizedBox(
+                      width: screenWidth * 0.6,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                              widget.title,
+                              style: AppTextStyles.regularMedium14,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                          ),
+                          VerticalSpacing(4.0),
+                          widget.hasDescription
+                              ? Text(
+                              widget.description,
+                              style: AppTextStyles.regular14,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                          )
+                              : Text(
+                              AppLocalizations.of(context)!.noDescription,
+                              style: AppTextStyles.regularGray14,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
                     ),
                     Checkbox(
                       checkColor: Colors.white,

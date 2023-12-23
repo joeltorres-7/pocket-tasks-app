@@ -44,17 +44,17 @@ class TermsView extends StatelessWidget {
                         style: AppTextStyles.smallLabel,
                       ),
                     ),
-                    SizedBox(height: 16.0),
+                    VerticalSpacing(16.0),
                     Text(
                       AppLocalizations.of(context)!.termsText,
                       style: AppTextStyles.regularGray14,
                     ),
-                    SizedBox(height: 16.0),
+                    VerticalSpacing(16.0),
                     Text(
                       AppLocalizations.of(context)!.useOfAppLabel,
                       style: AppTextStyles.boldSubheading,
                     ),
-                    SizedBox(height: 8.0),
+                    VerticalSpacing(8.0),
                     Text(
                       AppLocalizations.of(context)!.useText1,
                       style: AppTextStyles.regularGray14,
@@ -63,42 +63,42 @@ class TermsView extends StatelessWidget {
                       AppLocalizations.of(context)!.useText2,
                       style: AppTextStyles.regularGray14,
                     ),
-                    SizedBox(height: 16.0),
+                    VerticalSpacing(16.0),
                     Text(
                       AppLocalizations.of(context)!.userContentLabel,
                       style: AppTextStyles.boldSubheading,
                     ),
-                    SizedBox(height: 8.0),
+                    VerticalSpacing(8.0),
                     Text(
                       AppLocalizations.of(context)!.userContentText,
                       style: AppTextStyles.regularGray14,
                     ),
-                    SizedBox(height: 16.0),
+                    VerticalSpacing(16.0),
                     Text(
                       AppLocalizations.of(context)!.privacyLabel,
                       style: AppTextStyles.boldSubheading,
                     ),
-                    SizedBox(height: 8.0),
+                    VerticalSpacing(8.0),
                     Text(
                       AppLocalizations.of(context)!.privacyText,
                       style: AppTextStyles.regularGray14,
                     ),
-                    SizedBox(height: 16.0),
+                    VerticalSpacing(16.0),
                     Text(
                       AppLocalizations.of(context)!.intellectualPropertyLabel,
                       style: AppTextStyles.boldSubheading,
                     ),
-                    SizedBox(height: 8.0),
+                    VerticalSpacing(8.0),
                     Text(
                       AppLocalizations.of(context)!.intellectualPropertyText,
                       style: AppTextStyles.regularGray14,
                     ),
-                    SizedBox(height: 16.0),
+                    VerticalSpacing(16.0),
                     Text(
                       AppLocalizations.of(context)!.prohibitedActivitiesLabel,
                       style: AppTextStyles.boldSubheading,
                     ),
-                    SizedBox(height: 8.0),
+                    VerticalSpacing(8.0),
                     Text(
                       AppLocalizations.of(context)!.prohibitedText1,
                       style: AppTextStyles.regularGray14,
@@ -107,47 +107,47 @@ class TermsView extends StatelessWidget {
                       AppLocalizations.of(context)!.prohibitedText2,
                       style: AppTextStyles.regularGray14,
                     ),
-                    SizedBox(height: 16.0),
+                    VerticalSpacing(16.0),
                     Text(
                       AppLocalizations.of(context)!.limitationOfLiabilityLabel,
                       style: AppTextStyles.boldSubheading,
                     ),
-                    SizedBox(height: 8.0),
+                    VerticalSpacing(8.0),
                     Text(
                       AppLocalizations.of(context)!.liabilityText,
                       style: AppTextStyles.regularGray14,
                     ),
-                    SizedBox(height: 16.0),
+                    VerticalSpacing(16.0),
                     Text(
                       AppLocalizations.of(context)!.changesToTermsLabel,
                       style: AppTextStyles.boldSubheading,
                     ),
-                    SizedBox(height: 8.0),
+                    VerticalSpacing(8.0),
                     Text(
                       AppLocalizations.of(context)!.changesToTermsText,
                       style: AppTextStyles.regularGray14,
                     ),
-                    SizedBox(height: 16.0),
+                    VerticalSpacing(16.0),
                     Text(
                       AppLocalizations.of(context)!.terminationLabel,
                       style: AppTextStyles.boldSubheading,
                     ),
-                    SizedBox(height: 8.0),
+                    VerticalSpacing(8.0),
                     Text(
                       AppLocalizations.of(context)!.terminationText,
                       style: AppTextStyles.regularGray14,
                     ),
-                    SizedBox(height: 16.0),
+                    VerticalSpacing(16.0),
                     Text(
                       AppLocalizations.of(context)!.governingLawLabel,
                       style: AppTextStyles.boldSubheading,
                     ),
-                    SizedBox(height: 8.0),
+                    VerticalSpacing(8.0),
                     Text(
                       AppLocalizations.of(context)!.governingLawText,
                       style: AppTextStyles.regularGray14,
                     ),
-                    SizedBox(height: 16.0),
+                    VerticalSpacing(16.0),
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(CustomPageRoute(const PrivacyView()));
@@ -160,7 +160,7 @@ class TermsView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 16.0),
+                    VerticalSpacing(16.0),
                     Text(
                       AppLocalizations.of(context)!.contactUsLabel,
                       style: AppTextStyles.boldSubheading,

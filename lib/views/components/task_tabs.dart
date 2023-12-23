@@ -7,7 +7,7 @@ import 'package:pocket_tasks/views/utils/database_manager.dart';
 
 class TaskTabs extends StatefulWidget {
   final VoidCallback onTaskUpdated;
-  TaskTabs({super.key, required this.onTaskUpdated});
+  const TaskTabs({super.key, required this.onTaskUpdated});
 
   @override
   _MyTabsState createState() => _MyTabsState();
@@ -25,6 +25,7 @@ class _MyTabsState extends State<TaskTabs> {
     });
   }
 
+  @override
   void initState() {
     super.initState();
     _initialize();

@@ -84,6 +84,11 @@ flutter:
 
   assets:
     - assets/
+    - assets/images/illustrations/get-started-welcome.png
+    - assets/images/illustrations/get-started-focus.png
+    - assets/images/illustrations/get-started-task.png
+    - assets/images/illustrations/get-started-day.png
+    - assets/images/illustrations/new-dawn-illustration.png
 
   fonts:
     - family: CerebriSansPro
