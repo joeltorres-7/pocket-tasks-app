@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/components/primary_button.dart';
+import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
 
 class CustomModalWidget extends StatelessWidget {
@@ -30,22 +31,12 @@ class CustomModalWidget extends StatelessWidget {
         width: screenWidth * 0.8,
         child: Stack(
           children: [
-            DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16.0),
-                gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Color(0xFFC3C3C3), Color(0x00C3C3C3)]),
-              ),
-              child: const SizedBox(
-                width: double.infinity,
-                height: 124.0,
-              ),
-            ),
             Positioned(
               top: 16,
               right: 16,
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                    color: Color(0xFFCDCDCD),
+                    color: Color(0x50CDCDCD),
                     borderRadius: BorderRadius.circular(12.0)
                 ),
                 child: IconButton(
@@ -56,38 +47,40 @@ class CustomModalWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  const SizedBox(
-                    width: double.infinity,
-                    height: 124.0,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: AppTextStyles.heading1,
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset('assets/images/illustrations/new-dawn-illustration.png'),
+                Padding(
+                  padding: const EdgeInsets.all(24.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            title,
+                            style: AppTextStyles.heading1,
+                          ),
+                          const SizedBox(height: 4.0),
+                          Text(
+                            subtitle,
+                            style: AppTextStyles.regularGray14,
+                          ),
+                          const SizedBox(height: 16.0),
+                        ],
                       ),
-                      const SizedBox(height: 4.0),
-                      Text(
-                        subtitle,
-                        style: AppTextStyles.regularGray14,
+                      PrimaryButton(
+                        onButtonPressed: onButtonPressed,
+                        buttonText: buttonText,
+                        isButtonEnabled: true,
+                        hasPadding: false,
                       ),
-                      const SizedBox(height: 16.0),
                     ],
                   ),
-                  PrimaryButton(
-                    onButtonPressed: onButtonPressed,
-                    buttonText: buttonText,
-                    isButtonEnabled: true,
-                    hasPadding: false,
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ]
         ),
