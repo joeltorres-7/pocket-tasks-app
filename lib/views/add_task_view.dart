@@ -21,9 +21,13 @@ class _AddTaskViewState extends State<AddTaskView> {
   TextEditingController descriptionController = TextEditingController();
   String selectedPriority = 'high';
   bool validTask = false;
+  bool savingTask = false;
 
   void _saveNewTask() async {
     DatabaseHelper dbHelper = DatabaseHelper();
+    setState(() {
+      savingTask = true;
+    });
 
     try {
       await dbHelper.insertTask({
@@ -207,7 +211,7 @@ class _AddTaskViewState extends State<AddTaskView> {
               onButtonPressed: () {
                 _saveNewTask();
               },
-              isButtonEnabled: titleController.text.isNotEmpty,
+              isButtonEnabled: titleController.text.isNotEmpty && !savingTask,
             ),
           ),
         ],
