@@ -31,22 +31,6 @@ class CustomModalWidget extends StatelessWidget {
         width: screenWidth * 0.8,
         child: Stack(
           children: [
-            Positioned(
-              top: 16,
-              right: 16,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                    color: Color(0x50CDCDCD),
-                    borderRadius: BorderRadius.circular(12.0)
-                ),
-                child: IconButton(
-                  onPressed: onClose,
-                  icon: Icon(Icons.close),
-                  padding: EdgeInsets.all(12.0),
-                  constraints: BoxConstraints(),
-                ),
-              ),
-            ),
             Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -81,6 +65,22 @@ class CustomModalWidget extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+            Positioned(
+              top: 16,
+              right: 16,
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                    color: Color(0x50CDCDCD),
+                    borderRadius: BorderRadius.circular(12.0)
+                ),
+                child: IconButton(
+                  onPressed: onClose,
+                  icon: Icon(Icons.close),
+                  padding: EdgeInsets.all(12.0),
+                  constraints: BoxConstraints(),
+                ),
+              ),
             ),
           ]
         ),
