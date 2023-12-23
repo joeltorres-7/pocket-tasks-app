@@ -98,7 +98,7 @@ class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProv
         // Save data and navigate to the next screen
         _saveUserData();
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => OnboardingOutro(),
+          builder: (context) => const OnboardingOutro(),
         ));
       }
     }
@@ -144,12 +144,12 @@ class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProv
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Container(
+      body: SizedBox(
         height: screenHeight,
         width: screenWidth,
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: 60,
               width: screenWidth,
               child: ProgressNav(

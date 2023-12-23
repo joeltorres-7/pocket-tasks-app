@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/components/slider_dots.dart';
 
@@ -19,19 +18,19 @@ class OnboardingCard extends StatelessWidget {
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(32.0), topRight: Radius.circular(32.0)),
+        borderRadius: const BorderRadius.only(topLeft: Radius.circular(32.0), topRight: Radius.circular(32.0)),
         color: Colors.white,
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.2),
             spreadRadius: 1,
             blurRadius: 12,
-            offset: Offset(0, -6), // changes position of shadow
+            offset: const Offset(0, -6), // changes position of shadow
           ),
         ],
       ),
       child: Padding(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
             top: 32.0,
             right: 24.0,
             bottom: 32.0,
@@ -73,11 +72,11 @@ class OnboardingCard extends StatelessWidget {
                     onTap: onNextPressed,
                     child: DecoratedBox(
                         decoration: BoxDecoration(
-                          color: Color(0xFFEDEDED),
+                          color: const Color(0xFFEDEDED),
                           borderRadius: BorderRadius.circular(100.0),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(12.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(12.0),
                           child: Icon(Icons.arrow_forward),
                         ),
                     ),

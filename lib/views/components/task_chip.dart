@@ -31,7 +31,7 @@ class _TaskChipState extends State<TaskChip> {
             children: [
               Text(widget.taskName, style: AppTextStyles.regularMedium14),
               HorizontalSpacing(4.0),
-              Icon(Icons.add, size: 18.0, color: Colors.black)
+              const Icon(Icons.add, size: 18.0, color: Colors.black)
             ],
           ),
         ),

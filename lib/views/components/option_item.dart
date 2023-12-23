@@ -22,7 +22,7 @@ class _OptionItemState extends State<OptionItem> {
     return SizedBox(
       width: screenWidth,
       child: Padding(
-        padding: EdgeInsets.only(top: 12.0, right: 24.0, bottom: 12.0, left: 24.0),
+        padding: const EdgeInsets.only(top: 12.0, right: 24.0, bottom: 12.0, left: 24.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -49,7 +49,7 @@ class _OptionItemState extends State<OptionItem> {
             if (widget.isClickable) ... [
               IconButton(
                 onPressed: widget.onTap,
-                icon: Icon(Icons.keyboard_arrow_right_rounded),
+                icon: const Icon(Icons.keyboard_arrow_right_rounded),
               )
             ]
           ],

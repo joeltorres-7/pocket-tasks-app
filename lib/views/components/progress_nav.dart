@@ -34,7 +34,7 @@ class ProgressNav extends StatelessWidget {
                 return LinearProgressIndicator(
                   value: value,
                   semanticsLabel: 'Onboarding progress indicator',
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.black),
                 );
               },
             ),

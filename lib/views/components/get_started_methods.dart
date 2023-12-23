@@ -11,7 +11,7 @@ class GetStartedMethods extends StatefulWidget {
   final UserData userData;
   final ValueChanged<PreferredMethod> onMethodChanged;
 
-  GetStartedMethods({required this.onMethodChanged, required this.userData});
+  GetStartedMethods({super.key, required this.onMethodChanged, required this.userData});
 
   @override
   _GetStartedMethodsState createState() => _GetStartedMethodsState();

@@ -33,7 +33,7 @@ class _TasksOnQueueState extends State<TasksQueue> {
       await dbHelper.toggleTaskCompletion(index, taskStatus);
       widget.onTaskUpdated();
     } catch (err) {
-      log("Error while deleting task: ${err}");
+      log("Error while deleting task: $err");
     }
   }
 
