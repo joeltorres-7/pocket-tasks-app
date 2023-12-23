@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/components/task_card.dart';
-import 'package:pocket_tasks/views/edit-task-view.dart';
+import 'package:pocket_tasks/views/edit_task_view.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/utils/custom-page-route.dart';
 import 'package:pocket_tasks/views/utils/database_manager.dart';
