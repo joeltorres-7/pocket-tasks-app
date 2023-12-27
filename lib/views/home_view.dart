@@ -10,6 +10,8 @@ import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/utils/custom-page-route.dart';
 import 'package:pocket_tasks/views/utils/custom_modal_widget.dart';
+import 'package:pocket_tasks/views/utils/database_manager.dart';
+import 'package:pocket_tasks/views/utils/local_notification_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeView extends StatefulWidget {
@@ -23,12 +25,32 @@ class _HomeViewState extends State<HomeView> {
   late String? userName;
   late Goal userGoal;
   late PreferredMethod preferredMethod;
+  int activeTasks = 0;
+  bool enableTaskReminders = false;
 
   @override
   void initState() {
     userName = '';
     super.initState();
     _loadUserData();
+    _initializeNotifications();
+  }
+
+  Future<void> getNotificationPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    enableTaskReminders = prefs.getBool('enableTaskReminders') ?? false;
+  }
+
+  Future<void> getTaskNumber() async {
+    DatabaseHelper dbHelper = DatabaseHelper();
+    List<Map<String, dynamic>> taskList = await dbHelper.getTasks();
+    activeTasks = taskList.length;
+  }
+
+  Future<void> _initializeNotifications() async {
+    await getNotificationPreferences();
+    await getTaskNumber();
+    await LocalNotificationService().scheduleDailyNotification(activeTasks, enableTaskReminders);
   }
 
   void _loadUserData() async {

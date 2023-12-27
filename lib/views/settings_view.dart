@@ -7,6 +7,7 @@ import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/terms_view.dart';
 import 'package:pocket_tasks/views/utils/custom-page-route.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsView extends StatefulWidget {
   const SettingsView({Key? key}) : super(key: key);
@@ -44,7 +45,6 @@ class _SettingsViewState extends State<SettingsView> {
               CheckboxItem(
                 label: AppLocalizations.of(context)!.taskReminderLabel,
                 description: AppLocalizations.of(context)!.taskReminderDescription,
-                onSelection: () {},
                 preferenceKey: 'enableTaskReminders',
               ),
               Padding(
@@ -54,7 +54,6 @@ class _SettingsViewState extends State<SettingsView> {
               CheckboxItem(
                 label: AppLocalizations.of(context)!.soundEffectsLabel,
                 description: AppLocalizations.of(context)!.soundEffectsDescription,
-                onSelection: (){},
                 preferenceKey: 'enableSounds',
               ),
               Padding(

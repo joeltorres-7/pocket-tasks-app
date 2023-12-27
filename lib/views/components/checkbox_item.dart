@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -5,14 +7,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 class CheckboxItem extends StatefulWidget {
   final String label;
   final String description;
-  final VoidCallback onSelection;
   final String preferenceKey;
 
   const CheckboxItem({
     Key? key,
     required this.label,
     required this.description,
-    required this.onSelection, required this.preferenceKey,
+    required this.preferenceKey,
   }) : super(key: key);
 
   @override
@@ -41,6 +42,12 @@ class _CheckboxItemState extends State<CheckboxItem> {
   Future<void> _saveState(bool value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool(widget.preferenceKey, value);
+  }
+
+  // Manage sharedPreferenceState
+  void _updatePreferenceState(String preferenceKey, bool pushState) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool(preferenceKey, pushState);
   }
 
   @override
@@ -82,11 +89,16 @@ class _CheckboxItemState extends State<CheckboxItem> {
                 inactiveTrackColor: const Color(0xFFEBECEE),
                 value: isChecked,
                 onChanged: (value) {
+                  try {
+                    _updatePreferenceState(widget.preferenceKey, value);
+                  } catch (err) {
+                    log(err.toString());
+                  }
+
                   setState(() {
                     isChecked = value;
                   });
                   _saveState(value);
-                  widget.onSelection();
                 },
               ),
             ),
