@@ -120,8 +120,9 @@ class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProv
   void _saveUserData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('userName', userData.userName);
-    prefs.setInt('userGoal', userData.userGoal.index); // Fix this line
-    prefs.setInt('preferredMethod', userData.preferredMethod.index); // Fix this line
+    prefs.setInt('userGoal', userData.userGoal.index);
+    prefs.setInt('preferredMethod', userData.preferredMethod.index);
+    prefs.setBool('enableTaskReminders', true);
   }
 
   bool _isContinueButtonEnabled() {

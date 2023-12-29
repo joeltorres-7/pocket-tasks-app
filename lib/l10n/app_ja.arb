@@ -117,6 +117,7 @@
   "editTask": "タスクの編集",
   "updateTask": "タスクを更新",
   "youHave": "今日は",
+  "pluralSuffix": "",
   "task": "タスク",
   "taskLower": "のタスク",
   "tasksLower": "のタスク",
