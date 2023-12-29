@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:timezone/timezone.dart' as tz;
 
 class LocalNotificationService {
@@ -67,7 +69,22 @@ class LocalNotificationService {
     );
   }
 
-  Future<void> scheduleDailyNotification(int numberOfTasks, bool hasDailyReminder) async {
+  String buildNotificationMessage(int numberOfTasks, BuildContext context) {
+    if (numberOfTasks > 0) {
+      String taskString = (numberOfTasks > 1) ? AppLocalizations.of(context)!.tasksLower : AppLocalizations.of(context)!.taskLower;
+
+      return '${AppLocalizations.of(context)!.youHave} $numberOfTasks ${taskString} ${AppLocalizations.of(context)!.todayPlain}. '
+          '${AppLocalizations.of(context)!.reflect}, '
+          '${AppLocalizations.of(context)!.prioritize}, '
+          '${AppLocalizations.of(context)!.andConquer}. '
+          '${AppLocalizations.of(context)!.diveIntoPocketTasksNow}';
+    } else {
+      return '${AppLocalizations.of(context)!.noTasksForToday}. '
+          '${AppLocalizations.of(context)!.enjoyYourDay}! :)';
+    }
+  }
+
+  Future<void> scheduleDailyNotification(int numberOfTasks, bool hasDailyReminder, BuildContext context) async {
     final bool enableTaskReminders = hasDailyReminder;
 
     if (!enableTaskReminders) {
@@ -93,10 +110,8 @@ class LocalNotificationService {
     await flutterLocalNotificationsPlugin.zonedSchedule(
       0,
       'Your Daily Insight',
-      numberOfTasks > 0
-          ? 'You have $numberOfTasks ${numberOfTasks == 1 ? 'task' : 'tasks'} today. Reflect, prioritize, and conquer. Dive into PocketTasks now!'
-          : 'No tasks for today. Enjoy your day! :)',
-        scheduledTime,
+      buildNotificationMessage(numberOfTasks, context),
+      scheduledTime,
       const NotificationDetails(
         android: AndroidNotificationDetails(
           'channel-daily-summary',

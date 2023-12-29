@@ -114,7 +114,18 @@
   "newDawn": "新しい夜明け",
   "notFeelingAsExpected": "今日が期待通りではないと感じていますか？心配しないでください、常に第二のチャンスがあります。",
   "resetDay": "私の日をリセット",
-  "task": "タスク",
   "editTask": "タスクの編集",
-  "updateTask": "タスクを更新"
+  "updateTask": "タスクを更新",
+  "youHave": "今日は",
+  "task": "タスク",
+  "taskLower": "のタスク",
+  "tasksLower": "のタスク",
+  "today": "今日",
+  "todayPlain": "があります",
+  "reflect": "振り返り",
+  "prioritize": "優先順位をつけて",
+  "andConquer": "克服してください",
+  "diveIntoPocketTasksNow": "さあ、PocketTasksにダイブしましょう！",
+  "noTasksForToday": "今日のタスクはありません",
+  "enjoyYourDay": "良い一日を"
 }

@@ -115,5 +115,17 @@
     "newDawn": "Nuevo amanecer",
     "notFeelingAsExpected": "¿Sientes que este día no fue cómo esperabas? No te preocupes, siempre hay segundas oportunidades.",
     "resetDay": "Reiniciar mi día",
-    "task": "Tarea"
+    "task": "Tarea",
+    "taskLower": "tarea",
+    "tasksLower": "tareas",
+    "youHave": "Tienes",
+    "pluralSuffix": "s",
+    "today": "hoy",
+    "todayPlain": "hoy",
+    "reflect": "Reflexiona",
+    "prioritize": "prioriza",
+    "andConquer": "y conquista",
+    "diveIntoPocketTasksNow": "¡Sumérgete en PocketTasks ahora!",
+    "noTasksForToday": "No hay tareas para hoy",
+    "enjoyYourDay": "¡Disfruta tu día!"
 }

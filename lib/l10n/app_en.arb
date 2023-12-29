@@ -466,5 +466,53 @@
   "task": "Tarea",
   "@task": {
     "description": "Label shown on task editing."
+  },
+  "youHave": "You have",
+  "@youHave": {
+    "description": "First part of daily notification text."
+  },
+  "taskLower": "task",
+  "@taskLower": {
+    "description": "Task or tasks, depending on the count."
+  },
+  "tasksLower": "tasks",
+  "@tasksLower": {
+    "description": "Task or tasks, depending on the count."
+  },
+  "pluralSuffix": "s",
+  "@pluralSuffix": {
+    "description": "Suffix used for plural forms."
+  },
+  "today": "today",
+  "@today": {
+    "description": "Indicates the current day."
+  },
+  "todayPlain": "today",
+  "@todayPlain": {
+    "description": "Indicates the current day."
+  },
+  "reflect": "Reflect",
+  "@reflect": {
+    "description": "Encouragement to reflect on tasks."
+  },
+  "prioritize": "prioritize",
+  "@prioritize": {
+    "description": "Encouragement to prioritize tasks."
+  },
+  "andConquer": "and conquer",
+  "@andConquer": {
+    "description": "Encouragement to conquer tasks."
+  },
+  "diveIntoPocketTasksNow": "Dive into PocketTasks now!",
+  "@diveIntoPocketTasksNow": {
+    "description": "Encouragement to dive into the PocketTasks app."
+  },
+  "noTasksForToday": "No tasks for today",
+  "@noTasksForToday": {
+    "description": "Indicates there are no tasks for the current day."
+  },
+  "enjoyYourDay": "Enjoy your day",
+  "@enjoyYourDay": {
+    "description": "Wishing the user a pleasant day."
   }
 }
