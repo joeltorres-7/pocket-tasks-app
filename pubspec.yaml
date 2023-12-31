@@ -98,6 +98,7 @@ flutter:
     - assets/audio/back.wav
     - assets/audio/task_added.wav
     - assets/audio/completed.wav
+    - assets/audio/new_dawn.mp3
 
   fonts:
     - family: CerebriSansPro

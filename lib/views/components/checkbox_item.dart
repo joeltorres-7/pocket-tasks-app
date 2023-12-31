@@ -91,10 +91,7 @@ class _CheckboxItemState extends State<CheckboxItem> {
                 value: isChecked,
                 onChanged: (value) {
                   try {
-                    // if (widget.preferenceKey == 'enableSounds') {
-                    //   AudioManager.playFromName('enable');
-                    // }
-                    AudioManager.playFromName('enable');
+                    AudioManager.playFromName('enable.wav');
                     _updatePreferenceState(widget.preferenceKey, value);
                   } catch (err) {
                     log(err.toString());

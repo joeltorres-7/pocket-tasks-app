@@ -38,7 +38,7 @@ class _AddTaskViewState extends State<AddTaskView> {
       });
 
       widget.onTaskAdded();
-      AudioManager.playFromName('task_added');
+      AudioManager.playFromName('task_added.wav');
 
       deactivate();
       Navigator.of(context).pop();
@@ -64,7 +64,7 @@ class _AddTaskViewState extends State<AddTaskView> {
             enableFeedback: false,
             icon: const Icon(Icons.arrow_back),
             onPressed: () {
-              AudioManager.playFromName('back');
+              AudioManager.playFromName('back.wav');
               Navigator.of(context).pop();
             }
           ),

@@ -32,7 +32,7 @@ class TermsView extends StatelessWidget {
                   icon: const Icon(Icons.arrow_back),
                   enableFeedback: false,
                   onPressed: () {
-                    AudioManager.playFromName('back');
+                    AudioManager.playFromName('back.wav');
                     Navigator.of(context).pop();
                   }
               ),

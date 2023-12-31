@@ -102,7 +102,7 @@ class _HomeViewState extends State<HomeView> {
                 IconButton(
                   enableFeedback: false,
                   onPressed: () {
-                    AudioManager.playFromName('tap');
+                    AudioManager.playFromName('tap.wav');
                     Navigator.of(context).push(CustomPageRoute(const SettingsView()));
                   },
                   icon: const Padding(
@@ -136,7 +136,7 @@ class _HomeViewState extends State<HomeView> {
               heroTag: 'resetDayButton',
               enableFeedback: false,
               onPressed: () {
-                AudioManager.playFromName('tap');
+                AudioManager.playFromName('tap.wav');
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
@@ -146,7 +146,7 @@ class _HomeViewState extends State<HomeView> {
                         subtitle: AppLocalizations.of(context)!.notFeelingAsExpected,
                         buttonText: AppLocalizations.of(context)!.resetDay,
                         onClose: () {
-                          AudioManager.playFromName('tap');
+                          AudioManager.playFromName('tap.wav');
                           Navigator.of(context).pop(); // Close the modal.
                         },
                         onButtonPressed: () {
@@ -167,7 +167,7 @@ class _HomeViewState extends State<HomeView> {
               enableFeedback: false,
               heroTag: 'addTaskButton',
               onPressed: () {
-                AudioManager.playFromName('tap');
+                AudioManager.playFromName('tap.wav');
                 Navigator.of(context).push(CustomPageRoute(AddTaskView(onTaskAdded: _loadUserData)));
               },
               backgroundColor: AppColors.secondaryGray,

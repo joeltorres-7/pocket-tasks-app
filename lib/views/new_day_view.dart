@@ -4,6 +4,7 @@ import 'package:pocket_tasks/views/components/phase_loading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/home_view.dart';
 import 'package:pocket_tasks/views/styles/colors.dart';
+import 'package:pocket_tasks/views/utils/audio_manager.dart';
 import 'package:pocket_tasks/views/utils/database_manager.dart';
 
 class NewDayView extends StatefulWidget {
@@ -25,9 +26,14 @@ class _NewDayViewState extends State<NewDayView> {
     }
   }
 
+  void _playChime() {
+    AudioManager.playFromName("new_dawn.mp3");
+  }
+
   @override
   void initState() {
     super.initState();
+    _playChime();
     _deleteUserTasks();
     Future.delayed(const Duration(seconds: 3), () {
       setState(() {
@@ -49,7 +55,7 @@ class _NewDayViewState extends State<NewDayView> {
             Icons.sunny,
             size: 40.0,
             color: AppColors.primaryYellow,
-          )
+          ),
       ),
     );
   }

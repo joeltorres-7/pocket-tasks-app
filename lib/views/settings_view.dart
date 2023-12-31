@@ -41,7 +41,7 @@ class _SettingsViewState extends State<SettingsView> {
                   icon: const Icon(Icons.arrow_back),
                   enableFeedback: false,
                   onPressed: () {
-                    AudioManager.playFromName('back');
+                    AudioManager.playFromName('back.wav');
                     Navigator.of(context).pop();
                   }
               ),
@@ -72,7 +72,7 @@ class _SettingsViewState extends State<SettingsView> {
                   child: Text(AppLocalizations.of(context)!.themesSection, textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
                 ),
                 OptionItem(label: AppLocalizations.of(context)!.themeColorLabel, description: AppLocalizations.of(context)!.themeColorDescription, isClickable: true, onTap: (){
-                  AudioManager.playFromName('tap');
+                  AudioManager.playFromName('tap.wav');
                 }),
                 Padding(
                   padding: const EdgeInsets.only(top: 12.0, right: 24.0, bottom: 4.0, left: 24.0),
@@ -80,7 +80,7 @@ class _SettingsViewState extends State<SettingsView> {
                 ),
                 OptionItem(label: AppLocalizations.of(context)!.versionLabel, description: AppLocalizations.of(context)!.versionDescription, isClickable: false, onTap: (){}),
                 OptionItem(label: AppLocalizations.of(context)!.termsLabel, description: AppLocalizations.of(context)!.termsDescription, isClickable: true, onTap: (){
-                  AudioManager.playFromName('tap');
+                  AudioManager.playFromName('tap.wav');
                   Navigator.of(context).push(CustomPageRoute(const TermsView()));
                 }),
                 OptionItem(
@@ -88,7 +88,7 @@ class _SettingsViewState extends State<SettingsView> {
                     description: AppLocalizations.of(context)!.privacyPolicyDescription,
                     isClickable: true,
                     onTap: (){
-                      AudioManager.playFromName('tap');
+                      AudioManager.playFromName('tap.wav');
                       Navigator.of(context).push(CustomPageRoute(const PrivacyView()));
                     }
                 ),
@@ -101,7 +101,7 @@ class _SettingsViewState extends State<SettingsView> {
                     description: AppLocalizations.of(context)!.deleteAccountDescription,
                     isClickable: true,
                     onTap: (){
-                      AudioManager.playFromName('tap');
+                      AudioManager.playFromName('tap.wav');
                     }),
                 VerticalSpacing(16.0)
               ]),

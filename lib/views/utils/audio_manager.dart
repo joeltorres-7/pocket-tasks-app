@@ -25,7 +25,7 @@ class AudioManager {
   static Future<void> play(String audioName) async {
     await requestAudioFocus();
     await audioPlayer.play(
-        AssetSource('audio/$audioName.wav')
+        AssetSource('audio/$audioName')
     );
   }
 

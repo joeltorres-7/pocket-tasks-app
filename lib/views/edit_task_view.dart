@@ -94,7 +94,7 @@ class _EditTaskViewState extends State<EditTaskView> {
               enableFeedback: false,
               icon: const Icon(Icons.arrow_back),
               onPressed: () {
-                AudioManager.playFromName('back');
+                AudioManager.playFromName('back.wav');
                 Navigator.of(context).pop();
               }
           ),

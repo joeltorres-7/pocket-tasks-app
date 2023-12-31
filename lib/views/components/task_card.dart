@@ -98,7 +98,7 @@ class _TaskCardState extends State<TaskCard> {
                         widget.onChecked();
                         setState(() {
                           if (!isChecked) {
-                            AudioManager.playFromName('completed');
+                            AudioManager.playFromName('completed.wav');
                           }
                           isChecked = value!;
                         });
