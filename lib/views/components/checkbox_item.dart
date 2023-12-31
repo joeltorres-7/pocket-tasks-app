@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
+import 'package:pocket_tasks/views/utils/audio_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CheckboxItem extends StatefulWidget {
@@ -90,6 +91,10 @@ class _CheckboxItemState extends State<CheckboxItem> {
                 value: isChecked,
                 onChanged: (value) {
                   try {
+                    // if (widget.preferenceKey == 'enableSounds') {
+                    //   AudioManager.playFromName('enable');
+                    // }
+                    AudioManager.playFromName('enable');
                     _updatePreferenceState(widget.preferenceKey, value);
                   } catch (err) {
                     log(err.toString());

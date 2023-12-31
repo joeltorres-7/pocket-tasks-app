@@ -42,6 +42,8 @@ dependencies:
   shared_preferences: ^2.2.1
   flutter_local_notifications: ^16.2.0
   flutter_timezone: ^1.0.8
+  audio_session: ^0.1.18
+  audioplayers: ^5.2.1
   sqflite: ^2.3.0
 
 dev_dependencies:
@@ -91,6 +93,11 @@ flutter:
     - assets/images/illustrations/get-started-task.png
     - assets/images/illustrations/get-started-day.png
     - assets/images/illustrations/new-dawn-illustration.png
+    - assets/audio/tap.wav
+    - assets/audio/enable.wav
+    - assets/audio/back.wav
+    - assets/audio/task_added.wav
+    - assets/audio/completed.wav
 
   fonts:
     - family: CerebriSansPro

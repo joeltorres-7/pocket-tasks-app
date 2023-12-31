@@ -123,6 +123,7 @@ class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProv
     prefs.setInt('userGoal', userData.userGoal.index);
     prefs.setInt('preferredMethod', userData.preferredMethod.index);
     prefs.setBool('enableTaskReminders', true);
+    prefs.setBool('enableSounds', true);
   }
 
   bool _isContinueButtonEnabled() {

@@ -8,6 +8,7 @@ import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:pocket_tasks/views/utils/audio_manager.dart';
 import 'package:pocket_tasks/views/utils/custom-page-route.dart';
 import 'package:pocket_tasks/views/utils/custom_modal_widget.dart';
 import 'package:pocket_tasks/views/utils/database_manager.dart';
@@ -34,6 +35,7 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     _loadUserData();
     _initializeNotifications();
+    AudioManager.init();
   }
 
   Future<void> getNotificationPreferences() async {
@@ -91,13 +93,16 @@ class _HomeViewState extends State<HomeView> {
                           style: AppTextStyles.heading1,
                           textAlign: TextAlign.start),
                     ),
-                    Text('${AppLocalizations.of(context)!.readyDay}',
+                    Text(
+                        AppLocalizations.of(context)!.readyDay,
                         style: AppTextStyles.regular,
                         textAlign: TextAlign.start),
                   ],
                 ),
                 IconButton(
+                  enableFeedback: false,
                   onPressed: () {
+                    AudioManager.playFromName('tap');
                     Navigator.of(context).push(CustomPageRoute(const SettingsView()));
                   },
                   icon: const Padding(
@@ -129,7 +134,9 @@ class _HomeViewState extends State<HomeView> {
           children: [
             FloatingActionButton(
               heroTag: 'resetDayButton',
+              enableFeedback: false,
               onPressed: () {
+                AudioManager.playFromName('tap');
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
@@ -139,6 +146,7 @@ class _HomeViewState extends State<HomeView> {
                         subtitle: AppLocalizations.of(context)!.notFeelingAsExpected,
                         buttonText: AppLocalizations.of(context)!.resetDay,
                         onClose: () {
+                          AudioManager.playFromName('tap');
                           Navigator.of(context).pop(); // Close the modal.
                         },
                         onButtonPressed: () {
@@ -156,8 +164,10 @@ class _HomeViewState extends State<HomeView> {
             ),
             VerticalSpacing(12.0),
             FloatingActionButton(
+              enableFeedback: false,
               heroTag: 'addTaskButton',
               onPressed: () {
+                AudioManager.playFromName('tap');
                 Navigator.of(context).push(CustomPageRoute(AddTaskView(onTaskAdded: _loadUserData)));
               },
               backgroundColor: AppColors.secondaryGray,

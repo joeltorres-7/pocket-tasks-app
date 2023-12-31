@@ -4,6 +4,7 @@ import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:pocket_tasks/views/utils/audio_manager.dart';
 
 class TaskCard extends StatefulWidget {
   final String title;
@@ -96,6 +97,9 @@ class _TaskCardState extends State<TaskCard> {
                       onChanged: (bool? value) {
                         widget.onChecked();
                         setState(() {
+                          if (!isChecked) {
+                            AudioManager.playFromName('completed');
+                          }
                           isChecked = value!;
                         });
                       },
