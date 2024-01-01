@@ -16,6 +16,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   tz.initializeTimeZones();
   AudioManager.init();
+  AudioManager.instance.initializeSoundPreferences();
   final String timeZone = await FlutterTimezone.getLocalTimezone();
   tz.setLocalLocation(tz.getLocation(timeZone));
   await LocalNotificationService().init();
@@ -48,11 +49,16 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+
+    // Request audio focus when the app starts
+    AudioManager.requestAudioFocus();
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    AudioManager.instance.cancelSoundPreferencesSubscription();
+    AudioManager.stop();
     super.dispose();
   }
 
