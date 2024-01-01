@@ -56,6 +56,7 @@ class _NewDayViewState extends State<NewDayView> {
             size: 40.0,
             color: AppColors.primaryYellow,
           ),
+          rotateIcon: true
       ),
     );
   }

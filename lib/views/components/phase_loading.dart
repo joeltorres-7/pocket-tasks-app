@@ -2,13 +2,45 @@ import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/styles/text_styles.dart';
 
-class PhaseLoading extends StatelessWidget {
+class PhaseLoading extends StatefulWidget {
   final String loadingText;
   final String descriptionText;
   final Icon loadingIcon;
+  final bool rotateIcon;
 
-  const PhaseLoading({Key? key, required this.loadingText, required this.loadingIcon, this.descriptionText = ""})
-      : super(key: key);
+  const PhaseLoading(
+      {super.key,
+      required this.loadingText,
+      this.descriptionText = "",
+      required this.loadingIcon,
+      this.rotateIcon = false});
+
+  @override
+  State<PhaseLoading> createState() => _PhaseLoadingState();
+}
+
+class _PhaseLoadingState extends State<PhaseLoading>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.rotateIcon) {
+      _controller = AnimationController(
+        duration: const Duration(seconds: 3),
+        vsync: this,
+      )..repeat();
+    }
+  }
+
+  @override
+  void dispose() {
+    if (widget.rotateIcon) {
+      _controller.dispose();
+    }
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,25 +57,32 @@ class PhaseLoading extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                loadingIcon,
+                widget.rotateIcon
+                    ? RotationTransition(
+                        turns: _controller,
+                        child: widget.loadingIcon,
+                      )
+                    : widget.loadingIcon,
                 VerticalSpacing(12.0),
                 SizedBox(
                   width: screenWidth - (screenWidth * 0.4),
                   child: Column(
                     children: [
                       Text(
-                        loadingText,
+                        widget.loadingText,
                         style: AppTextStyles.heading1,
                         textAlign: TextAlign.center,
                       ),
-                      (descriptionText.isNotEmpty) ? Container(
-                        padding: const EdgeInsets.only(top: 8.0),
-                        child: Text(
-                          descriptionText,
-                          style: AppTextStyles.regularGray14,
-                          textAlign: TextAlign.center,
-                        ),
-                      ) : const SizedBox(),
+                      (widget.descriptionText.isNotEmpty)
+                          ? Container(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: Text(
+                                widget.descriptionText,
+                                style: AppTextStyles.regularGray14,
+                                textAlign: TextAlign.center,
+                              ),
+                            )
+                          : const SizedBox(),
                     ],
                   ),
                 ),
