@@ -423,7 +423,7 @@
   "@addTask": {
     "description": "Text used in button for adding new tasks."
   },
-  "editTask": "Add task",
+  "editTask": "Edit task",
   "@editTask": {
     "description": "Text used in button for editing tasks."
   },

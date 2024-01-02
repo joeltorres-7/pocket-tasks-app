@@ -63,7 +63,7 @@ class _CheckboxItemState extends State<CheckboxItem> {
   void _updatePreferenceState(String preferenceKey, bool pushState) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool(preferenceKey, pushState);
-    AudioManager.updatePreferences(); // Move it here
+    AudioManager.updatePreferences();
   }
 
   @override
