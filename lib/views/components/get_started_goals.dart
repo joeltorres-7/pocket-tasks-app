@@ -5,7 +5,6 @@ import 'package:pocket_tasks/models/UserData.dart';
 import 'package:pocket_tasks/views/components/goal_box.dart';
 import 'package:pocket_tasks/views/components/task_goals.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
-import 'package:pocket_tasks/views/styles/text_styles.dart';
 
 class GetStartedGoals extends StatefulWidget {
   final UserData userData;
@@ -47,7 +46,7 @@ class _GetStartedGoalsState extends State<GetStartedGoals> {
         children: [
           Text(
               AppLocalizations.of(context)!.yourGoals,
-              style: AppTextStyles.subheading1,
+              style:Theme.of(context).textTheme.displayMedium,
               textAlign: TextAlign.center,
           ),
           VerticalSpacing(24.0),

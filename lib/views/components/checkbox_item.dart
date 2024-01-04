@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:pocket_tasks/views/utils/audio_manager.dart';
 import 'package:rx_shared_preferences/rx_shared_preferences.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -97,12 +96,12 @@ class _CheckboxItemState extends State<CheckboxItem> {
                       children: [
                         Text(
                           widget.label,
-                          style: AppTextStyles.regularMedium14,
+                          style: Theme.of(context).textTheme.bodyMedium,
                           maxLines: 1,
                         ),
                         Text(
                           widget.description,
-                          style: AppTextStyles.regularGray14,
+                          style: Theme.of(context).textTheme.labelSmall,
                           textAlign: TextAlign.left,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
@@ -113,8 +112,8 @@ class _CheckboxItemState extends State<CheckboxItem> {
                   Transform.scale(
                     scale: 0.8,
                     child: Switch(
-                      activeColor: Colors.white,
-                      activeTrackColor: Colors.black,
+                      activeColor: Theme.of(context).colorScheme.inverseSurface,
+                      activeTrackColor: Theme.of(context).colorScheme.inversePrimary,
                       inactiveTrackColor: const Color(0xFFEBECEE),
                       value: isChecked,
                       onChanged: (value) {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/models/UserData.dart';
-import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
@@ -18,20 +17,20 @@ class GetStartedName extends StatelessWidget {
       children:[
         Text(
             AppLocalizations.of(context)!.yourName,
-            style: AppTextStyles.subheading1,
+            style: Theme.of(context).textTheme.displayMedium,
             textAlign: TextAlign.center,
         ),
         TextFormField(
           textAlign:  TextAlign.center,
           onChanged: onNameChanged,
-          style: AppTextStyles.heading1,
+          style: Theme.of(context).textTheme.displayLarge,
           decoration: InputDecoration(
             hintText: AppLocalizations.of(context)!.yourNameHint,
             border: const OutlineInputBorder(
               borderSide: BorderSide.none,
             ),
             filled: true,
-            fillColor: Colors.white,
+            fillColor: Theme.of(context).colorScheme.background,
           ),
           validator: (value) {
             if (value == null || value.isEmpty) {

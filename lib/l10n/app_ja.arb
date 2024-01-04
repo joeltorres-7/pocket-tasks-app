@@ -128,5 +128,7 @@
   "andConquer": "克服してください",
   "diveIntoPocketTasksNow": "さあ、PocketTasksにダイブしましょう！",
   "noTasksForToday": "今日のタスクはありません",
-  "enjoyYourDay": "良い一日を"
+  "enjoyYourDay": "良い一日を",
+  "selectTheme": "好みのテーマを選択",
+  "selectThemeDescription": "ユニークな個性を表現するテーマで、あなたの体験をカスタマイズ"
 }

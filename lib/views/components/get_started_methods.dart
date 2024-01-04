@@ -5,7 +5,6 @@ import 'package:pocket_tasks/models/UserData.dart';
 import 'package:pocket_tasks/views/components/method_box.dart';
 import 'package:pocket_tasks/views/components/task_methods.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
-import 'package:pocket_tasks/views/styles/text_styles.dart';
 
 class GetStartedMethods extends StatefulWidget {
   final UserData userData;
@@ -41,7 +40,7 @@ class _GetStartedMethodsState extends State<GetStartedMethods> {
         children: [
           Text(
               AppLocalizations.of(context)!.yourMethods,
-              style: AppTextStyles.subheading1,
+              style: Theme.of(context).textTheme.displayMedium,
               textAlign: TextAlign.center,
           ),
           VerticalSpacing(24.0),

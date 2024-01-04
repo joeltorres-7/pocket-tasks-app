@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/components/primary_button.dart';
 import 'package:pocket_tasks/views/components/priority_chip.dart';
-import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
-import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:pocket_tasks/views/utils/audio_manager.dart';
 import 'package:pocket_tasks/views/utils/database_manager.dart';
 
@@ -82,17 +80,20 @@ class _EditTaskViewState extends State<EditTaskView> {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: AppBar(
           centerTitle: true,
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).colorScheme.background,
           title: Text(
             AppLocalizations.of(context)!.editTask,
-            style: AppTextStyles.headingNav,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
           leading: IconButton(
               enableFeedback: false,
-              icon: const Icon(Icons.arrow_back),
+              icon: Icon(
+                Icons.arrow_back_rounded,
+                color: Theme.of(context).colorScheme.inversePrimary,
+              ),
               onPressed: () {
                 AudioManager.playFromName('back.wav');
                 Navigator.of(context).pop();
@@ -107,7 +108,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 child: IconButton(
-                  icon: Icon(Icons.delete_forever_rounded, color: AppColors.primaryRed),
+                  icon: Icon(Icons.delete_forever_rounded, color: Theme.of(context).colorScheme.primary),
                   padding: const EdgeInsets.all(12.0),
                   splashColor: const Color(0xFFFEF3F5),
                   constraints: const BoxConstraints(),
@@ -128,14 +129,14 @@ class _EditTaskViewState extends State<EditTaskView> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0, right: 24.0, bottom: 4.0, left: 24.0),
-                  child: Text(AppLocalizations.of(context)!.task, textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
+                  child: Text(AppLocalizations.of(context)!.task, textAlign: TextAlign.start, style: Theme.of(context).textTheme.labelMedium),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: TextFormField(
                     controller: titleController,
                     textAlign: TextAlign.start,
-                    style: AppTextStyles.heading1,
+                    style: Theme.of(context).textTheme.displayLarge,
                     onChanged: (inputValue) {
                       setState(() {
                         validTask = titleController.text.isNotEmpty;
@@ -157,7 +158,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                   child: TextFormField(
                     controller: descriptionController,
                     textAlign:  TextAlign.start,
-                    style: AppTextStyles.subheading1,
+                    style: Theme.of(context).textTheme.displayMedium,
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
                       hintText: AppLocalizations.of(context)!.taskDescription,
@@ -195,7 +196,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                               children: [
                                 DecoratedBox(
                                   decoration: BoxDecoration(
-                                      color: AppColors.primaryRed,
+                                      color: Theme.of(context).colorScheme.primary,
                                       borderRadius: BorderRadius.circular(16.0)
                                   ),
                                   child: const SizedBox(
@@ -206,7 +207,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                                 HorizontalSpacing(8.0),
                                 Text(
                                   AppLocalizations.of(context)!.highPriority,
-                                  style: AppTextStyles.regularMedium14,
+                                  style: Theme.of(context).textTheme.bodyMedium,
                                 ),
                               ],
                             )
@@ -217,7 +218,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                               children: [
                                 DecoratedBox(
                                   decoration: BoxDecoration(
-                                      color: AppColors.primaryBlue,
+                                      color: Theme.of(context).colorScheme.secondary,
                                       borderRadius: BorderRadius.circular(16.0)
                                   ),
                                   child: const SizedBox(
@@ -228,7 +229,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                                 HorizontalSpacing(8.0),
                                 Text(
                                   AppLocalizations.of(context)!.mediumPriority,
-                                  style: AppTextStyles.regularMedium14,
+                                  style: Theme.of(context).textTheme.bodyMedium,
                                 ),
                               ],
                             )
@@ -239,7 +240,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                               children: [
                                 DecoratedBox(
                                   decoration: BoxDecoration(
-                                      color: AppColors.primaryGray,
+                                      color: Theme.of(context).colorScheme.tertiary,
                                       borderRadius: BorderRadius.circular(16.0)
                                   ),
                                   child: const SizedBox(
@@ -250,7 +251,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                                 HorizontalSpacing(8.0),
                                 Text(
                                   AppLocalizations.of(context)!.lowPriority,
-                                  style: AppTextStyles.regularMedium14,
+                                  style: Theme.of(context).textTheme.bodyMedium,
                                 ),
                               ],
                             )
@@ -271,13 +272,13 @@ class _EditTaskViewState extends State<EditTaskView> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0, right: 24.0, bottom: 4.0, left: 24.0),
-                  child: Text(AppLocalizations.of(context)!.task, textAlign: TextAlign.start, style: AppTextStyles.smallLabel),
+                  child: Text(AppLocalizations.of(context)!.task, textAlign: TextAlign.start, style: Theme.of(context).textTheme.labelMedium),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 12.0),
-                    child: Text(widget.taskMap["title"], textAlign: TextAlign.start, style: AppTextStyles.heading1),
+                    child: Text(widget.taskMap["title"], textAlign: TextAlign.start, style: Theme.of(context).textTheme.displayLarge),
                   ),
                 ),
                 Padding(
@@ -287,7 +288,8 @@ class _EditTaskViewState extends State<EditTaskView> {
                     child: Text(
                         (widget.taskMap["description"].isNotEmpty ? widget.taskMap["description"] : AppLocalizations.of(context)!.noDescription),
                         textAlign: TextAlign.start,
-                        style: AppTextStyles.subheading1),
+                        style: Theme.of(context).textTheme.displayMedium
+                    ),
                   ),
                 ),
                 VerticalSpacing(16.0),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
-import 'package:pocket_tasks/views/styles/text_styles.dart';
 
 class TaskChip extends StatefulWidget {
   final String taskName;
@@ -29,9 +28,9 @@ class _TaskChipState extends State<TaskChip> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(widget.taskName, style: AppTextStyles.regularMedium14),
+              Text(widget.taskName, style: Theme.of(context).textTheme.bodyMedium),
               HorizontalSpacing(4.0),
-              const Icon(Icons.add, size: 18.0, color: Colors.black)
+              Icon(Icons.add, size: 18.0, color: Theme.of(context).colorScheme.inversePrimary)
             ],
           ),
         ),

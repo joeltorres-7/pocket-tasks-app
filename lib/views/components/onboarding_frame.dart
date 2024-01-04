@@ -124,6 +124,7 @@ class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProv
     prefs.setInt('preferredMethod', userData.preferredMethod.index);
     prefs.setBool('enableTaskReminders', true);
     prefs.setBool('enableSounds', true);
+    prefs.setString('userTheme', 'default');
   }
 
   bool _isContinueButtonEnabled() {
@@ -145,7 +146,7 @@ class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProv
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SizedBox(
         height: screenHeight,
         width: screenWidth,

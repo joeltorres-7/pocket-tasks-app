@@ -514,5 +514,13 @@
   "enjoyYourDay": "Enjoy your day",
   "@enjoyYourDay": {
     "description": "Wishing the user a pleasant day."
+  },
+  "selectTheme": "Select a preferred theme",
+  "@selectTheme": {
+    "description": "Text shown on theme view."
+  },
+  "selectThemeDescription": "Personalize your experience with a theme that expresses your unique personality",
+  "@selectThemeDescription": {
+    "description": "Description on theme selection view."
   }
 }

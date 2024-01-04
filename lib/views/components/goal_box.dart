@@ -28,10 +28,10 @@ class _GoalBoxState extends State<GoalBox> {
         duration: const Duration(milliseconds: 200), // Adjust the duration as needed
         decoration: BoxDecoration(
           border: Border.all(
-            color: widget.isSelected ? Colors.black : Colors.black12,
+            color: widget.isSelected ? Theme.of(context).colorScheme.inversePrimary : Theme.of(context).colorScheme.outlineVariant,
             width: 1.0,
           ),
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(10.0),
           boxShadow: widget.isSelected
               ? [

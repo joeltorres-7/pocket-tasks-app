@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/components/task_chip.dart';
 import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
-import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EmptyQueue extends StatefulWidget {
@@ -27,10 +26,10 @@ class _EmptyQueueState extends State<EmptyQueue> {
               size: 40.0, color: AppColors.primaryGray),
           VerticalSpacing(16.0),
           Text(AppLocalizations.of(context)!.noTasks,
-              style: AppTextStyles.heading1, textAlign: TextAlign.center),
+              style: Theme.of(context).textTheme.displayLarge, textAlign: TextAlign.center),
           Text(
             AppLocalizations.of(context)!.addTasks,
-            style: AppTextStyles.subheading1,
+            style: Theme.of(context).textTheme.displayMedium,
             textAlign: TextAlign.center,
           ),
           VerticalSpacing(16.0),

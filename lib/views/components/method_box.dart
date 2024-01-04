@@ -32,15 +32,15 @@ class _MethodBoxState extends State<MethodBox> {
         duration: const Duration(milliseconds: 200), // Adjust the duration as needed
         decoration: BoxDecoration(
           border: Border.all(
-            color: widget.isSelected ? Colors.black : Colors.black12,
+            color: widget.isSelected ? Theme.of(context).colorScheme.outline : Theme.of(context).colorScheme.outlineVariant,
             width: 1.0,
           ),
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(10.0),
           boxShadow: widget.isSelected
               ? [
-            const BoxShadow(
-              color: Color.fromRGBO(149, 157, 165, 0.2),
+            BoxShadow(
+              color: Theme.of(context).colorScheme.shadow,
               offset: Offset(0, 8),
               blurRadius: 24.0,
             ),
@@ -51,7 +51,11 @@ class _MethodBoxState extends State<MethodBox> {
           padding: const EdgeInsets.all(16.0),
           child: Row(
             children: [
-              Icon(widget.itemIcon, size: 24.0),
+              Icon(
+                  widget.itemIcon,
+                  size: 24.0,
+                color: Theme.of(context).colorScheme.inversePrimary,
+              ),
               HorizontalSpacing(16.0),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

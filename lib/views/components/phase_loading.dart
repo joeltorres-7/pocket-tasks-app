@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
-import 'package:pocket_tasks/views/styles/text_styles.dart';
 
 class PhaseLoading extends StatefulWidget {
   final String loadingText;
@@ -70,7 +69,7 @@ class _PhaseLoadingState extends State<PhaseLoading>
                     children: [
                       Text(
                         widget.loadingText,
-                        style: AppTextStyles.heading1,
+                        style: Theme.of(context).textTheme.displayLarge,
                         textAlign: TextAlign.center,
                       ),
                       (widget.descriptionText.isNotEmpty)
@@ -78,7 +77,7 @@ class _PhaseLoadingState extends State<PhaseLoading>
                               padding: const EdgeInsets.only(top: 8.0),
                               child: Text(
                                 widget.descriptionText,
-                                style: AppTextStyles.regularGray14,
+                                style: Theme.of(context).textTheme.labelSmall,
                                 textAlign: TextAlign.center,
                               ),
                             )

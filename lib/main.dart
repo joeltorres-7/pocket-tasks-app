@@ -5,8 +5,11 @@ import 'package:pocket_tasks/l10n/l10n.dart';
 import 'package:pocket_tasks/views/home_view.dart';
 import 'package:pocket_tasks/views/onboarding_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:pocket_tasks/views/styles/themes.dart';
 import 'package:pocket_tasks/views/utils/audio_manager.dart';
 import 'package:pocket_tasks/views/utils/local_notification_service.dart';
+import 'package:pocket_tasks/views/utils/theme_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -25,6 +28,7 @@ Future<void> main() async {
   int? userGoalIndex = prefs.getInt('userGoal');
   int? preferredMethodIndex = prefs.getInt('preferredMethod');
   bool validUser = (userName != null && userGoalIndex != null && preferredMethodIndex != null);
+
   SystemChrome.setPreferredOrientations(
     [
       DeviceOrientation.portraitUp,
@@ -32,7 +36,12 @@ Future<void> main() async {
     ]
   );
 
-  runApp(MyApp(userExists: validUser));
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeProvider(), // Make sure ThemeProvider is created here
+      child: MyApp(userExists: validUser),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -45,6 +54,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+  late ThemeProvider _themeProvider;
+
   @override
   void initState() {
     super.initState();
@@ -77,21 +88,29 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'PocketTasks',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    _themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    _themeProvider.loadTheme();
+    final isDarkModeEnabled = MediaQuery.of(context).platformBrightness == Brightness.dark;
+
+    return ChangeNotifierProvider(
+      create: (_) => ThemeProvider()..loadTheme(),
+      child: Consumer<ThemeProvider>(
+        builder: (context, themeProvider, child) {
+          return MaterialApp(
+            title: 'PocketTasks',
+            debugShowCheckedModeBanner: false,
+            theme: isDarkModeEnabled ? AppThemes.defaultDark : themeProvider.currentTheme,
+            supportedLocales: L10n.all,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            home: widget.userExists ? const HomeView() : const OnboardingView(),
+          );
+        },
       ),
-      supportedLocales: L10n.all,
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      home: widget.userExists ? const HomeView() : const OnboardingView(),
     );
   }
 }

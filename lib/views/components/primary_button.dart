@@ -22,7 +22,7 @@ class PrimaryButton extends StatelessWidget {
       padding: hasPadding ? const EdgeInsets.all(8.0) : EdgeInsets.zero,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: isButtonEnabled ? Colors.black : Colors.grey, // Adjust color based on enable/disable state
+          backgroundColor: isButtonEnabled ? Theme.of(context).colorScheme.inversePrimary : Colors.grey, // Adjust color based on enable/disable state
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
@@ -32,8 +32,8 @@ class PrimaryButton extends StatelessWidget {
         onPressed: isButtonEnabled ? onButtonPressed : null, // Disable the button if not enabled
         child: Text(
           buttonText,
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.inverseSurface,
           ),
         ),
       ),
