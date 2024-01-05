@@ -113,8 +113,8 @@ class _CheckboxItemState extends State<CheckboxItem> {
                     scale: 0.8,
                     child: Switch(
                       activeColor: Theme.of(context).colorScheme.inverseSurface,
-                      activeTrackColor: Theme.of(context).colorScheme.inversePrimary,
-                      inactiveTrackColor: const Color(0xFFEBECEE),
+                      activeTrackColor: Theme.of(context).colorScheme.onPrimary,
+                      inactiveTrackColor: Theme.of(context).colorScheme.background,
                       value: isChecked,
                       onChanged: (value) {
                         try {
