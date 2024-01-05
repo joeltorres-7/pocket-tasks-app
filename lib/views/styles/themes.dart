@@ -166,4 +166,23 @@ class AppThemes {
     shadow: AppColors.highSakuraLight.withOpacity(0.2),
     brightness: Brightness.light,
   );
+
+  static ThemeData sakuraDark = _generateThemeData(
+    background: AppColors.backgroundBlack,
+    surface: AppColors.darkSurface1,
+    onSurface: Colors.white,
+    onSurfaceVariant: AppColors.secondarySakuraDark,
+    outline: AppColors.highSakuraDark,
+    outlineVariant: AppColors.disabledOutlineSakuraDark,
+    primary: AppColors.highSakuraDark,
+    secondary: AppColors.mediumSakuraDark,
+    onSecondary: AppColors.highSakuraDark,
+    tertiary: AppColors.lowSakuraDark,
+    onTertiary: AppColors.tertiarySakuraDark,
+    inversePrimary: AppColors.primarySakuraDark,
+    inverseSurface: Colors.black,
+    scrim: AppColors.disabledDefaultLight,
+    shadow: AppColors.highSakuraDark.withOpacity(0.2),
+    brightness: Brightness.dark,
+  );
 }

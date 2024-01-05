@@ -3,12 +3,15 @@ import 'package:pocket_tasks/views/styles/themes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeProvider extends ChangeNotifier {
-  ThemeData _currentTheme = AppThemes.defaultLight;
+  late ThemeData _currentTheme = AppThemes.defaultLight;
+  late ThemeData _currentDarkTheme = AppThemes.defaultDark;
 
   ThemeData get currentTheme => _currentTheme;
+  ThemeData get currentDarkTheme => _currentDarkTheme;
 
   Future<void> setTheme(String themeId) async {
     _currentTheme = stringToTheme(themeId);
+    _currentDarkTheme = stringToTheme(themeId, isDarkMode: true);
     notifyListeners();
 
     final prefs = await SharedPreferences.getInstance();
@@ -17,22 +20,24 @@ class ThemeProvider extends ChangeNotifier {
 
   Future<void> loadTheme() async {
     final prefs = await SharedPreferences.getInstance();
-    final savedTheme = prefs.getString('userTheme');
+    final themeId = prefs.getString('userTheme');
 
-    if (savedTheme != null) {
-      _currentTheme = stringToTheme(savedTheme);
+    if (themeId != null) {
+      _currentTheme = stringToTheme(themeId);
+      _currentDarkTheme = stringToTheme(themeId, isDarkMode: true);
+
       notifyListeners();
     }
   }
 
-  ThemeData stringToTheme(String themeString) {
+  ThemeData stringToTheme(String themeString, {bool isDarkMode = false}) {
     switch (themeString) {
-      case 'default ':
-        return AppThemes.defaultLight;
+      case 'default':
+        return isDarkMode ? AppThemes.defaultDark : AppThemes.defaultLight;
       case 'sakura':
-        return AppThemes.sakuraLight;
+        return isDarkMode ? AppThemes.sakuraDark : AppThemes.sakuraLight;
       default:
-        return AppThemes.defaultLight;
+        return isDarkMode ? AppThemes.defaultDark : AppThemes.defaultLight;
     }
   }
 }

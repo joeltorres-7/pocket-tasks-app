@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -5,7 +7,6 @@ import 'package:pocket_tasks/l10n/l10n.dart';
 import 'package:pocket_tasks/views/home_view.dart';
 import 'package:pocket_tasks/views/onboarding_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:pocket_tasks/views/styles/themes.dart';
 import 'package:pocket_tasks/views/utils/audio_manager.dart';
 import 'package:pocket_tasks/views/utils/local_notification_service.dart';
 import 'package:pocket_tasks/views/utils/theme_provider.dart';
@@ -30,16 +31,15 @@ Future<void> main() async {
   bool validUser = (userName != null && userGoalIndex != null && preferredMethodIndex != null);
 
   SystemChrome.setPreferredOrientations(
-    [
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown
-    ]
+      [
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown
+      ]
   );
 
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => ThemeProvider(), // Make sure ThemeProvider is created here
-      child: MyApp(userExists: validUser),
+    MyApp(
+        userExists: validUser
     ),
   );
 }
@@ -54,8 +54,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
-  late ThemeProvider _themeProvider;
-
   @override
   void initState() {
     super.initState();
@@ -76,22 +74,14 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-      // App is in the foreground
-      // Request audio focus and resume playback if needed
       AudioManager.requestAudioFocus();
     } else {
-      // App is in the background
-      // Pause playback and release audio focus if needed
       AudioManager.stop();
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    _themeProvider = Provider.of<ThemeProvider>(context, listen: false);
-    _themeProvider.loadTheme();
-    final isDarkModeEnabled = MediaQuery.of(context).platformBrightness == Brightness.dark;
-
     return ChangeNotifierProvider(
       create: (_) => ThemeProvider()..loadTheme(),
       child: Consumer<ThemeProvider>(
@@ -99,7 +89,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           return MaterialApp(
             title: 'PocketTasks',
             debugShowCheckedModeBanner: false,
-            theme: isDarkModeEnabled ? AppThemes.defaultDark : themeProvider.currentTheme,
+            theme: themeProvider.currentTheme,
+            darkTheme: themeProvider.currentDarkTheme,
             supportedLocales: L10n.all,
             localizationsDelegates: const [
               AppLocalizations.delegate,
