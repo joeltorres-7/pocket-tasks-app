@@ -22,7 +22,7 @@ class PrimaryButton extends StatelessWidget {
       padding: hasPadding ? const EdgeInsets.all(8.0) : EdgeInsets.zero,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: isButtonEnabled ? Theme.of(context).colorScheme.inversePrimary : Colors.grey, // Adjust color based on enable/disable state
+          backgroundColor: isButtonEnabled ? Theme.of(context).colorScheme.inversePrimary : Theme.of(context).colorScheme.onTertiary, // Adjust color based on enable/disable state
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),

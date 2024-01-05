@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/components/primary_button.dart';
 import 'package:pocket_tasks/views/components/priority_chip.dart';
+import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/utils/audio_manager.dart';
 import 'package:pocket_tasks/views/utils/database_manager.dart';
@@ -149,7 +150,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                         borderSide: BorderSide.none,
                       ),
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: AppColors.primaryWhite,
                     ),
                   ),
                 ),
@@ -166,7 +167,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                         borderSide: BorderSide.none,
                       ),
                       filled: true,
-                      fillColor: Colors.white,
+                      fillColor: AppColors.primaryWhite,
                     ),
                   ),
                 ),
@@ -187,7 +188,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                       icon: const Icon(Icons.keyboard_arrow_down_rounded),
                       iconSize: 24.0,
                       elevation: 4,
-                      dropdownColor: Colors.white,
+                      dropdownColor: AppColors.primaryWhite,
                       borderRadius: BorderRadius.circular(16.0),
                       items: [
                         DropdownMenuItem(

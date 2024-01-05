@@ -22,8 +22,11 @@ class _EmptyQueueState extends State<EmptyQueue> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Icon(Icons.task_alt_rounded,
-              size: 40.0, color: AppColors.primaryGray),
+          Icon(
+              Icons.task_alt_rounded,
+              size: 40.0,
+              color: Theme.of(context).colorScheme.surfaceVariant,
+          ),
           VerticalSpacing(16.0),
           Text(AppLocalizations.of(context)!.noTasks,
               style: Theme.of(context).textTheme.displayLarge, textAlign: TextAlign.center),

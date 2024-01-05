@@ -20,7 +20,7 @@ class _TaskChipState extends State<TaskChip> {
       child: DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.0),
-          border: Border.all(width: 1.0, color: AppColors.tertiaryGray)
+          border: Border.all(width: 1.0, color: Theme.of(context).colorScheme.onInverseSurface)
         ),
         child: Padding(
           padding: const EdgeInsets.only(top: 8.0, right: 16.0, bottom: 8.0, left: 16.0),

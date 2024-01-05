@@ -4,9 +4,11 @@ class AppColors {
   // Default Light Theme
 
   static Color primaryBlack = const Color(0xFF000000);
+  static Color primaryWhite = const Color(0xFFFCFCFC);
   static Color backgroundBlack = const Color(0xFF121212);
   static Color disabledDefaultLight = const Color(0xFF666666);
   static Color disabledOutlineDefaultLight = const Color(0xFFE5E8E9);
+  static Color outlineDefaultLight = const Color(0xFFD9D9D9);
   static Color primaryRed = const Color(0xFFEE4266);
   static Color primaryBlue = const Color(0xFF437BFF);
   static Color primaryYellow = const Color(0xFFFFAE03);
@@ -19,11 +21,15 @@ class AppColors {
 
   static Color secondaryDefaultDark = const Color(0xFF686868);
   static Color darkSurface1 = const Color(0xFF393939);
+  static Color outlineDefaultDark = const Color(0xFFD9D9D9);
+  static Color disabledDefaultDark = const Color(0xFFD9D9D9);
   static Color disabledOutlineDefaultDark = const Color(0xFF484848);
-  static Color tertiaryDefaultDark = const Color(0xFF666666);
+  static Color tertiaryDefaultDark = const Color(0xFFCCCCCC);
 
   // Sakura Light Theme
 
+  static Color outlineSakuraLight = const Color(0xFFFFA9BF);
+  static Color disabledSakuraLight = const Color(0xFFFDA9BE);
   static Color disabledOutlineSakuraLight = const Color(0xFFFEE2E9);
   static Color primarySakuraLight = const Color(0xFF4D2600);
   static Color secondarySakuraLight = const Color(0xFFFFF3F6);
@@ -34,16 +40,20 @@ class AppColors {
 
   // Sakura Dark Theme
 
+  static Color outlineSakuraDark = const Color(0xFFFFA9BF);
+  static Color disabledSakuraDark = const Color(0xFFF6DDE3);
   static Color disabledOutlineSakuraDark = const Color(0xFF8C7281);
-  static Color primarySakuraDark = const Color(0xFFFFF3F6);
+  static Color primarySakuraDark = const Color(0xFFFFE5EC);
   static Color secondarySakuraDark = const Color(0xFF26100C);
   static Color highSakuraDark = const Color(0xFFFB6F92);
   static Color mediumSakuraDark = const Color(0xFFCC758F);
   static Color lowSakuraDark = const Color(0xFFA68093);
-  static Color tertiarySakuraDark = const Color(0xFF8D745C);
+  static Color tertiarySakuraDark = const Color(0xFFCCB7BD);
 
   // Breakfast Orange Light Theme
 
+  static Color outlineOrangeLight = const Color(0xFFF5B990);
+  static Color disabledOrangeLight = const Color(0xFFF6C3A0);
   static Color disabledOutlineOrangeLight = const Color(0xFFFEF7F2);
   static Color primaryOrangeLight = const Color(0xFF70482E);
   static Color secondaryOrangeLight = const Color(0xFFFFF3F6);
@@ -54,31 +64,13 @@ class AppColors {
 
   // Breakfast Orange Dark Theme
 
+  static Color outlineOrangeDark = const Color(0xFFF5B990);
+  static Color disabledOrangeDark = const Color(0xFFF6BC75);
   static Color disabledOutlineOrangeDark = const Color(0xFF5E5E5E);
-  static Color primaryOrangeDark = const Color(0xFFFFC379);
+  static Color primaryOrangeDark = const Color(0xFFFFE6C6);
   static Color secondaryOrangeDark = const Color(0xFF26100C);
   static Color highOrangeDark = const Color(0xFFF09B61);
   static Color mediumOrangeDark = const Color(0xFFFBC077);
   static Color lowOrangeDark = const Color(0xFFD9EED9);
-  static Color tertiaryOrangeDark = const Color(0xFFC79C67);
-
-  // Neon Dreams Light Theme
-
-  static Color disabledOutlineNeonDreamsLight = const Color(0xFF00FFFF);
-  static Color primaryNeonDreamsLight = const Color(0xFFFFD700);
-  static Color secondaryNeonDreamsLight = const Color(0xFFFF1493);
-  static Color highNeonDreamsLight = const Color(0xFF00FFFF);
-  static Color mediumNeonDreamsLight = const Color(0xFF8A2BE2);
-  static Color lowNeonDreamsLight = const Color(0xFF00FFFF);
-  static Color tertiaryNeonDreamsLight = const Color(0xFFFFD700);
-
-  // Neon Dreams Dark Theme
-
-  static Color disabledOutlineNeonDreamsDark = const Color(0xFF00FFFF);
-  static Color primaryNeonDreamsDark = const Color(0xFF8A2BE2);
-  static Color secondaryNeonDreamsDark = const Color(0xFF00CED1);
-  static Color highNeonDreamsDark = const Color(0xFF00FFFF);
-  static Color mediumNeonDreamsDark = const Color(0xFF4169E1);
-  static Color lowNeonDreamsDark = const Color(0xFF00FFFF);
-  static Color tertiaryNeonDreamsDark = const Color(0xFF8A2BE2);
+  static Color tertiaryOrangeDark = const Color(0xFFCCB89E);
 }

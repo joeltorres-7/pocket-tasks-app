@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/components/priority_chip.dart';
+import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/utils/audio_manager.dart';
@@ -87,7 +88,7 @@ class _TaskCardState extends State<TaskCard> {
                       ),
                     ),
                     Checkbox(
-                      checkColor: Colors.white,
+                      checkColor: AppColors.primaryWhite,
                       fillColor: MaterialStateProperty.all(Theme.of(context).colorScheme.onSecondary),
                       value: isChecked,
                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,

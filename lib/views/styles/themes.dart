@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/styles/colors.dart';
 
 class AppThemes {
-  static const _appBarThemeLight = AppBarTheme(
+  static final _appBarThemeLight = AppBarTheme(
     color: Colors.black,
     iconTheme: IconThemeData(color: Colors.black),
   );
 
-  static const _appBarThemeDark = AppBarTheme(
-    color: Colors.white,
-    iconTheme: IconThemeData(color: Colors.white),
+  static final _appBarThemeDark = AppBarTheme(
+    color: AppColors.primaryWhite,
+    iconTheme: IconThemeData(color: AppColors.primaryWhite),
   );
 
   static ThemeData _generateThemeData({
     required Color background,
     required Color surface,
+    required Color surfaceVariant,
     required Color onSurface,
     required Color onSurfaceVariant,
     required Color outline,
@@ -26,6 +27,7 @@ class AppThemes {
     required Color onTertiary,
     required Color inversePrimary,
     required Color inverseSurface,
+    required Color onInverseSurface,
     required Color scrim,
     required Color shadow,
     required Brightness brightness,
@@ -52,7 +54,7 @@ class AppThemes {
             fontSize: 16,
             height: 1.6,
             fontWeight: FontWeight.normal,
-            color: inversePrimary),
+            color: onTertiary),
         titleLarge: TextStyle(
           fontSize: 18.0,
           fontWeight: FontWeight.bold,
@@ -67,7 +69,7 @@ class AppThemes {
             fontFamily: 'CerebriSansPro',
             fontSize: 14,
             fontWeight: FontWeight.normal,
-            color: inversePrimary),
+            color: onTertiary),
         bodyMedium: TextStyle(
             fontFamily: 'CerebriSansPro',
             fontSize: 14,
@@ -92,6 +94,7 @@ class AppThemes {
         surface: surface,
         onSurface: onSurface,
         onSurfaceVariant: onSurfaceVariant,
+        surfaceVariant: surfaceVariant,
         outline: outline,
         outlineVariant: outlineVariant,
         primary: primary,
@@ -101,6 +104,7 @@ class AppThemes {
         onTertiary: onTertiary,
         inversePrimary: inversePrimary,
         inverseSurface: inverseSurface,
+        onInverseSurface: onInverseSurface,
         seedColor: Colors.black,
         scrim: scrim,
         shadow: shadow,
@@ -111,9 +115,10 @@ class AppThemes {
   }
 
   static ThemeData defaultLight = _generateThemeData(
-    background: Colors.white,
-    surface: Colors.white,
-    onSurface: Colors.white,
+    background: AppColors.primaryWhite,
+    surface: AppColors.primaryWhite,
+    surfaceVariant: AppColors.disabledDefaultLight,
+    onSurface: AppColors.primaryWhite,
     onSurfaceVariant: AppColors.secondaryGray,
     outline: AppColors.primaryBlack,
     outlineVariant: AppColors.disabledOutlineDefaultLight,
@@ -123,7 +128,8 @@ class AppThemes {
     tertiary: AppColors.primaryGray,
     onTertiary: AppColors.tertiaryDefaultLight,
     inversePrimary: Colors.black,
-    inverseSurface: Colors.white,
+    inverseSurface: AppColors.primaryWhite,
+    onInverseSurface: AppColors.outlineDefaultLight,
     scrim: AppColors.disabledDefaultLight,
     shadow: Colors.grey.withOpacity(0.2),
     brightness: Brightness.light,
@@ -132,17 +138,19 @@ class AppThemes {
   static ThemeData defaultDark = _generateThemeData(
     background: AppColors.backgroundBlack,
     surface: AppColors.darkSurface1,
-    onSurface: Colors.white,
+    surfaceVariant: AppColors.disabledDefaultDark,
+    onSurface: AppColors.primaryWhite,
     onSurfaceVariant: AppColors.secondaryDefaultDark,
-    outline: Colors.white,
+    outline: AppColors.primaryWhite,
     outlineVariant: AppColors.disabledOutlineDefaultDark,
     primary: AppColors.primaryRed,
     secondary: AppColors.primaryBlue,
     onSecondary: AppColors.primaryBlue,
     tertiary: AppColors.primaryGray,
     onTertiary: AppColors.tertiaryDefaultDark,
-    inversePrimary: Colors.white,
+    inversePrimary: AppColors.primaryWhite,
     inverseSurface: Colors.black,
+    onInverseSurface: AppColors.outlineDefaultDark,
     scrim: AppColors.disabledDefaultLight,
     shadow: Colors.grey.withOpacity(0.2),
     brightness: Brightness.dark,
@@ -151,8 +159,9 @@ class AppThemes {
   // Sakura Theme Colors
 
   static ThemeData sakuraLight = _generateThemeData(
-    background: Colors.white,
-    surface: Colors.white,
+    background: AppColors.primaryWhite,
+    surface: AppColors.primaryWhite,
+    surfaceVariant: AppColors.disabledSakuraLight,
     onSurface: AppColors.primarySakuraLight,
     onSurfaceVariant: AppColors.secondarySakuraLight,
     outline: AppColors.highSakuraLight,
@@ -163,7 +172,8 @@ class AppThemes {
     tertiary: AppColors.lowSakuraLight,
     onTertiary: AppColors.tertiarySakuraLight,
     inversePrimary: AppColors.primarySakuraLight,
-    inverseSurface: Colors.white,
+    inverseSurface: AppColors.primaryWhite,
+    onInverseSurface: AppColors.outlineSakuraLight,
     scrim: AppColors.disabledDefaultLight,
     shadow: AppColors.highSakuraLight.withOpacity(0.2),
     brightness: Brightness.light,
@@ -172,7 +182,8 @@ class AppThemes {
   static ThemeData sakuraDark = _generateThemeData(
     background: AppColors.backgroundBlack,
     surface: AppColors.darkSurface1,
-    onSurface: Colors.white,
+    surfaceVariant: AppColors.disabledSakuraDark,
+    onSurface: AppColors.primaryWhite,
     onSurfaceVariant: AppColors.secondarySakuraDark,
     outline: AppColors.highSakuraDark,
     outlineVariant: AppColors.disabledOutlineSakuraDark,
@@ -183,6 +194,7 @@ class AppThemes {
     onTertiary: AppColors.tertiarySakuraDark,
     inversePrimary: AppColors.primarySakuraDark,
     inverseSurface: Colors.black,
+    onInverseSurface: AppColors.outlineSakuraDark,
     scrim: AppColors.disabledDefaultLight,
     shadow: AppColors.highSakuraDark.withOpacity(0.2),
     brightness: Brightness.dark,
@@ -191,8 +203,9 @@ class AppThemes {
   // Orange Breakfast Theme Colors
 
   static ThemeData orangeBreakfastLight = _generateThemeData(
-    background: Colors.white,
-    surface: Colors.white,
+    background: AppColors.primaryWhite,
+    surface: AppColors.primaryWhite,
+    surfaceVariant: AppColors.disabledOrangeLight,
     onSurface: AppColors.primaryOrangeLight,
     onSurfaceVariant: AppColors.secondaryOrangeLight,
     outline: AppColors.highOrangeLight,
@@ -203,7 +216,8 @@ class AppThemes {
     tertiary: AppColors.lowOrangeLight,
     onTertiary: AppColors.tertiaryOrangeLight,
     inversePrimary: AppColors.primaryOrangeLight,
-    inverseSurface: Colors.white,
+    inverseSurface: AppColors.primaryWhite,
+    onInverseSurface: AppColors.outlineOrangeLight,
     scrim: AppColors.disabledDefaultLight,
     shadow: AppColors.highOrangeLight.withOpacity(0.2),
     brightness: Brightness.light,
@@ -212,7 +226,8 @@ class AppThemes {
   static ThemeData orangeBreakfastDark = _generateThemeData(
     background: AppColors.backgroundBlack,
     surface: AppColors.darkSurface1,
-    onSurface: Colors.white,
+    surfaceVariant: AppColors.disabledOrangeDark,
+    onSurface: AppColors.primaryWhite,
     onSurfaceVariant: AppColors.secondaryOrangeDark,
     outline: AppColors.highOrangeDark,
     outlineVariant: AppColors.disabledOutlineOrangeDark,
@@ -223,6 +238,7 @@ class AppThemes {
     onTertiary: AppColors.tertiaryOrangeDark,
     inversePrimary: AppColors.primaryOrangeDark,
     inverseSurface: Colors.black,
+    onInverseSurface: AppColors.outlineOrangeDark,
     scrim: AppColors.disabledDefaultLight,
     shadow: AppColors.highOrangeDark.withOpacity(0.2),
     brightness: Brightness.dark,
