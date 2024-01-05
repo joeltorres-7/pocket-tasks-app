@@ -36,6 +36,8 @@ class ThemeProvider extends ChangeNotifier {
         return isDarkMode ? AppThemes.defaultDark : AppThemes.defaultLight;
       case 'sakura':
         return isDarkMode ? AppThemes.sakuraDark : AppThemes.sakuraLight;
+      case 'orangeBreakfast':
+        return isDarkMode ? AppThemes.orangeBreakfastDark : AppThemes.orangeBreakfastLight;
       default:
         return isDarkMode ? AppThemes.defaultDark : AppThemes.defaultLight;
     }

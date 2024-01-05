@@ -7,7 +7,7 @@ class AppThemes {
     iconTheme: IconThemeData(color: Colors.black),
   );
 
-  static const _appBarThemeDark = const AppBarTheme(
+  static const _appBarThemeDark = AppBarTheme(
     color: Colors.white,
     iconTheme: IconThemeData(color: Colors.white),
   );
@@ -148,6 +148,8 @@ class AppThemes {
     brightness: Brightness.dark,
   );
 
+  // Sakura Theme Colors
+
   static ThemeData sakuraLight = _generateThemeData(
     background: Colors.white,
     surface: Colors.white,
@@ -183,6 +185,46 @@ class AppThemes {
     inverseSurface: Colors.black,
     scrim: AppColors.disabledDefaultLight,
     shadow: AppColors.highSakuraDark.withOpacity(0.2),
+    brightness: Brightness.dark,
+  );
+
+  // Orange Breakfast Theme Colors
+
+  static ThemeData orangeBreakfastLight = _generateThemeData(
+    background: Colors.white,
+    surface: Colors.white,
+    onSurface: AppColors.primaryOrangeLight,
+    onSurfaceVariant: AppColors.secondaryOrangeLight,
+    outline: AppColors.highOrangeLight,
+    outlineVariant: AppColors.disabledOutlineOrangeLight,
+    primary: AppColors.highOrangeLight,
+    secondary: AppColors.mediumOrangeLight,
+    onSecondary: AppColors.highOrangeLight,
+    tertiary: AppColors.lowOrangeLight,
+    onTertiary: AppColors.tertiaryOrangeLight,
+    inversePrimary: AppColors.primaryOrangeLight,
+    inverseSurface: Colors.white,
+    scrim: AppColors.disabledDefaultLight,
+    shadow: AppColors.highOrangeLight.withOpacity(0.2),
+    brightness: Brightness.light,
+  );
+
+  static ThemeData orangeBreakfastDark = _generateThemeData(
+    background: AppColors.backgroundBlack,
+    surface: AppColors.darkSurface1,
+    onSurface: Colors.white,
+    onSurfaceVariant: AppColors.secondaryOrangeDark,
+    outline: AppColors.highOrangeDark,
+    outlineVariant: AppColors.disabledOutlineOrangeDark,
+    primary: AppColors.highOrangeDark,
+    secondary: AppColors.mediumOrangeDark,
+    onSecondary: AppColors.highOrangeDark,
+    tertiary: AppColors.lowOrangeDark,
+    onTertiary: AppColors.tertiaryOrangeDark,
+    inversePrimary: AppColors.primaryOrangeDark,
+    inverseSurface: Colors.black,
+    scrim: AppColors.disabledDefaultLight,
+    shadow: AppColors.highOrangeDark.withOpacity(0.2),
     brightness: Brightness.dark,
   );
 }

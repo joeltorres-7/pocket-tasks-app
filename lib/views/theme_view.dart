@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/components/method_box.dart';
@@ -117,6 +115,20 @@ class _ThemeViewState extends State<ThemeView> {
                           isSelected: _isThemeSelected('sakura'),
                           itemDescription: "Inspirado por la tonalidad de los arboles de cerezos"
                       ),
+                      VerticalSpacing(8.0),
+                      MethodBox(
+                          itemName: "Orange Breakfast",
+                          itemIcon: Icons.free_breakfast_rounded,
+                          onTap: () {
+                            AudioManager.playFromName('back.wav');
+                            _updateSelected('orangeBreakfast');
+                            Provider.of<ThemeProvider>(context, listen: false)
+                                .setTheme('orangeBreakfast');
+                          },
+                          isSelected: _isThemeSelected('orangeBreakfast'),
+                          itemDescription: "Cálido y fresco como un desayuno"
+                      ),
+                      VerticalSpacing(8.0),
                     ],
                   ),
                 ),
