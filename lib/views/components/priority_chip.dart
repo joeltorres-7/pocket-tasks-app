@@ -13,14 +13,14 @@ class PriorityChip extends StatelessWidget {
     Color priorityColor;
 
     if (priorityLevel == "high") {
-      priorityText = Text(AppLocalizations.of(context)!.highPriority, style: const TextStyle(color: Colors.white, fontSize: 12.0));
-      priorityColor = AppColors.primaryRed;
+      priorityText = Text(AppLocalizations.of(context)!.highPriority, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 12.0));
+      priorityColor = Theme.of(context).colorScheme.primary;
     } else if (priorityLevel == "medium") {
-      priorityText = Text(AppLocalizations.of(context)!.mediumPriority, style: const TextStyle(color: Colors.white, fontSize: 12.0));
-      priorityColor = AppColors.primaryBlue;
+      priorityText = Text(AppLocalizations.of(context)!.mediumPriority, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 12.0));
+      priorityColor = Theme.of(context).colorScheme.secondary;
     } else {
-      priorityText = Text(AppLocalizations.of(context)!.lowPriority, style: const TextStyle(color: Colors.white, fontSize: 12.0));
-      priorityColor = AppColors.primaryGray;
+      priorityText = Text(AppLocalizations.of(context)!.lowPriority, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 12.0));
+      priorityColor = Theme.of(context).colorScheme.tertiary;
     }
 
     return DecoratedBox(

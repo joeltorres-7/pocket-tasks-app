@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
-import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:pocket_tasks/views/utils/audio_manager.dart';
 
 class PrivacyView extends StatelessWidget {
@@ -12,7 +11,7 @@ class PrivacyView extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.background,
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
@@ -20,14 +19,17 @@ class PrivacyView extends StatelessWidget {
               centerTitle: true,
               elevation: 4,
               shadowColor: Colors.grey[100]!,
-              backgroundColor: Colors.white,
+              backgroundColor: Theme.of(context).colorScheme.background,
               scrolledUnderElevation: 0.4,
               title: Text(
                 AppLocalizations.of(context)!.privacyLabel,
-                style: AppTextStyles.headingNav,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               leading: IconButton(
-                  icon: const Icon(Icons.arrow_back),
+                  icon: Icon(
+                    Icons.arrow_back_rounded,
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
                   enableFeedback: false,
                   onPressed: () {
                     AudioManager.playFromName('back.wav');
@@ -45,97 +47,97 @@ class PrivacyView extends StatelessWidget {
                     children: [
                       Text(
                         AppLocalizations.of(context)!.privacyPolicyTitle,
-                        style: AppTextStyles.boldHeading,
+                        style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.lastUpdatedLabel,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.privacyPolicyText,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.informationWeCollectLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.informationWeCollectText,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.howWeUseYourInformationLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.howWeUseYourInformationText,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.dataStorageLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.dataStorageText,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.yourChoicesLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.yourChoicesText,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.securityLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.securityText,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.childrensPrivacyLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.childrensPrivacyText,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.changesToPrivacyPolicyLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.changesToPrivacyPolicyText,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.contactUsLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.contactUsText,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0)
                     ],

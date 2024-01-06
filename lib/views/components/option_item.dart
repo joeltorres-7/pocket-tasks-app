@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pocket_tasks/views/styles/text_styles.dart';
 
 class OptionItem extends StatefulWidget {
   final String label;
@@ -33,12 +32,12 @@ class _OptionItemState extends State<OptionItem> {
                 children: [
                   Text(
                     widget.label,
-                    style: AppTextStyles.regularMedium14,
+                    style: Theme.of(context).textTheme.bodyMedium,
                     maxLines: 1,
                   ),
                   Text(
                     widget.description,
-                    style: AppTextStyles.regularGray14,
+                    style: Theme.of(context).textTheme.labelSmall,
                     textAlign: TextAlign.left,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -49,7 +48,9 @@ class _OptionItemState extends State<OptionItem> {
             if (widget.isClickable) ... [
               IconButton(
                 onPressed: widget.onTap,
-                icon: const Icon(Icons.keyboard_arrow_right_rounded),
+                icon: Icon(
+                    Icons.keyboard_arrow_right_rounded, color: Theme.of(context).colorScheme.onTertiary,
+                ),
               )
             ]
           ],

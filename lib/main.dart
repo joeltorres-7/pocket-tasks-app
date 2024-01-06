@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -7,6 +9,8 @@ import 'package:pocket_tasks/views/onboarding_view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/utils/audio_manager.dart';
 import 'package:pocket_tasks/views/utils/local_notification_service.dart';
+import 'package:pocket_tasks/views/utils/theme_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -25,14 +29,19 @@ Future<void> main() async {
   int? userGoalIndex = prefs.getInt('userGoal');
   int? preferredMethodIndex = prefs.getInt('preferredMethod');
   bool validUser = (userName != null && userGoalIndex != null && preferredMethodIndex != null);
+
   SystemChrome.setPreferredOrientations(
-    [
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown
-    ]
+      [
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown
+      ]
   );
 
-  runApp(MyApp(userExists: validUser));
+  runApp(
+    MyApp(
+        userExists: validUser
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -65,33 +74,34 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-      // App is in the foreground
-      // Request audio focus and resume playback if needed
       AudioManager.requestAudioFocus();
     } else {
-      // App is in the background
-      // Pause playback and release audio focus if needed
       AudioManager.stop();
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'PocketTasks',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return ChangeNotifierProvider(
+      create: (_) => ThemeProvider()..loadTheme(),
+      child: Consumer<ThemeProvider>(
+        builder: (context, themeProvider, child) {
+          return MaterialApp(
+            title: 'PocketTasks',
+            debugShowCheckedModeBanner: false,
+            theme: themeProvider.currentTheme,
+            darkTheme: themeProvider.currentDarkTheme,
+            supportedLocales: L10n.all,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            home: widget.userExists ? const HomeView() : const OnboardingView(),
+          );
+        },
       ),
-      supportedLocales: L10n.all,
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      home: widget.userExists ? const HomeView() : const OnboardingView(),
     );
   }
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/components/priority_chip.dart';
 import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
-import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/utils/audio_manager.dart';
 
@@ -40,12 +39,12 @@ class _TaskCardState extends State<TaskCard> {
         opacity: isChecked ? 0.5 : 1.0,
         child: DecoratedBox(
           decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: const Color(0xFFE5E8E9)),
+            color: Theme.of(context).colorScheme.surface,
+            border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
             borderRadius: BorderRadius.circular(16.0),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.2),
+                color: Theme.of(context).colorScheme.shadow,
                 spreadRadius: 1,
                 blurRadius: 6,
                 offset: const Offset(0, 1), // changes position of shadow
@@ -67,7 +66,7 @@ class _TaskCardState extends State<TaskCard> {
                         children: [
                           Text(
                               widget.title,
-                              style: AppTextStyles.regularMedium14,
+                              style: Theme.of(context).textTheme.bodyMedium,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                           ),
@@ -75,13 +74,13 @@ class _TaskCardState extends State<TaskCard> {
                           widget.hasDescription
                               ? Text(
                               widget.description,
-                              style: AppTextStyles.regular14,
+                              style: Theme.of(context).textTheme.bodySmall,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                           )
                               : Text(
                               AppLocalizations.of(context)!.noDescription,
-                              style: AppTextStyles.regularGray14,
+                              style: Theme.of(context).textTheme.labelSmall,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                           ),
@@ -89,8 +88,8 @@ class _TaskCardState extends State<TaskCard> {
                       ),
                     ),
                     Checkbox(
-                      checkColor: Colors.white,
-                      fillColor: MaterialStateProperty.all(AppColors.primaryBlue),
+                      checkColor: AppColors.primaryWhite,
+                      fillColor: MaterialStateProperty.all(Theme.of(context).colorScheme.onSecondary),
                       value: isChecked,
                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
@@ -111,7 +110,14 @@ class _TaskCardState extends State<TaskCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     PriorityChip(priorityLevel: widget.priority),
-                    const IconButton(onPressed: null, icon: Icon(Icons.arrow_forward, size: 18.0, color: Colors.black38))
+                    IconButton(
+                        onPressed: null, 
+                        icon: Opacity(
+                          opacity: 0.6,
+                          child: Icon(
+                          Icons.arrow_forward_rounded, size: 18.0, color: Theme.of(context).colorScheme.inversePrimary),
+                        )
+                    )
                   ],
                 ),
               ],

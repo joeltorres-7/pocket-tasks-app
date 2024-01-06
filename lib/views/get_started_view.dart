@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
-import 'package:pocket_tasks/views/styles/text_styles.dart';
 
 import 'components/onboarding_frame.dart';
 
@@ -49,7 +48,7 @@ class OnboardingIntro extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       AppLocalizations.of(context)!.letGetStarted,
-      style: AppTextStyles.heading1,
+      style: Theme.of(context).textTheme.displayLarge,
     );
   }
 }
@@ -65,7 +64,7 @@ class OnboardingOutro extends StatelessWidget {
         VerticalSpacing(12.0),
         Text(
           AppLocalizations.of(context)!.gettingReady,
-          style: AppTextStyles.heading1,
+          style: Theme.of(context).textTheme.displayLarge,
         ),
       ],
     );

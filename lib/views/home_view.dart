@@ -4,9 +4,7 @@ import 'package:pocket_tasks/views/add_task_view.dart';
 import 'package:pocket_tasks/views/components/task_tabs.dart';
 import 'package:pocket_tasks/views/new_day_view.dart';
 import 'package:pocket_tasks/views/settings_view.dart';
-import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
-import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/utils/audio_manager.dart';
 import 'package:pocket_tasks/views/utils/custom-page-route.dart';
@@ -90,12 +88,12 @@ class _HomeViewState extends State<HomeView> {
                       padding: const EdgeInsets.only(bottom: 4.0),
                       child: Text(
                           '${AppLocalizations.of(context)!.myInbox}, ${userName ?? AppLocalizations.of(context)!.guestTitle}!',
-                          style: AppTextStyles.heading1,
+                          style: Theme.of(context).textTheme.displayLarge,
                           textAlign: TextAlign.start),
                     ),
                     Text(
                         AppLocalizations.of(context)!.readyDay,
-                        style: AppTextStyles.regular,
+                        style: Theme.of(context).textTheme.bodySmall,
                         textAlign: TextAlign.start),
                   ],
                 ),
@@ -105,11 +103,11 @@ class _HomeViewState extends State<HomeView> {
                     AudioManager.playFromName('tap.wav');
                     Navigator.of(context).push(CustomPageRoute(const SettingsView()));
                   },
-                  icon: const Padding(
-                    padding: EdgeInsets.all(4.0),
+                  icon: Padding(
+                    padding: const EdgeInsets.all(4.0),
                     child: Icon(
                       Icons.settings,
-                      color: Colors.black,
+                      color: Theme.of(context).colorScheme.inversePrimary,
                       size: 24.0,
                     ),
                   ),
@@ -157,10 +155,10 @@ class _HomeViewState extends State<HomeView> {
                   },
                 );
               },
-              backgroundColor: AppColors.secondaryGray,
+              backgroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
               shape: const CircleBorder(),
               elevation: 0,
-              child: const Icon(Icons.query_builder, color: Colors.black),
+              child: Icon(Icons.query_builder, color: Theme.of(context).colorScheme.inversePrimary),
             ),
             VerticalSpacing(12.0),
             FloatingActionButton(
@@ -170,10 +168,10 @@ class _HomeViewState extends State<HomeView> {
                 AudioManager.playFromName('tap.wav');
                 Navigator.of(context).push(CustomPageRoute(AddTaskView(onTaskAdded: _loadUserData)));
               },
-              backgroundColor: AppColors.secondaryGray,
+              backgroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
               shape: const CircleBorder(),
               elevation: 0,
-              child: const Icon(Icons.add, color: Colors.black),
+              child: Icon(Icons.add, color: Theme.of(context).colorScheme.inversePrimary),
             ),
           ],
         ),

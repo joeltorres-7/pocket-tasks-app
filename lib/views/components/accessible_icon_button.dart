@@ -17,7 +17,7 @@ class AccessibleIconButton extends StatelessWidget {
             onPressed: (){},
             icon: Icon(
               icon,
-              color: Colors.black,
+              color: Theme.of(context).colorScheme.inversePrimary,
               size: 24.0,
             )),
       ),

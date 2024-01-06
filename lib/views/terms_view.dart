@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/privacy_view.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
-import 'package:pocket_tasks/views/styles/text_styles.dart';
 import 'package:pocket_tasks/views/utils/audio_manager.dart';
 import 'package:pocket_tasks/views/utils/custom-page-route.dart';
 
@@ -14,7 +13,7 @@ class TermsView extends StatelessWidget {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.background,
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
@@ -22,14 +21,17 @@ class TermsView extends StatelessWidget {
               centerTitle: true,
               elevation: 4,
               shadowColor: Colors.grey[100]!,
-              backgroundColor: Colors.white,
+              backgroundColor: Theme.of(context).colorScheme.background,
               scrolledUnderElevation: 0.4,
               title: Text(
                 AppLocalizations.of(context)!.termsLabel,
-                style: AppTextStyles.headingNav,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               leading: IconButton(
-                  icon: const Icon(Icons.arrow_back),
+                  icon: Icon(
+                    Icons.arrow_back_rounded,
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
                   enableFeedback: false,
                   onPressed: () {
                     AudioManager.playFromName('back.wav');
@@ -46,117 +48,117 @@ class TermsView extends StatelessWidget {
                     children: [
                       Text(
                         AppLocalizations.of(context)!.termsAndConditionsTitle,
-                        style: AppTextStyles.boldHeading,
+                        style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: Text(
                           AppLocalizations.of(context)!.lastUpdatedLabel,
-                          style: AppTextStyles.smallLabel,
+                          style: Theme.of(context).textTheme.labelMedium,
                         ),
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.termsText,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.useOfAppLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.useText1,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       Text(
                         AppLocalizations.of(context)!.useText2,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.userContentLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.userContentText,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.privacyLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.privacyText,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.intellectualPropertyLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.intellectualPropertyText,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.prohibitedActivitiesLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.prohibitedText1,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       Text(
                         AppLocalizations.of(context)!.prohibitedText2,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.limitationOfLiabilityLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.liabilityText,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.changesToTermsLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.changesToTermsText,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.terminationLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.terminationText,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.governingLawLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       VerticalSpacing(8.0),
                       Text(
                         AppLocalizations.of(context)!.governingLawText,
-                        style: AppTextStyles.regularGray14,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                       VerticalSpacing(16.0),
                       GestureDetector(
@@ -174,7 +176,7 @@ class TermsView extends StatelessWidget {
                       VerticalSpacing(16.0),
                       Text(
                         AppLocalizations.of(context)!.contactUsLabel,
-                        style: AppTextStyles.boldSubheading,
+                        style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       GestureDetector(
                         onTap: () {

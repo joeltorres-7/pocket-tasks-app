@@ -19,9 +19,9 @@ class ProgressNav extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
               onPressed: onBackPressed,
-              icon: const Icon(
+              icon: Icon(
                 Icons.arrow_back,
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.inversePrimary,
                 size: 24.0,
               ),
             ),
@@ -34,7 +34,7 @@ class ProgressNav extends StatelessWidget {
                 return LinearProgressIndicator(
                   value: value,
                   semanticsLabel: 'Onboarding progress indicator',
-                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.black),
+                  valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.inversePrimary),
                 );
               },
             ),

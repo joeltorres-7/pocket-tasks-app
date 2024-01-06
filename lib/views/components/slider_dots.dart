@@ -23,7 +23,7 @@ class SliderDots extends StatelessWidget {
           // Adjust the spacing between dots
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24.0),
-            color: index == currentDot ? Colors.black : Colors.grey,
+            color: index == currentDot ? Theme.of(context).colorScheme.inversePrimary : Colors.grey,
           ),
         ),
       ),

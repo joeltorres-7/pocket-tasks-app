@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/components/slider_dots.dart';
-
-import '../styles/spaces.dart';
-import '../styles/text_styles.dart';
+import 'package:pocket_tasks/views/styles/spaces.dart';
 
 class OnboardingCard extends StatelessWidget {
   final int currentIndex;
@@ -19,10 +17,10 @@ class OnboardingCard extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(topLeft: Radius.circular(32.0), topRight: Radius.circular(32.0)),
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
+            color: Theme.of(context).colorScheme.shadow,
             spreadRadius: 1,
             blurRadius: 12,
             offset: const Offset(0, -6), // changes position of shadow
@@ -49,13 +47,13 @@ class OnboardingCard extends StatelessWidget {
                   children: [
                     Text(
                       '${items[currentIndex]['title']}',
-                      style: AppTextStyles.heading1,
+                      style: Theme.of(context).textTheme.displayLarge,
                       textAlign: TextAlign.start,
                     ),
                     VerticalSpacing(8.0),
                     Text(
                       '${items[currentIndex]['subtitle']}',
-                      style: AppTextStyles.subheading1,
+                      style: Theme.of(context).textTheme.displayMedium,
                       textAlign: TextAlign.start,
                     )
                   ],
@@ -72,12 +70,16 @@ class OnboardingCard extends StatelessWidget {
                     onTap: onNextPressed,
                     child: DecoratedBox(
                         decoration: BoxDecoration(
-                          color: const Color(0xFFEDEDED),
+                          // const Color(0xFFEDEDED),
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
                           borderRadius: BorderRadius.circular(100.0),
                         ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(12.0),
-                          child: Icon(Icons.arrow_forward),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Icon(
+                              Icons.arrow_forward,
+                              color: Theme.of(context).colorScheme.inversePrimary,
+                          ),
                         ),
                     ),
                   )

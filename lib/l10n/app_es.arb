@@ -127,5 +127,7 @@
     "andConquer": "y conquista",
     "diveIntoPocketTasksNow": "¡Sumérgete en PocketTasks ahora!",
     "noTasksForToday": "No hay tareas para hoy",
-    "enjoyYourDay": "¡Disfruta tu día!"
+    "enjoyYourDay": "¡Disfruta tu día!",
+    "selectTheme": "Seleccione un tema de preferencia",
+    "selectThemeDescription": "Personaliza tu experiencia con un tema que exprese tu personalidad unica"
 }

@@ -2,8 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:pocket_tasks/views/components/primary_button.dart';
-import 'package:pocket_tasks/views/styles/spaces.dart';
-import 'package:pocket_tasks/views/styles/text_styles.dart';
 
 class CustomModalWidget extends StatelessWidget {
   final String title;
@@ -26,7 +24,7 @@ class CustomModalWidget extends StatelessWidget {
 
     return Material(
       borderRadius: BorderRadius.circular(16.0),
-      color: Colors.white,
+      color: Theme.of(context).colorScheme.surface,
       child: Container(
         width: screenWidth * 0.8,
         child: Stack(
@@ -45,12 +43,12 @@ class CustomModalWidget extends StatelessWidget {
                         children: [
                           Text(
                             title,
-                            style: AppTextStyles.heading1,
+                            style: Theme.of(context).textTheme.displayLarge,
                           ),
                           const SizedBox(height: 4.0),
                           Text(
                             subtitle,
-                            style: AppTextStyles.regularGray14,
+                            style: Theme.of(context).textTheme.labelSmall,
                           ),
                           const SizedBox(height: 16.0),
                         ],
@@ -66,17 +64,21 @@ class CustomModalWidget extends StatelessWidget {
                 ),
               ],
             ),
+            // color: Color(0x50CDCDCD) of button,
             Positioned(
               top: 16,
               right: 16,
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                    color: Color(0x50CDCDCD),
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
                     borderRadius: BorderRadius.circular(12.0)
                 ),
                 child: IconButton(
                   onPressed: onClose,
-                  icon: Icon(Icons.close),
+                  icon: Icon(
+                      Icons.close,
+                      color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
                   padding: EdgeInsets.all(12.0),
                   constraints: BoxConstraints(),
                 ),
