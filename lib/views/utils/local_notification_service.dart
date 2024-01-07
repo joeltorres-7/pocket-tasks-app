@@ -45,31 +45,58 @@ class LocalNotificationService {
   }
 
   Future<void> scheduleNotification(
-      String title,
-      String description,
-      DateTime scheduledTime,
-      ) async {
-    int notificationId = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+      {
+        bool withTasks = false,
+        int numberOfTasks = 0,
+        String description = "",
+        required String title,
+        required int scheduledHours,
+        required int scheduledMinutes,
+        required BuildContext context,
+      })
+  async {
+    int notificationId = scheduledHours;
+
+    tz.Location local = tz.local;
+    tz.TZDateTime now = tz.TZDateTime.now(local);
+    tz.TZDateTime scheduledTime =
+    tz.TZDateTime(tz.local, now.year, now.month, now.day, scheduledHours, scheduledMinutes);
+
+    // If it's already past 12:00 PM today, schedule for tomorrow
+    if (DateTime.now().hour >= scheduledHours) {
+      scheduledTime = scheduledTime.add(const Duration(days: 1));
+    }
+
+    // Ensure the scheduled time is in the future
+    if (scheduledTime.isBefore(now)) {
+      scheduledTime = scheduledTime.add(const Duration(days: 1));
+    }
+
+    if (withTasks) {
+      description = buildDailyNotificationMessage(numberOfTasks, context);
+    }
 
     await flutterLocalNotificationsPlugin.zonedSchedule(
-      notificationId,
-      title,
-      description,
-      tz.TZDateTime.from(scheduledTime, tz.local),
-      const NotificationDetails(
-        android: AndroidNotificationDetails(
-          "channel-reminder",
-          "Task Reminder Channel",
-          channelDescription: "Channel dedicated to Task Reminders",
+        notificationId,
+        title,
+        description,
+        scheduledTime,
+        const NotificationDetails(
+          android: AndroidNotificationDetails(
+            'channel-daily-summary',
+            'Daily Summary Channel',
+            channelDescription: 'Channel for Daily Task Summary',
+            icon: "@mipmap/ic_notification",
+            playSound: true,
+          ),
         ),
-      ),
-      androidScheduleMode: AndroidScheduleMode.exact,
-      uiLocalNotificationDateInterpretation:
-      UILocalNotificationDateInterpretation.absoluteTime,
+        androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+        uiLocalNotificationDateInterpretation:
+        UILocalNotificationDateInterpretation.absoluteTime
     );
   }
 
-  String buildNotificationMessage(int numberOfTasks, BuildContext context) {
+  String buildDailyNotificationMessage(int numberOfTasks, BuildContext context) {
     if (numberOfTasks > 0) {
       String taskString = (numberOfTasks > 1) ? AppLocalizations.of(context)!.tasksLower : AppLocalizations.of(context)!.taskLower;
 
@@ -84,47 +111,44 @@ class LocalNotificationService {
     }
   }
 
-  Future<void> scheduleDailyNotification(int numberOfTasks, bool hasDailyReminder, BuildContext context) async {
-    final bool enableTaskReminders = hasDailyReminder;
+  Future<void> scheduleDailyNotifications(int numberOfTasks, bool hasDailyReminder, BuildContext context) async {
+    if (!context.mounted) return; // Ensures context isn't null.
 
-    if (!enableTaskReminders) {
-      await cancelDailyNotification();
-      return;
+    if (hasDailyReminder) {
+
+      // Morning notification
+
+      scheduleNotification(
+        title: AppLocalizations.of(context)!.morningTaskReview,
+        description: AppLocalizations.of(context)!.morningTaskReviewBody,
+        scheduledHours: 7,
+        scheduledMinutes: 0,
+        context: context,
+      );
+
+      // Check-in notification
+
+      scheduleNotification(
+        withTasks: true,
+        numberOfTasks: numberOfTasks,
+        title: AppLocalizations.of(context)!.yourDailyInsight,
+        scheduledHours: 12,
+        scheduledMinutes: 0,
+        context: context,
+      );
+
+      // End of day notification
+
+      scheduleNotification(
+          title: AppLocalizations.of(context)!.nightTaskReview,
+          description: AppLocalizations.of(context)!.nightTaskReviewBody,
+          scheduledHours: 18,
+          scheduledMinutes: 0,
+          context: context,
+      );
+    } else {
+      cancelDailyNotification();
     }
-
-    tz.Location local = tz.local;
-    tz.TZDateTime now = tz.TZDateTime.now(local);
-    tz.TZDateTime scheduledTime =
-    tz.TZDateTime(tz.local, now.year, now.month, now.day, 12, 0);
-
-    // If it's already past 12:00 PM today, schedule for tomorrow
-    if (DateTime.now().hour >= 12) {
-      scheduledTime = scheduledTime.add(const Duration(days: 1));
-    }
-
-    // Ensure the scheduled time is in the future
-    if (scheduledTime.isBefore(now)) {
-      scheduledTime = scheduledTime.add(const Duration(days: 1));
-    }
-
-    await flutterLocalNotificationsPlugin.zonedSchedule(
-      0,
-      'Your Daily Insight',
-      buildNotificationMessage(numberOfTasks, context),
-      scheduledTime,
-      const NotificationDetails(
-        android: AndroidNotificationDetails(
-          'channel-daily-summary',
-          'Daily Summary Channel',
-          channelDescription: 'Channel for Daily Task Summary',
-          icon: "@mipmap/ic_notification",
-          playSound: true,
-        ),
-      ),
-        androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
-        uiLocalNotificationDateInterpretation:
-        UILocalNotificationDateInterpretation.absoluteTime
-    );
   }
 
   Future<void> cancelDailyNotification() async {

@@ -50,7 +50,7 @@ class _HomeViewState extends State<HomeView> {
   Future<void> _initializeNotifications() async {
     await getNotificationPreferences();
     await getTaskNumber();
-    await LocalNotificationService().scheduleDailyNotification(activeTasks, enableTaskReminders, context);
+    await LocalNotificationService().scheduleDailyNotifications(activeTasks, enableTaskReminders, context);
   }
 
   void _loadUserData() async {

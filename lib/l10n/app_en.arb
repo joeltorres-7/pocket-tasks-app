@@ -467,6 +467,26 @@
   "@task": {
     "description": "Label shown on task editing."
   },
+  "yourDailyInsight": "Lazy vibes? Time to tackle tasks!",
+  "@yourDailyInsight": {
+    "description": "Title of daily 12 P.M. notification."
+  },
+  "nightTaskReview": "Your tasks miss you...",
+  "@nightTaskReview": {
+    "description": "Title of daily 6 P.M. notification."
+  },
+  "nightTaskReviewBody": "Your tasks have patiently waited all day. It's 6:00 PM – their cue to either shine or gracefully exit ✨",
+  "@nightTaskReviewBody": {
+    "description": "Body of daily 6 P.M. notification."
+  },
+  "morningTaskReview": "Gear Up for the Day's Rollercoaster! \uD83C\uDFA2",
+  "@morningTaskReview": {
+    "description": "Title of daily 7 A.M. notification."
+  },
+  "morningTaskReviewBody": "Life isn't a checklist, but hey, tasks can make it a bit more organized. Ready for whatever today brings? :)",
+  "@morningTaskReviewBody": {
+    "description": "Body of daily 7 A.M. notification."
+  },
   "youHave": "You have",
   "@youHave": {
     "description": "First part of daily notification text."
