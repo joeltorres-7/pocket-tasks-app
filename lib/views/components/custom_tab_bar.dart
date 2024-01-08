@@ -19,6 +19,7 @@ class CustomTabBar extends StatelessWidget {
         tabs.length,
             (index) => Expanded(
           child: InkWell(
+            borderRadius: BorderRadius.circular(24.0),
             onTap: () => onTabTapped(index),
             child: DecoratedBox(
               decoration: BoxDecoration(

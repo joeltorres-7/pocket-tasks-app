@@ -105,7 +105,7 @@ class _EditTaskViewState extends State<EditTaskView> {
               padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFEF3F5),
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 child: IconButton(

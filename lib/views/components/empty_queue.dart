@@ -3,6 +3,7 @@ import 'package:pocket_tasks/views/components/task_chip.dart';
 import 'package:pocket_tasks/views/styles/colors.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:pocket_tasks/views/utils/task_generator.dart';
 
 class EmptyQueue extends StatefulWidget {
   const EmptyQueue({super.key});
@@ -14,6 +15,7 @@ class EmptyQueue extends StatefulWidget {
 class _EmptyQueueState extends State<EmptyQueue> {
   @override
   Widget build(BuildContext context) {
+    final randomTask = TaskGenerator.generateRandomTask(context);
     double screenWidth = MediaQuery.of(context).size.width;
 
     return SizedBox(
@@ -38,7 +40,7 @@ class _EmptyQueueState extends State<EmptyQueue> {
           VerticalSpacing(16.0),
           IntrinsicWidth(
               child: TaskChip(
-                  taskName: 'Leer un libro por 30 minutos',
+                  taskMap: randomTask,
                   onTaskTap: (){}
               )
           )

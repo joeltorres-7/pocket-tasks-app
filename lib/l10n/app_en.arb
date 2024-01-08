@@ -542,5 +542,247 @@
   "selectThemeDescription": "Personalize your experience with a theme that expresses your unique personality",
   "@selectThemeDescription": {
     "description": "Description on theme selection view."
+  },
+
+  "taskTitle1": "Write a handwritten letter to a friend or family member.",
+  "@taskTitle1": {
+    "description": "Express your thoughts and feelings on paper. Strengthen your connections through a personal touch."
+  },
+  "taskTitle2": "Organize and declutter your workspace.",
+  "@taskTitle2": {
+    "description": "Create a more productive and focused environment by organizing and decluttering your workspace."
+  },
+  "taskTitle3": "Take a 10-minute walk outside.",
+  "@taskTitle3": {
+    "description": "Step outside for a breath of fresh air. A short walk can invigorate your mind and body."
+  },
+  "taskTitle4": "Try a new recipe and cook a homemade meal.",
+  "@taskTitle4": {
+    "description": "Explore your culinary skills by trying out a new recipe. Enjoy the satisfaction of a homemade meal."
+  },
+  "taskTitle5": "Learn a new language for 15 minutes.",
+  "@taskTitle5": {
+    "description": "Dedicate a short time to learning a new language. Expand your horizons and challenge your mind."
+  },
+  "taskTitle6": "Create a list of goals for the month.",
+  "@taskTitle6": {
+    "description": "Set clear and achievable goals for the month. Stay focused and motivated throughout the journey."
+  },
+  "taskTitle7": "Start a journal or blog.",
+  "@taskTitle7": {
+    "description": "Capture your thoughts and experiences by starting a journal or blog. Reflect on your journey and growth."
+  },
+  "taskTitle8": "Do a quick home workout.",
+  "@taskTitle8": {
+    "description": "Engage in a quick home workout to boost your energy and maintain your physical well-being."
+  },
+  "taskTitle9": "Research and plan your dream vacation.",
+  "@taskTitle9": {
+    "description": "Immerse yourself in the excitement of planning your dream vacation. Let your imagination soar."
+  },
+  "taskTitle10": "Read a chapter from a book you've been meaning to start.",
+  "@taskTitle10": {
+    "description": "Pick up that book you've been curious about and dive into a chapter. Enjoy the world of literature."
+  },
+  "taskTitle11": "Set up a virtual coffee date with a friend.",
+  "@taskTitle11": {
+    "description": "Connect with a friend over a virtual coffee date. Share stories and enjoy each other's company."
+  },
+  "taskTitle12": "Practice mindfulness or meditation for 5 minutes.",
+  "@taskTitle12": {
+    "description": "Take a moment for mindfulness or meditation. Calm your mind and find peace in the present."
+  },
+  "taskTitle13": "Watch a TED Talk on a topic of interest.",
+  "@taskTitle13": {
+    "description": "Explore new ideas and perspectives by watching a TED Talk. Stimulate your mind with insightful content."
+  },
+  "taskTitle14": "Update your resume or LinkedIn profile.",
+  "@taskTitle14": {
+    "description": "Invest in your professional growth by updating your resume or LinkedIn profile. Showcase your achievements."
+  },
+  "taskTitle15": "Take a photo walk and capture interesting scenes around you.",
+  "@taskTitle15": {
+    "description": "Embark on a photo walk and capture the beauty of your surroundings. Appreciate the art in everyday life."
+  },
+  "taskTitle16": "Write down three things you're grateful for.",
+  "@taskTitle16": {
+    "description": "Reflect on gratitude by writing down three things you're thankful for. Cultivate a positive mindset."
+  },
+  "taskTitle17": "Create a vision board for your future aspirations.",
+  "@taskTitle17": {
+    "description": "Visualize your dreams and goals by creating a vision board. Manifest the future you aspire to achieve."
+  },
+  "taskTitle18": "Listen to a new podcast episode.",
+  "@taskTitle18": {
+    "description": "Expand your knowledge or find entertainment by listening to a new podcast episode. Discover new perspectives."
+  },
+  "taskTitle19": "Try a new hobby or craft.",
+  "@taskTitle19": {
+    "description": "Explore your creativity and interests by trying a new hobby or craft. Unleash your artistic side."
+  },
+  "taskTitle20": "Review and update your budget.",
+  "@taskTitle20": {
+    "description": "Take control of your finances by reviewing and updating your budget. Plan for financial success."
+  },
+  "taskTitle21": "Organize your digital files and folders.",
+  "@taskTitle21": {
+    "description": "Streamline your digital life by organizing files and folders. Improve efficiency and reduce clutter."
+  },
+  "taskTitle22": "Write down your favorite inspirational quotes.",
+  "@taskTitle22": {
+    "description": "Compile a list of your favorite inspirational quotes. Draw motivation from timeless words of wisdom."
+  },
+  "taskTitle23": "Learn a new skill on YouTube.",
+  "@taskTitle23": {
+    "description": "Explore the vast world of knowledge on YouTube. Learn a new skill or acquire valuable insights."
+  },
+  "taskTitle24": "Do a quick brain teaser or puzzle.",
+  "@taskTitle24": {
+    "description": "Challenge your mind with a quick brain teaser or puzzle. Sharpen your cognitive abilities."
+  },
+  "taskTitle25": "Volunteer for a local charity or community organization.",
+  "@taskTitle25": {
+    "description": "Make a positive impact in your community by volunteering for a local charity or organization."
+  },
+  "taskTitle26": "Plan a surprise for someone special.",
+  "@taskTitle26": {
+    "description": "Spread joy by planning a thoughtful surprise for someone special. Make their day memorable."
+  },
+  "taskTitle27": "Research and implement a productivity technique.",
+  "@taskTitle27": {
+    "description": "Enhance your productivity by researching and implementing a new technique. Optimize your workflow."
+  },
+  "taskTitle28": "Explore a new genre of music.",
+  "@taskTitle28": {
+    "description": "Diversify your musical taste by exploring a new genre. Discover sounds that resonate with you."
+  },
+  "taskTitle29": "Take a power nap for 20 minutes.",
+  "@taskTitle29": {
+    "description": "Recharge your energy with a refreshing power nap. Boost alertness and improve overall well-being."
+  },
+  "taskTitle30": "Write a short story or poem.",
+  "@taskTitle30": {
+    "description": "Unleash your creativity by writing a short story or poem. Let your imagination run wild."
+  },
+
+  "taskDescription1": "Express your thoughts and feelings on paper. Strengthen your connections through a personal touch.",
+  "@taskDescription1": {
+    "description": "Description for writing a handwritten letter to a friend or family member."
+  },
+  "taskDescription2": "Create a more productive and focused environment by organizing and decluttering your workspace.",
+  "@taskDescription2": {
+    "description": "Description for organizing and decluttering your workspace."
+  },
+  "taskDescription3": "Step outside for a breath of fresh air. A short walk can invigorate your mind and body.",
+  "@taskDescription3": {
+    "description": "Description for taking a 10-minute walk outside."
+  },
+  "taskDescription4": "Explore your culinary skills by trying out a new recipe. Enjoy the satisfaction of a homemade meal.",
+  "@taskDescription4": {
+    "description": "Description for trying a new recipe and cooking a homemade meal."
+  },
+  "taskDescription5": "Dedicate a short time to learning a new language. Expand your horizons and challenge your mind.",
+  "@taskDescription5": {
+    "description": "Description for learning a new language for 15 minutes."
+  },
+  "taskDescription6": "Set clear and achievable goals for the month. Stay focused and motivated throughout the journey.",
+  "@taskDescription6": {
+    "description": "Description for creating a list of goals for the month."
+  },
+  "taskDescription7": "Capture your thoughts and experiences by starting a journal or blog. Reflect on your journey and growth.",
+  "@taskDescription7": {
+    "description": "Description for starting a journal or blog."
+  },
+  "taskDescription8": "Engage in a quick home workout to boost your energy and maintain your physical well-being.",
+  "@taskDescription8": {
+    "description": "Description for doing a quick home workout."
+  },
+  "taskDescription9": "Immerse yourself in the excitement of planning your dream vacation. Let your imagination soar.",
+  "@taskDescription9": {
+    "description": "Description for researching and planning your dream vacation."
+  },
+  "taskDescription10": "Pick up that book you've been curious about and dive into a chapter. Enjoy the world of literature.",
+  "@taskDescription10": {
+    "description": "Description for reading a chapter from a book you've been meaning to start."
+  },
+  "taskDescription11": "Connect with a friend over a virtual coffee date. Share stories and enjoy each other's company.",
+  "@taskDescription11": {
+    "description": "Description for setting up a virtual coffee date with a friend."
+  },
+  "taskDescription12": "Take a moment for mindfulness or meditation. Calm your mind and find peace in the present.",
+  "@taskDescription12": {
+    "description": "Description for practicing mindfulness or meditation for 5 minutes."
+  },
+  "taskDescription13": "Explore new ideas and perspectives by watching a TED Talk. Stimulate your mind with insightful content.",
+  "@taskDescription13": {
+    "description": "Description for watching a TED Talk on a topic of interest."
+  },
+  "taskDescription14": "Invest in your professional growth by updating your resume or LinkedIn profile. Showcase your achievements.",
+  "@taskDescription14": {
+    "description": "Description for updating your resume or LinkedIn profile."
+  },
+  "taskDescription15": "Embark on a photo walk and capture the beauty of your surroundings. Appreciate the art in everyday life.",
+  "@taskDescription15": {
+    "description": "Description for taking a photo walk and capturing interesting scenes around you."
+  },
+  "taskDescription16": "Reflect on gratitude by writing down three things you're thankful for. Cultivate a positive mindset.",
+  "@taskDescription16": {
+    "description": "Description for writing down three things you're grateful for."
+  },
+  "taskDescription17": "Visualize your dreams and goals by creating a vision board. Manifest the future you aspire to achieve.",
+  "@taskDescription17": {
+    "description": "Description for creating a vision board for your future aspirations."
+  },
+  "taskDescription18": "Expand your knowledge or find entertainment by listening to a new podcast episode. Discover new perspectives.",
+  "@taskDescription18": {
+    "description": "Description for listening to a new podcast episode."
+  },
+  "taskDescription19": "Explore your creativity and interests by trying a new hobby or craft. Unleash your artistic side.",
+  "@taskDescription19": {
+    "description": "Description for trying a new hobby or craft."
+  },
+  "taskDescription20": "Take control of your finances by reviewing and updating your budget. Plan for financial success.",
+  "@taskDescription20": {
+    "description": "Description for reviewing and updating your budget."
+  },
+  "taskDescription21": "Streamline your digital life by organizing files and folders. Improve efficiency and reduce clutter.",
+  "@taskDescription21": {
+    "description": "Description for organizing your digital files and folders."
+  },
+  "taskDescription22": "Compile a list of your favorite inspirational quotes. Draw motivation from timeless words of wisdom.",
+  "@taskDescription22": {
+    "description": "Description for writing down your favorite inspirational quotes."
+  },
+  "taskDescription23": "Explore the vast world of knowledge on YouTube. Learn a new skill or acquire valuable insights.",
+  "@taskDescription23": {
+    "description": "Description for learning a new skill on YouTube."
+  },
+  "taskDescription24": "Challenge your mind with a quick brain teaser or puzzle. Sharpen your cognitive abilities.",
+  "@taskDescription24": {
+    "description": "Description for doing a quick brain teaser or puzzle."
+  },
+  "taskDescription25": "Make a positive impact in your community by volunteering for a local charity or organization.",
+  "@taskDescription25": {
+    "description": "Description for volunteering for a local charity or community organization."
+  },
+  "taskDescription26": "Surprise someone special with a thoughtful gesture. Spread joy and strengthen your connections.",
+  "@taskDescription26": {
+    "description": "Description for planning a surprise for someone special."
+  },
+  "taskDescription27": "Boost your productivity by researching and implementing a proven productivity technique. Optimize your workflow.",
+  "@taskDescription27": {
+    "description": "Description for researching and implementing a productivity technique."
+  },
+  "taskDescription28": "Discover new sounds and emotions by exploring a new genre of music. Expand your musical horizons.",
+  "@taskDescription28": {
+    "description": "Description for exploring a new genre of music."
+  },
+  "taskDescription29": "Recharge your energy with a 20-minute power nap. Enhance alertness and boost your mood.",
+  "@taskDescription29": {
+    "description": "Description for taking a power nap for 20 minutes."
+  },
+  "taskDescription30": "Express your creativity through writing. Craft a short story or poem and share your imagination.",
+  "@taskDescription30": {
+    "description": "Description for writing a short story or poem."
   }
 }
