@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:pocket_tasks/views/components/onboarding_card.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/get_started_view.dart';
@@ -19,10 +20,10 @@ class _OnboardingViewState extends State<OnboardingView> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     List<String> images = [
-      'assets/images/illustrations/get-started-welcome.png',
-      'assets/images/illustrations/get-started-focus.png',
-      'assets/images/illustrations/get-started-task.png',
-      'assets/images/illustrations/get-started-day.png'
+      'assets/images/illustrations/get-started-welcome.svg',
+      'assets/images/illustrations/get-started-focus.svg',
+      'assets/images/illustrations/get-started-task.svg',
+      'assets/images/illustrations/get-started-day.svg'
     ];
 
     void _updateNextView() {
@@ -52,16 +53,12 @@ class _OnboardingViewState extends State<OnboardingView> {
             key: UniqueKey(),
             height: screenHeight,
             width: screenWidth,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(
-                    images.elementAt(currentView),
-                ), // Replace with your image path
-                fit: BoxFit.fitWidth,
-              ),
-            ),
             child: Stack(
               children: [
+                SvgPicture.asset(
+                  images.elementAt(currentView),
+                  fit: BoxFit.fitWidth,
+                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: AnimatedOpacity(

@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pocket_tasks/views/components/primary_button.dart';
 
 class CustomModalWidget extends StatelessWidget {
@@ -32,7 +33,7 @@ class CustomModalWidget extends StatelessWidget {
             Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Image.asset('assets/images/illustrations/new-dawn-illustration.png'),
+                SvgPicture.asset('assets/images/illustrations/new-dawn-illustration.svg'),
                 Padding(
                   padding: const EdgeInsets.all(24.0),
                   child: Column(
