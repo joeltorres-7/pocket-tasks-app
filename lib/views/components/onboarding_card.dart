@@ -23,7 +23,7 @@ class OnboardingCard extends StatelessWidget {
             color: Theme.of(context).colorScheme.shadow,
             spreadRadius: 1,
             blurRadius: 12,
-            offset: const Offset(0, -6), // changes position of shadow
+            offset: const Offset(0, -6),
           ),
         ],
       ),
@@ -70,7 +70,6 @@ class OnboardingCard extends StatelessWidget {
                     onTap: onNextPressed,
                     child: DecoratedBox(
                         decoration: BoxDecoration(
-                          // const Color(0xFFEDEDED),
                           color: Theme.of(context).colorScheme.onSurfaceVariant,
                           borderRadius: BorderRadius.circular(100.0),
                         ),

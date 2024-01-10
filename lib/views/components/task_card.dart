@@ -47,7 +47,7 @@ class _TaskCardState extends State<TaskCard> {
                 color: Theme.of(context).colorScheme.shadow,
                 spreadRadius: 1,
                 blurRadius: 6,
-                offset: const Offset(0, 1), // changes position of shadow
+                offset: const Offset(0, 1),
               ),
             ],
           ),

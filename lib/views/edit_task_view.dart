@@ -150,7 +150,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                         borderSide: BorderSide.none,
                       ),
                       filled: true,
-                      fillColor: AppColors.primaryWhite,
+                      fillColor: Theme.of(context).colorScheme.background,
                     ),
                   ),
                 ),
@@ -167,7 +167,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                         borderSide: BorderSide.none,
                       ),
                       filled: true,
-                      fillColor: AppColors.primaryWhite,
+                      fillColor: Theme.of(context).colorScheme.background,
                     ),
                   ),
                 ),
@@ -188,7 +188,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                       icon: const Icon(Icons.keyboard_arrow_down_rounded),
                       iconSize: 24.0,
                       elevation: 4,
-                      dropdownColor: AppColors.primaryWhite,
+                      dropdownColor: Theme.of(context).colorScheme.surface,
                       borderRadius: BorderRadius.circular(16.0),
                       items: [
                         DropdownMenuItem(
@@ -268,7 +268,7 @@ class _EditTaskViewState extends State<EditTaskView> {
                 ),
                 VerticalSpacing(16.0),
               ],
-            ) : Column( // If not editing
+            ) : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(

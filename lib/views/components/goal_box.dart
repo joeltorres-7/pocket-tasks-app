@@ -25,7 +25,7 @@ class _GoalBoxState extends State<GoalBox> {
     return GestureDetector(
       onTap: widget.onTap,
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200), // Adjust the duration as needed
+        duration: const Duration(milliseconds: 200),
         decoration: BoxDecoration(
           border: Border.all(
             color: widget.isSelected ? Theme.of(context).colorScheme.inversePrimary : Theme.of(context).colorScheme.outlineVariant,

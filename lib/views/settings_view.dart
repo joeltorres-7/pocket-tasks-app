@@ -50,7 +50,6 @@ class _SettingsViewState extends State<SettingsView> {
             ),
             SliverList(
               delegate: SliverChildListDelegate([
-                // Items
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0, right: 24.0, bottom: 4.0, left: 24.0),
                   child: Text(AppLocalizations.of(context)!.notificationsSection, textAlign: TextAlign.start, style: Theme.of(context).textTheme.labelMedium),

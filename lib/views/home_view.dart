@@ -57,8 +57,8 @@ class _HomeViewState extends State<HomeView> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       userName = prefs.getString('userName') ?? '';
-      userGoal = Goal.values[prefs.getInt('userGoal') ?? Goal.productivity.index]; // Use default value if not found
-      preferredMethod = PreferredMethod.values[prefs.getInt('preferredMethod') ?? PreferredMethod.traditional.index]; // Use default value if not found
+      userGoal = Goal.values[prefs.getInt('userGoal') ?? Goal.productivity.index];
+      preferredMethod = PreferredMethod.values[prefs.getInt('preferredMethod') ?? PreferredMethod.traditional.index];
     });
   }
 
@@ -145,7 +145,7 @@ class _HomeViewState extends State<HomeView> {
                         buttonText: AppLocalizations.of(context)!.resetDay,
                         onClose: () {
                           AudioManager.playFromName('tap.wav');
-                          Navigator.of(context).pop(); // Close the modal.
+                          Navigator.of(context).pop();
                         },
                         onButtonPressed: () {
                           Navigator.of(context).push(CustomPageRoute(const NewDayView()));

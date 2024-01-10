@@ -65,7 +65,6 @@ class CustomModalWidget extends StatelessWidget {
                 ),
               ],
             ),
-            // color: Color(0x50CDCDCD) of button,
             Positioned(
               top: 16,
               right: 16,

@@ -38,12 +38,12 @@ class AppThemes {
         headlineMedium: TextStyle(
           fontSize: 18.0,
           fontWeight: FontWeight.bold,
-          color: inversePrimary, // Set the desired color
+          color: inversePrimary,
         ),
         headlineSmall: TextStyle(
           fontSize: 16.0,
           fontWeight: FontWeight.bold,
-          color: inversePrimary, // Set the desired color
+          color: inversePrimary,
         ),
         displayLarge: TextStyle(
             fontFamily: 'CerebriSansPro',
@@ -59,7 +59,7 @@ class AppThemes {
         titleLarge: TextStyle(
           fontSize: 18.0,
           fontWeight: FontWeight.bold,
-          color: inversePrimary, // Set the desired color
+          color: inversePrimary,
         ),
         titleMedium: TextStyle(
             fontFamily: 'CerebriSansPro',

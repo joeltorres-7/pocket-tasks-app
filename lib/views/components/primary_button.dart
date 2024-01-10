@@ -4,14 +4,14 @@ class PrimaryButton extends StatelessWidget {
   final String buttonText;
   final VoidCallback onButtonPressed;
   final bool hasPadding;
-  final bool isButtonEnabled; // Add this
+  final bool isButtonEnabled;
 
   const PrimaryButton({
     Key? key,
     required this.buttonText,
     required this.onButtonPressed,
     required this.isButtonEnabled,
-    this.hasPadding = true, // Add this
+    this.hasPadding = true,
   }) : super(key: key);
 
   @override
@@ -22,14 +22,15 @@ class PrimaryButton extends StatelessWidget {
       padding: hasPadding ? const EdgeInsets.all(8.0) : EdgeInsets.zero,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: isButtonEnabled ? Theme.of(context).colorScheme.inversePrimary : Theme.of(context).colorScheme.onTertiary, // Adjust color based on enable/disable state
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          disabledBackgroundColor: Theme.of(context).colorScheme.outlineVariant,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
           minimumSize: Size(screenWidth, 0),
           padding: const EdgeInsets.symmetric(vertical: 12),
         ),
-        onPressed: isButtonEnabled ? onButtonPressed : null, // Disable the button if not enabled
+        onPressed: isButtonEnabled ? onButtonPressed : null,
         child: Text(
           buttonText,
           style: TextStyle(

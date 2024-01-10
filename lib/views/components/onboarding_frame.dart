@@ -22,7 +22,7 @@ class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProv
   late UserData userData;
 
   late AnimationController _controller;
-  double progressValue = 0.0; // Initial progress value
+  double progressValue = 0.0;
 
   @override
   void initState() {
@@ -45,7 +45,7 @@ class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProv
   void _increaseProgress() {
     if (progressValue < 1.0) {
       setState(() {
-        progressValue += (100 / 3) / 100; // Increase the progress by 0.1
+        progressValue += (100 / 3) / 100;
       });
     }
   }
@@ -53,7 +53,7 @@ class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProv
   void _decreaseProgress() {
     if (progressValue > 0.0) {
       setState(() {
-        progressValue -= (100 / 3) / 100; // Decrease the progress by 0.1
+        progressValue -= (100 / 3) / 100;
       });
     }
   }
@@ -95,7 +95,6 @@ class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProv
           currentStep++;
         });
       } else {
-        // Save data and navigate to the next screen
         _saveUserData();
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => const OnboardingOutro(),
@@ -165,7 +164,7 @@ class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProv
             PrimaryButton(
               onButtonPressed: _nextStep,
               buttonText: AppLocalizations.of(context)!.continueNext,
-              isButtonEnabled: _isContinueButtonEnabled(), // Pass the enable/disable state
+              isButtonEnabled: _isContinueButtonEnabled(),
             ),
           ],
         ),
@@ -191,7 +190,7 @@ class _OnboardingFrameState extends State<OnboardingFrame> with SingleTickerProv
           onMethodChanged: _updateStep,
         );
       default:
-        return Container(); // Handle unexpected case
+        return Container();
     }
   }
 }

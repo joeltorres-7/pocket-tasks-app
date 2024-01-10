@@ -27,7 +27,6 @@ class DatabaseHelper {
     ''');
   }
 
-  // Update an existing task by ID
   Future<int> updateTask(int id, Map<String, dynamic> updatedTask) async {
     try {
       Database db = await database;
@@ -38,33 +37,27 @@ class DatabaseHelper {
     }
   }
 
-  // Saves a new task on db
   Future<int> insertTask(Map<String, dynamic> task) async {
     Database db = await database;
     return await db.insert('tasks', {...task, 'isCompleted': 0});
   }
 
-  // Fetches task data
   Future<List<Map<String, dynamic>>> getTasks() async {
     Database db = await database;
     return await db.query('tasks');
   }
 
-  // Delete a single task by ID
   Future<int> deleteTask(int id) async {
     Database db = await database;
     return await db.delete('tasks', where: 'id = ?', whereArgs: [id]);
   }
 
-  // Delete all tasks
   Future<void> deleteAllTasks() async {
     try {
       Database db = await database;
       await db.transaction((txn) async {
-        // Drop the 'tasks' table
         await txn.execute('DROP TABLE IF EXISTS tasks');
 
-        // Recreate the 'tasks' table
         await txn.execute('''
         CREATE TABLE tasks(
           id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -80,7 +73,6 @@ class DatabaseHelper {
     }
   }
 
-  // Toggle task completion
   Future<void> toggleTaskCompletion(int id, bool isCompleted) async {
     try {
       Database db = await database;

@@ -29,11 +29,12 @@ class ProgressNav extends StatelessWidget {
           Flexible(
             child: TweenAnimationBuilder<double>(
               tween: Tween<double>(begin: 0, end: progressValue),
-              duration: const Duration(milliseconds: 500), // Adjust the duration as needed
+              duration: const Duration(milliseconds: 500),
               builder: (context, value, child) {
                 return LinearProgressIndicator(
                   value: value,
                   semanticsLabel: 'Onboarding progress indicator',
+                  backgroundColor: Theme.of(context).colorScheme.outlineVariant,
                   valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.inversePrimary),
                 );
               },

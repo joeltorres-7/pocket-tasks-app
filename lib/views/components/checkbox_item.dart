@@ -30,7 +30,6 @@ class _CheckboxItemState extends State<CheckboxItem> {
   @override
   void initState() {
     super.initState();
-    // Load the initial state from SharedPreferences
     _loadState();
 
     // Subscribe to the stream and store the subscription
@@ -45,7 +44,6 @@ class _CheckboxItemState extends State<CheckboxItem> {
     });
   }
 
-  // Load the initial state from SharedPreferences
   Future<void> _loadState() async {
     bool? prefState = await rxPrefs.getBool(widget.preferenceKey) ?? false;
     setState(() {
@@ -53,12 +51,10 @@ class _CheckboxItemState extends State<CheckboxItem> {
     });
   }
 
-  // Save the state to SharedPreferences
   Future<void> _saveState(bool value) async {
     rxPrefs.setBool(widget.preferenceKey, value);
   }
 
-  // Manage sharedPreferenceState
   void _updatePreferenceState(String preferenceKey, bool pushState) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool(preferenceKey, pushState);
@@ -67,7 +63,6 @@ class _CheckboxItemState extends State<CheckboxItem> {
 
   @override
   void dispose() {
-    // Cancel the subscription when the widget is disposed
     _subscription.cancel();
     super.dispose();
   }
