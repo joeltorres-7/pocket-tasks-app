@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:marquee/marquee.dart';
 import 'package:pocket_tasks/views/styles/spaces.dart';
 import 'package:pocket_tasks/views/utils/audio_manager.dart';
 import 'package:pocket_tasks/views/utils/database_manager.dart';
@@ -39,6 +40,16 @@ class _TaskChipState extends State<TaskChip> {
     }
   }
 
+  bool _shouldUseMarquee(String text, double maxWidth) {
+    final textPainter = TextPainter(
+      text: TextSpan(text: text, style: Theme.of(context).textTheme.bodyMedium),
+      maxLines: 1,
+      textDirection: TextDirection.ltr,
+    )..layout(maxWidth: maxWidth);
+
+    return textPainter.didExceedMaxLines;
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -64,10 +75,31 @@ class _TaskChipState extends State<TaskChip> {
                 constraints: BoxConstraints(
                   maxWidth: screenWidth * 0.6,
                 ),
-                child: Text(
-                    widget.taskMap['title'],
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.bodyMedium),
+                child: _shouldUseMarquee(widget.taskMap['title'], screenWidth * 0.6)
+                    ? SizedBox(
+                  height: 20.0,
+                  width: screenWidth * 0.6,
+                  child: Marquee(
+                      text: widget.taskMap['title'],
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    scrollAxis: Axis.horizontal,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    blankSpace: 16.0,
+                    velocity: 18.0,
+                    startPadding: 0.0,
+                    accelerationDuration: const Duration(seconds: 1),
+                    accelerationCurve: Curves.linear,
+                    decelerationDuration: const Duration(milliseconds: 500),
+                    decelerationCurve: Curves.easeOut,
+                    pauseAfterRound: const Duration(seconds: 2),
+                    showFadingOnlyWhenScrolling: false,
+                  ),
+                )
+                    : Text(
+                  widget.taskMap['title'],
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
               ),
               HorizontalSpacing(4.0),
               Icon(Icons.add, size: 18.0, color: Theme.of(context).colorScheme.inversePrimary)

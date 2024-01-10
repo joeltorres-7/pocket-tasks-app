@@ -48,6 +48,7 @@ dependencies:
   sqflite: ^2.3.0
   rx_shared_preferences: ^3.1.0
   flutter_svg: ^2.0.9
+  marquee: ^2.2.3
 
 dev_dependencies:
   flutter_launcher_icons: "^0.13.1"
