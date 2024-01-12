@@ -50,15 +50,18 @@ class _HomeViewState extends State<HomeView> {
   Future<void> _initializeNotifications() async {
     await getNotificationPreferences();
     await getTaskNumber();
-    await LocalNotificationService().scheduleDailyNotifications(activeTasks, enableTaskReminders, context);
+    await LocalNotificationService()
+        .scheduleDailyNotifications(activeTasks, enableTaskReminders, context);
   }
 
   void _loadUserData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       userName = prefs.getString('userName') ?? '';
-      userGoal = Goal.values[prefs.getInt('userGoal') ?? Goal.productivity.index];
-      preferredMethod = PreferredMethod.values[prefs.getInt('preferredMethod') ?? PreferredMethod.traditional.index];
+      userGoal =
+          Goal.values[prefs.getInt('userGoal') ?? Goal.productivity.index];
+      preferredMethod = PreferredMethod.values[
+          prefs.getInt('preferredMethod') ?? PreferredMethod.traditional.index];
     });
   }
 
@@ -68,63 +71,62 @@ class _HomeViewState extends State<HomeView> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-        body: SafeArea(
-            child: SizedBox(
-      height: screenHeight,
-      width: screenWidth,
-      child: Padding(
-        padding: const EdgeInsets.only(
-            top: 32.0, bottom: 32.0, left: 24.0, right: 24.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 4.0),
-                      child: Text(
-                          '${AppLocalizations.of(context)!.myInbox}, ${userName ?? AppLocalizations.of(context)!.guestTitle}!',
-                          style: Theme.of(context).textTheme.displayLarge,
+      body: SafeArea(
+          child: SizedBox(
+        height: screenHeight,
+        width: screenWidth,
+        child: Padding(
+          padding: const EdgeInsets.only(
+              top: 32.0, bottom: 32.0, left: 24.0, right: 24.0),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 4.0),
+                        child: Text(
+                            '${AppLocalizations.of(context)!.myInbox}, ${userName ?? AppLocalizations.of(context)!.guestTitle}!',
+                            style: Theme.of(context).textTheme.displayLarge,
+                            textAlign: TextAlign.start),
+                      ),
+                      Text(AppLocalizations.of(context)!.readyDay,
+                          style: Theme.of(context).textTheme.bodySmall,
                           textAlign: TextAlign.start),
-                    ),
-                    Text(
-                        AppLocalizations.of(context)!.readyDay,
-                        style: Theme.of(context).textTheme.bodySmall,
-                        textAlign: TextAlign.start),
-                  ],
-                ),
-                IconButton(
-                  enableFeedback: false,
-                  onPressed: () {
-                    AudioManager.playFromName('tap.wav');
-                    Navigator.of(context).push(CustomPageRoute(const SettingsView()));
-                  },
-                  icon: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Icon(
-                      Icons.settings,
-                      color: Theme.of(context).colorScheme.inversePrimary,
-                      size: 24.0,
+                    ],
+                  ),
+                  IconButton(
+                    enableFeedback: false,
+                    onPressed: () {
+                      AudioManager.playFromName('tap.wav');
+                      Navigator.of(context)
+                          .push(CustomPageRoute(const SettingsView()));
+                    },
+                    icon: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Icon(
+                        Icons.settings,
+                        color: Theme.of(context).colorScheme.inversePrimary,
+                        size: 24.0,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            VerticalSpacing(24.0),
-            Expanded(child: TaskTabs(
-              onTaskUpdated: () {
-                _loadUserData();
-              },
-            )),
-          ],
+                ],
+              ),
+              VerticalSpacing(24.0),
+              Expanded(child: TaskTabs(
+                onTaskUpdated: () {
+                  _loadUserData();
+                },
+              )),
+            ],
+          ),
         ),
-      ),
-          )
-        ),
+      )),
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(right: 8.0, bottom: 8.0),
         child: Column(
@@ -141,14 +143,16 @@ class _HomeViewState extends State<HomeView> {
                     return Center(
                       child: CustomModalWidget(
                         title: AppLocalizations.of(context)!.newDawn,
-                        subtitle: AppLocalizations.of(context)!.notFeelingAsExpected,
+                        subtitle:
+                            AppLocalizations.of(context)!.notFeelingAsExpected,
                         buttonText: AppLocalizations.of(context)!.resetDay,
                         onClose: () {
                           AudioManager.playFromName('tap.wav');
                           Navigator.of(context).pop();
                         },
                         onButtonPressed: () {
-                          Navigator.of(context).push(CustomPageRoute(const NewDayView()));
+                          Navigator.of(context)
+                              .push(CustomPageRoute(const NewDayView()));
                         },
                       ),
                     );
@@ -158,7 +162,8 @@ class _HomeViewState extends State<HomeView> {
               backgroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
               shape: const CircleBorder(),
               elevation: 0,
-              child: Icon(Icons.query_builder, color: Theme.of(context).colorScheme.inversePrimary),
+              child: Icon(Icons.query_builder,
+                  color: Theme.of(context).colorScheme.inversePrimary),
             ),
             VerticalSpacing(12.0),
             FloatingActionButton(
@@ -166,12 +171,14 @@ class _HomeViewState extends State<HomeView> {
               heroTag: 'addTaskButton',
               onPressed: () {
                 AudioManager.playFromName('tap.wav');
-                Navigator.of(context).push(CustomPageRoute(AddTaskView(onTaskAdded: _loadUserData)));
+                Navigator.of(context).push(
+                    CustomPageRoute(AddTaskView(onTaskAdded: _loadUserData)));
               },
               backgroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
               shape: const CircleBorder(),
               elevation: 0,
-              child: Icon(Icons.add, color: Theme.of(context).colorScheme.inversePrimary),
+              child: Icon(Icons.add,
+                  color: Theme.of(context).colorScheme.inversePrimary),
             ),
           ],
         ),

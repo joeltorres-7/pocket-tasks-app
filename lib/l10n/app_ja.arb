@@ -136,6 +136,11 @@
   "enjoyYourDay": "良い一日を",
   "selectTheme": "好みのテーマを選択",
   "selectThemeDescription": "ユニークな個性を表現するテーマで、あなたの体験をカスタマイズ",
+  "noFocusTasks": "今日は重要なタスクはありません",
+  "noFocusTasksDescription": "高い優先度’のラベルが付いたタスクはここに表示されます",
+  "archivedTask": "Tienes tareas archivadas",
+  "archivedTaskDescription": "Dales una segunda oportunidad o dejalas ir.",
+  "archive": "アーカイブ",
 
   "taskTitle1": "友達や家族に手紙を書く。",
   "taskTitle2": "ワークスペースを整理し、片付ける。",

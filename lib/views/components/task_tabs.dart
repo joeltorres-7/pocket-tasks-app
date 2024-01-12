@@ -16,7 +16,8 @@ class TaskTabs extends StatefulWidget {
 class _MyTabsState extends State<TaskTabs> {
   List<Map<String, dynamic>> tasks = [];
   List<Map<String, dynamic>> focusedTasks = [];
-  bool taskLoaded = false;
+  bool _taskLoaded = false;
+  bool _hasArchivedTasks = false;
   int _selectedTabIndex = 0;
 
   void _onTabTapped(int index) {
@@ -35,6 +36,12 @@ class _MyTabsState extends State<TaskTabs> {
     focusedTasks.clear();
 
     for (int i = 0; i < tasks.length; i++) {
+      if (!_hasArchivedTasks) {
+        if (tasks.elementAt(i)["isArchived"] == 1) {
+          _hasArchivedTasks = true;
+        }
+      }
+
       if (tasks.elementAt(i)["priority"] == "high") {
         focusedTasks.add(tasks.elementAt(i));
       }
@@ -49,7 +56,7 @@ class _MyTabsState extends State<TaskTabs> {
     DatabaseHelper dbHelper = DatabaseHelper();
     tasks = await dbHelper.getTasks();
     setState(() {
-      taskLoaded = true;
+      _taskLoaded = true;
       _getHighPriority();
     });
     widget.onTaskUpdated();
@@ -74,16 +81,24 @@ class _MyTabsState extends State<TaskTabs> {
   }
 
   Widget _buildTodaysFocusContent() {
-    if (taskLoaded && focusedTasks.isNotEmpty) {
-      return TasksQueue(queue: focusedTasks, onTaskUpdated: widget.onTaskUpdated);
+    if (_taskLoaded && focusedTasks.isNotEmpty) {
+      return TasksQueue(
+          queue: focusedTasks,
+          onTaskUpdated: widget.onTaskUpdated,
+          showArchive: _hasArchivedTasks
+      );
     } else {
-      return const EmptyQueue();
+      return const EmptyQueue(isFocused: true);
     }
   }
 
   Widget _buildMyInboxContent() {
-    if (taskLoaded && tasks.isNotEmpty) {
-      return TasksQueue(queue: tasks, onTaskUpdated: widget.onTaskUpdated);
+    if (_taskLoaded && tasks.isNotEmpty) {
+      return TasksQueue(
+          queue: tasks,
+          onTaskUpdated: widget.onTaskUpdated,
+          showArchive: _hasArchivedTasks
+      );
     } else {
       return const EmptyQueue();
     }
@@ -93,7 +108,9 @@ class _MyTabsState extends State<TaskTabs> {
   void didUpdateWidget(covariant TaskTabs oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.onTaskUpdated != widget.onTaskUpdated) {
+      _hasArchivedTasks = false;
       _loadTasks();
+      _getHighPriority();
       widget.onTaskUpdated();
     }
   }

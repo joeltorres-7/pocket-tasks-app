@@ -22,6 +22,7 @@ class DatabaseHelper {
         priority TEXT,
         title TEXT,
         description TEXT,
+        isArchived INTEGER DEFAULT 0,
         isCompleted INTEGER DEFAULT 0
       )
     ''');
@@ -39,7 +40,7 @@ class DatabaseHelper {
 
   Future<int> insertTask(Map<String, dynamic> task) async {
     Database db = await database;
-    return await db.insert('tasks', {...task, 'isCompleted': 0});
+    return await db.insert('tasks', {...task, 'isArchived': 0, 'isCompleted': 0});
   }
 
   Future<List<Map<String, dynamic>>> getTasks() async {
@@ -64,12 +65,27 @@ class DatabaseHelper {
           priority TEXT,
           title TEXT,
           description TEXT,
+          isArchived INTEGER DEFAULT 0,
           isCompleted INTEGER DEFAULT 0
         )
       ''');
       });
     } catch (e) {
       print("Error deleting all tasks: $e");
+    }
+  }
+
+  Future<void> toggleTaskArchived(int id, bool isArchived) async {
+    try {
+      Database db = await database;
+      await db.update(
+        'tasks',
+        {'isArchived': isArchived ? 1 : 0},
+        where: 'id = ?',
+        whereArgs: [id],
+      );
+    } catch (e) {
+      print("Error toggling task to archive: $e");
     }
   }
 

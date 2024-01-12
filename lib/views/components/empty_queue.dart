@@ -6,7 +6,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:pocket_tasks/views/utils/task_generator.dart';
 
 class EmptyQueue extends StatefulWidget {
-  const EmptyQueue({super.key});
+  final bool isFocused;
+
+  const EmptyQueue({super.key, this.isFocused = false});
 
   @override
   State<EmptyQueue> createState() => _EmptyQueueState();
@@ -30,19 +32,35 @@ class _EmptyQueueState extends State<EmptyQueue> {
               color: Theme.of(context).colorScheme.surfaceVariant,
           ),
           VerticalSpacing(16.0),
-          Text(AppLocalizations.of(context)!.noTasks,
-              style: Theme.of(context).textTheme.displayLarge, textAlign: TextAlign.center),
-          Text(
-            AppLocalizations.of(context)!.addTasks,
-            style: Theme.of(context).textTheme.displayMedium,
-            textAlign: TextAlign.center,
-          ),
-          VerticalSpacing(16.0),
-          IntrinsicWidth(
-              child: TaskChip(
-                  taskMap: randomTask,
-                  onTaskTap: (){}
-              )
+          widget.isFocused ? Column(
+            children: [
+              Text(AppLocalizations.of(context)!.noFocusTasks,
+                  style: Theme.of(context).textTheme.displayLarge, textAlign: TextAlign.center),
+              VerticalSpacing(8.0),
+              Text(
+                AppLocalizations.of(context)!.noFocusTasksDescription,
+                style: Theme.of(context).textTheme.displayMedium,
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ) : Column(
+            children: [
+              Text(AppLocalizations.of(context)!.noTasks,
+                  style: Theme.of(context).textTheme.displayLarge, textAlign: TextAlign.center),
+              VerticalSpacing(8.0),
+              Text(
+                AppLocalizations.of(context)!.addTasks,
+                style: Theme.of(context).textTheme.displayMedium,
+                textAlign: TextAlign.center,
+              ),
+              VerticalSpacing(16.0),
+              IntrinsicWidth(
+                  child: TaskChip(
+                      taskMap: randomTask,
+                      onTaskTap: (){}
+                  )
+              ),
+            ],
           )
         ],
       ),

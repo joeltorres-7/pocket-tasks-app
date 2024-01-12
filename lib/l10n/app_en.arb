@@ -543,6 +543,34 @@
   "@selectThemeDescription": {
     "description": "Description on theme selection view."
   },
+  "noFocusTasks": "No important tasks for today",
+  "@noFocusTasks": {
+    "description": "Label text for empty Today's Focus tab."
+  },
+  "noFocusTasksDescription": "Tasks with the 'High priority' label will be displayed here",
+  "@noFocusTasksDescription": {
+    "description": "Description text for empty Today's Focus tab."
+  },
+  "archivedTask": "Tienes tareas archivadas",
+  "@archivedTask": {
+    "description": "Label text for archive card."
+  },
+  "archivedTaskDescription": "Dales una segunda oportunidad o dejalas ir.",
+  "@archivedTaskDescription": {
+    "description": "Description text for archive card."
+  },
+  "archivedTasks": "Tareas archivadas",
+  "@archivedTasks": {
+    "description": "Label text for archive view."
+  },
+  "archivedTasksDescription": "Luego de una semana, estas tareas serán eliminadas. Dales una segunda oportunidad, o desechalas. No cargues con el pasado.",
+  "@archivedTasksDescription": {
+    "description": "Description text for archive view."
+  },
+  "archive": "Archive",
+  "@archive": {
+    "description": "Label for archive view."
+  },
 
   "taskTitle1": "Write a handwritten letter to a friend or family member.",
   "@taskTitle1": {

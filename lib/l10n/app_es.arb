@@ -135,6 +135,11 @@
     "enjoyYourDay": "¡Disfruta tu día!",
     "selectTheme": "Seleccione un tema de preferencia",
     "selectThemeDescription": "Personaliza tu experiencia con un tema que exprese tu personalidad unica",
+    "noFocusTasks": "No hay tareas importantes para hoy",
+    "noFocusTasksDescription": "Las tareas con la etiqueta ‘Alta prioridad’ se mostrarán aquí",
+    "archivedTask": "Tienes tareas archivadas",
+    "archivedTaskDescription": "Dales una segunda oportunidad o dejalas ir.",
+    "archive": "Archivo",
 
     "taskTitle1": "Escribe una carta a mano a un amigo o familiar.",
     "taskTitle2": "Organiza y ordena tu espacio de trabajo.",
