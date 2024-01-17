@@ -139,6 +139,8 @@
     "noFocusTasksDescription": "Las tareas con la etiqueta ‘Alta prioridad’ se mostrarán aquí",
     "archivedTask": "Tienes tareas archivadas",
     "archivedTaskDescription": "Dales una segunda oportunidad o dejalas ir.",
+    "archivedTasks": "Tareas archivadas",
+    "archivedTasksDescription": "Luego de una semana, estas tareas serán eliminadas. Dales una segunda oportunidad, o desechalas. No cargues con el pasado.",
     "archive": "Archivo",
 
     "taskTitle1": "Escribe una carta a mano a un amigo o familiar.",

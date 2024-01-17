@@ -551,19 +551,19 @@
   "@noFocusTasksDescription": {
     "description": "Description text for empty Today's Focus tab."
   },
-  "archivedTask": "Tienes tareas archivadas",
+  "archivedTask": "You have archived tasks",
   "@archivedTask": {
     "description": "Label text for archive card."
   },
-  "archivedTaskDescription": "Dales una segunda oportunidad o dejalas ir.",
+  "archivedTaskDescription": "Give them a second chance or let them go.",
   "@archivedTaskDescription": {
     "description": "Description text for archive card."
   },
-  "archivedTasks": "Tareas archivadas",
+  "archivedTasks": "Archived tasks",
   "@archivedTasks": {
     "description": "Label text for archive view."
   },
-  "archivedTasksDescription": "Luego de una semana, estas tareas serán eliminadas. Dales una segunda oportunidad, o desechalas. No cargues con el pasado.",
+  "archivedTasksDescription": "After a week, these tasks will be deleted. Give them a second chance, or discard them. Don't carry the past.",
   "@archivedTasksDescription": {
     "description": "Description text for archive view."
   },

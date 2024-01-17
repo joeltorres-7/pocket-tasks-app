@@ -138,8 +138,10 @@
   "selectThemeDescription": "ユニークな個性を表現するテーマで、あなたの体験をカスタマイズ",
   "noFocusTasks": "今日は重要なタスクはありません",
   "noFocusTasksDescription": "高い優先度’のラベルが付いたタスクはここに表示されます",
-  "archivedTask": "Tienes tareas archivadas",
-  "archivedTaskDescription": "Dales una segunda oportunidad o dejalas ir.",
+  "archivedTask": "アーカイブされたタスクがあります",
+  "archivedTaskDescription": "2度目のチャンスを与えるか、それらを放棄してください。",
+  "archivedTasks": "アーカイブされたタスク",
+  "archivedTasksDescription": "1週間後、これらのタスクは削除されます。2度目のチャンスを与えるか、破棄してください。過去を背負わないでください。",
   "archive": "アーカイブ",
 
   "taskTitle1": "友達や家族に手紙を書く。",
